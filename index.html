@@ -5,11 +5,15 @@
     <title>Elm EHR</title>
     <!-- Here is where we insert the compiled elm -->
     <script type="text/javascript" src="elm.js"></script>
+    <script>window.Elm = require('./elm.js');</script>
   </head>
 
   <body>
     <!-- This div is where we will insert our UI -->
     <div id="container"></div>
+    <p>We are using node <script>document.write(process.versions.node)</script>,</p>
+    <p>Chrome <script>document.write(process.versions.chrome)</script>,</p>
+    <p>and Electron <script>document.write(process.versions.electron)</script>.</p>
   </body>
 
   <!-- finally we run ports.js to start the elm app -->
