@@ -7,7 +7,7 @@
     "elm": "elm make Main.elm --output elm.js || true",
     "elm:watch": "chokidar '**/*.elm' -c 'npm run elm'",
     "main": "main.js",
-    "package": "electron-packager . 'Electron EHR' --platform=win32 --arch=x64",
+    "package": "electron-packager . 'Electron EHR' --platform=win32 --arch=x64 --overwrite",
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm run start & npm run elm:watch & wait"
