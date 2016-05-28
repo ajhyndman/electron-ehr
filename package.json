@@ -6,8 +6,9 @@
   "scripts": {
     "elm": "elm make Main.elm --output elm.js || true",
     "elm:watch": "chokidar '**/*.elm' -c 'npm run elm'",
-    "start": "electron .",
     "main": "main.js",
+    "package": "electron-packager . 'Electron EHR' --platform=win32 --arch=x64",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm run start & npm run elm:watch & wait"
   },
@@ -23,6 +24,10 @@
   "homepage": "https://github.com/ajhyndman/electron-ehr#readme",
   "devDependencies": {
     "chokidar": "^1.5.1",
+    "electron-packager": "^7.0.2",
     "electron-prebuilt": "^1.2.0"
+  },
+  "dependencies": {
+    "reset-css": "^2.0.2011012603"
   }
 }
