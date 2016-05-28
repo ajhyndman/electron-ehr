@@ -21,5 +21,8 @@
   "devDependencies": {
     "electron-packager": "^7.0.2",
     "electron-prebuilt": "^1.2.0"
+  },
+  "dependencies": {
+    "reset-css": "^2.0.2011012603"
   }
 }
