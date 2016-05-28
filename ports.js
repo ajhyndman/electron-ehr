@@ -3,7 +3,7 @@
 
 
 // get a reference to the div where we will show our UI
-const container = document.getElementById('container');
+const container = document.getElementById('app');
 
 // start the elm app in the container
 // and keep a reference for communicating with the appp

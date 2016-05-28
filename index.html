@@ -2,18 +2,41 @@
 
   <head>
     <!-- This title will display at the top of your app window -->
-    <title>Elm EHR</title>
+    <title>Electron EHR</title>
     <!-- Here is where we insert the compiled elm -->
+    <link rel="stylesheet" href="node_modules/reset-css/reset.css" />
+    <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="elm.js"></script>
     <script>window.Elm = require('./elm.js');</script>
+    <style>
+      body {
+        background: #424242;
+        color: #FFF;
+        font-family: 'Proxima Nova';
+        line-height: 1.33em;
+      }
+
+      #app {
+        background: #FFF;
+        color: #222233;
+        height: 200px;
+        max-height: 100%;
+      }
+
+      .container {
+        padding: 0.5em;
+      }
+    </style>
   </head>
 
   <body>
     <!-- This div is where we will insert our UI -->
-    <div id="container"></div>
-    <p>We are using node <script>document.write(process.versions.node)</script>,</p>
-    <p>Chrome <script>document.write(process.versions.chrome)</script>,</p>
-    <p>and Electron <script>document.write(process.versions.electron)</script>.</p>
+    <div class="container" contenteditable="true" id="app"></div>
+    <div class="container">
+      <p>We are using node <script>document.write(process.versions.node)</script>,</p>
+      <p>Chrome <script>document.write(process.versions.chrome)</script>,</p>
+      <p>and Electron <script>document.write(process.versions.electron)</script>.</p>
+    </div>
   </body>
 
   <!-- finally we run ports.js to start the elm app -->
