@@ -2,7 +2,6 @@ port module Main exposing (main)
 
 import Html.App as App
 
-import Ports
 import Subscriptions
 import Model
 import Update
@@ -22,4 +21,13 @@ main =
 
 init : (Model.Model, Cmd Update.Action)
 init =
-  ("Hello, Violet!", Cmd.none)
+  (
+    {
+      selection = {
+        anchorOffset = 0,
+        focusOffset = 0
+      },
+      note = "Hello, Violet!"
+    },
+    Cmd.none
+  )

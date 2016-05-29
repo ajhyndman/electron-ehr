@@ -31,5 +31,5 @@ view model =
       onKeyDown Update.Keypress
     ]
     [
-      H.text model
+      H.text model.note
     ]

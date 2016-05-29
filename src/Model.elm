@@ -1,7 +1,11 @@
 module Model exposing (..)
 
 
-type alias Model = String
+type alias Model =
+  {
+    selection: Selection,
+    note: String
+  }
 
 type alias Selection =
   {
