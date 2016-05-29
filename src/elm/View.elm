@@ -5,6 +5,7 @@ import Html.Attributes as A
 import Html.Events
 import Json.Decode
 
+import Model
 import Update
 
 
@@ -12,11 +13,13 @@ onKeyDown : (Int -> msg) -> H.Attribute msg
 onKeyDown tagger =
   Html.Events.onWithOptions
     "keydown"
-    { stopPropagation = True
-    , preventDefault = True
+    {
+      stopPropagation = True,
+      preventDefault = True
     }
     (Json.Decode.map tagger Html.Events.keyCode)
 
+view : Model.Model -> H.Html Update.Action
 view model =
   H.div
     [

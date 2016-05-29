@@ -4,7 +4,7 @@
   "description": "EHR charting tool built on Electron",
   "main": "main.js",
   "scripts": {
-    "elm": "elm-make src/Main.elm --output elm.js",
+    "elm": "elm-make src/elm/Main.elm --output elm.js",
     "elm:watch": "chokidar \"**\\*.elm\" -c \"npm run elm\"",
     "main": "main.js",
     "package": "electron-packager . electron-ehr --platform=win32 --arch=x64 --overwrite",

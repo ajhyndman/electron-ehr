@@ -9,4 +9,4 @@ import Update
 subscriptions : Model.Model -> Sub Update.Action
 subscriptions model =
   Ports.selection
-    (\selection -> Update.UpdateSelection (Debug.log "anchorOffset" selection))
+    (\selection -> Update.UpdateSelection selection)
