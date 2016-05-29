@@ -1,7 +1,7 @@
 module View exposing (view)
 
 import Html as H
-import Html.Attributes exposing (..)
+import Html.Attributes as A
 import Html.Events
 import Json.Decode
 
@@ -20,8 +20,8 @@ onKeyDown tagger =
 view model =
   H.div
     [
-      contenteditable True,
-      style [
+      A.contenteditable True,
+      A.style [
         ("background", "#FFF"),
         ("color", "#222233"),
         ("min-height", "200px"),

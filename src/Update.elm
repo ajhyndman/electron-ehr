@@ -1,22 +1,26 @@
 module Update exposing (update, Action (..))
 
 
-type Action = Keypress Int | Other
+import Keys
+import Model
 
-type alias Keycode = Int
 
-left : Keycode
-left = 37
-up = 38
-right = 39
-down = 40
+type Action = Keypress Int
+            | UpdateSelection Model.Selection
+            | NoOp
 
-update : Action -> model -> model
+
+update : Action -> model -> (model, Cmd Action)
 update action model =
   case action of
     Keypress keycode ->
       let code = (Debug.log "keycode" keycode)
       in
-        model
-    default ->
-      model
+        if
+          code == Keys.left
+        then
+          ((Debug.log "left" model), Cmd.none)
+        else
+          (model, Cmd.none)
+    _ ->
+      (model, Cmd.none)

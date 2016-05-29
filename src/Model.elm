@@ -1,5 +1,10 @@
-module Model exposing (model)
+module Model exposing (..)
 
 
-model : String
-model = "Hello, Violet!"
+type alias Model = String
+
+type alias Selection =
+  {
+    anchorOffset: Int,
+    focusOffset: Int
+  }
