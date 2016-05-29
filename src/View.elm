@@ -2,8 +2,20 @@ module View exposing (view)
 
 import Html as H
 import Html.Attributes exposing (..)
+import Html.Events
 import Json.Decode
 
+import Update
+
+
+onKeyDown : (Int -> msg) -> H.Attribute msg
+onKeyDown tagger =
+  Html.Events.onWithOptions
+    "keydown"
+    { stopPropagation = True
+    , preventDefault = True
+    }
+    (Json.Decode.map tagger Html.Events.keyCode)
 
 view model =
   H.div
@@ -15,7 +27,9 @@ view model =
         ("min-height", "200px"),
         ("padding", "0.5em")
       ],
+      -- Html.Events.onClick "click detected!"
+      onKeyDown Update.Keypress
     ]
     [
-      H.text "Hello, Violet!"
+      H.text model
     ]

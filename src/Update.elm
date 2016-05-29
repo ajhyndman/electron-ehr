@@ -1,6 +1,22 @@
-module Update exposing (update)
+module Update exposing (update, Action (..))
 
 
-update : model -> action -> model
-update model action =
-  model
+type Action = Keypress Int | Other
+
+type alias Keycode = Int
+
+left : Keycode
+left = 37
+up = 38
+right = 39
+down = 40
+
+update : Action -> model -> model
+update action model =
+  case action of
+    Keypress keycode ->
+      let code = (Debug.log "keycode" keycode)
+      in
+        model
+    default ->
+      model
