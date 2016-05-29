@@ -4,13 +4,13 @@
   "description": "EHR charting tool built on Electron",
   "main": "main.js",
   "scripts": {
-    "elm": "elm make Main.elm --output elm.js || true",
-    "elm:watch": "chokidar '**/*.elm' -c 'npm run elm'",
+    "elm": "elm-make src/Main.elm --output elm.js",
+    "elm:watch": "chokidar \"**\\*.elm\" -c \"npm run elm\"",
     "main": "main.js",
     "package": "electron-packager . electron-ehr --platform=win32 --arch=x64 --overwrite",
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npm run start & npm run elm:watch & wait"
+    "watch": "start npm run start & start npm run elm:watch"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/ajhyndman/electron-ehr#readme",
   "devDependencies": {
-    "chokidar": "^1.5.1",
+    "chokidar-cli": "^1.2.0",
     "electron-packager": "^7.0.2",
     "electron-prebuilt": "^1.2.0"
   },
