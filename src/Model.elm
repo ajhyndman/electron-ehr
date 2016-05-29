@@ -1,5 +1,5 @@
 module Model exposing (model)
 
 
-model : number
-model = 3
+model : String
+model = "Hello, Violet!"
