@@ -2,9 +2,21 @@ SystemJS.config({
   transpiler: "plugin-babel",
   packages: {
     "electron-ehr": {
-      "main": "app.js",
+      "main": "app.jsx",
       "meta": {
         "*.js": {
+          "babelOptions": {
+            "sourceMaps": "inline"
+          },
+          "loader": "plugin-babel"
+        },
+        "*.jsx": {
+          "babelOptions": {
+            "sourceMaps": "inline",
+            "plugins": [
+              "npm:babel-plugin-transform-react-jsx@6.8.0"
+            ]
+          },
           "loader": "plugin-babel"
         }
       }

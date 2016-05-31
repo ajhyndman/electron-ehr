@@ -32,7 +32,7 @@
   },
   "jspm": {
     "name": "electron-ehr",
-    "main": "app.js",
+    "main": "app.jsx",
     "directories": {
       "lib": "src"
     },
@@ -83,4 +83,5 @@
       }
     }
   }
-}
+}
+

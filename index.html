@@ -3,7 +3,9 @@
   <head>
     <!-- This title will display at the top of your app window -->
     <title>Electron EHR</title>
-    <!-- Here is where we insert the compiled elm -->
+    <script src="jspm_packages/system.js"></script>
+    <script src="jspm.browser.js"></script>
+    <script src="jspm.config.js"></script>
     <link rel="stylesheet" href="node_modules/reset-css/reset.css" />
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css">
     <style>
@@ -34,8 +36,16 @@
       <p>Chrome <script>document.write(process.versions.chrome)</script>,</p>
       <p>and Electron <script>document.write(process.versions.electron)</script>.</p>
     </div>
-  </body>
 
-  <!-- finally we run ports.js to start the elm app -->
-  <script type="text/javascript" src="app.js"></script>
+    <!-- ES6 HTTP/2 style import -->
+    <script type="text/javascript">
+        System.import('src/app.jsx');
+    </script>
+
+    <!--
+    Preprocessed, concatenated and minified HTTP/1 style import
+    Run `npm run build` to generate this file.
+    -->
+    <!--<script src="app.js"></script>-->
+  </body>
 </html>
