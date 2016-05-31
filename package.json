@@ -28,6 +28,7 @@
     "electron-prebuilt": "^1.2.0"
   },
   "dependencies": {
-    "reset-css": "^2.0.2011012603"
+    "reset-css": "^2.0.2011012603",
+    "selection": "file:src/js/selection"
   }
 }

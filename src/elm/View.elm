@@ -4,6 +4,7 @@ import Html as H
 import Html.Attributes as A
 import Html.Events
 import Json.Decode
+import Json.Encode
 
 import Model
 import Update
@@ -31,8 +32,7 @@ view model =
         ("padding", "0.5em")
       ],
       -- Html.Events.onClick "click detected!"
-      onKeyDown Update.Keypress
+      onKeyDown Update.Keypress,
+      A.property "innerHTML" (Json.Encode.string model.note)
     ]
-    [
-      H.text model.note
-    ]
+    []

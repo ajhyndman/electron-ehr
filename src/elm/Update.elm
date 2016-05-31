@@ -5,6 +5,7 @@ import String
 
 import Keys
 import Model
+import Ports
 
 
 type Action = Keypress Int
@@ -33,8 +34,17 @@ update action model =
                             (String.left focus model.note) |> (String.slice 0 -1)
                           ) ++ String.dropLeft focus model.note
                     }
+                  selection = model.selection
                 in
-                  ((Debug.log "Backspace!" next), Cmd.none)
+                  (
+                    (Debug.log "Backspace!" next),
+                    Ports.setSelection
+                      {
+                        selection |
+                          anchorOffset = selection.anchorOffset - 1,
+                          focusOffset = selection.focusOffset - 1
+                      }
+                  )
               _ ->
                 ((Debug.log "model" model), Cmd.none)
           _ ->

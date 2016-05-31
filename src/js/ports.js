@@ -9,8 +9,28 @@ const container = document.getElementById('app');
 // and keep a reference for communicating with the appp
 const app = Elm.Main.embed(container);
 
+const selection = {
+  set: function (selectionState) {
+    'use strict';
+    setTimeout(function () {
+      const DOMSelection = document.getSelection();
+      const DOMNode = DOMSelection.focusNode;
 
-document.addEventListener("selectionchange", function(e) {
+      const range = new Range();
+      range.setStart(DOMNode, selectionState.anchorOffset);
+      range.setEnd(DOMNode, selectionState.focusOffset);
+
+      DOMSelection.removeAllRanges();
+      DOMSelection.addRange(range);
+    }, 20);
+  },
+};
+
+
+/**
+ * PORTS
+ */
+document.addEventListener('selectionchange', function(e) {
   'use strict';
 
   const DOMSelection = document.getSelection();
@@ -20,3 +40,7 @@ document.addEventListener("selectionchange", function(e) {
     focusOffset: DOMSelection.focusOffset,
   });
 }, false);
+
+app.ports.setSelection.subscribe(function (selectionState) {
+  selection.set(selectionState);
+});
