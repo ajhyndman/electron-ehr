@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Hello = function (props) {
-    return <div>{'Hello ' + props.name}</div>;
+const Hello = function Hello(props) {
+  return <div>{`Hello ${props.name}`}</div>;
 };
 
 Hello.propTypes = {
-    name: React.PropTypes.string,
+  name: React.PropTypes.string,
 };
 
 ReactDOM.render(
-    <Hello name="Violet!" />,
-    document.getElementById('app')
+  <Hello name="Violet!" />,
+  document.getElementById('app')
 );
