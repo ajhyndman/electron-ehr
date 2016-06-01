@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Hello = function Hello(props) {
-  return <div>{`Hello ${props.name}`}</div>;
-};
+import EditorPanel from './components/EditorPanel.jsx';
 
-Hello.propTypes = {
-  name: React.PropTypes.string,
-};
 
 ReactDOM.render(
-  <Hello name="Violet!" />,
+  <EditorPanel />,
   document.getElementById('app')
 );

@@ -1,28 +1,27 @@
 <html>
 
   <head>
+    <meta charset="UTF-8">
     <!-- This title will display at the top of your app window -->
     <title>Electron EHR</title>
     <script src="jspm_packages/system.js"></script>
     <script src="jspm.browser.js"></script>
     <script src="jspm.config.js"></script>
+    <script src="build.js"></script>
     <link rel="stylesheet" href="node_modules/reset-css/reset.css" />
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css">
     <style>
       body {
-        background: #424242;
-        color: #FFF;
+        background: #FFF;
+        color: #212121;
         font-family: 'Proxima Nova';
         line-height: 1.33em;
+        -webkit-font-smoothing: subpixel-antialiased;
       }
 
-      #app {
-        background: #FFF;
-        color: #222233;
-        min-height: 200px;
-      }
-
-      .container {
+      #app .public-DraftEditor-content {
+        box-sizing: border-box;
+        height: 100%;
         padding: 0.5em;
       }
     </style>
@@ -31,11 +30,6 @@
   <body>
     <!-- This div is where we will insert our UI -->
     <div class="container" id="app"></div>
-    <div class="container">
-      <p>We are using node <script>document.write(process.versions.node)</script>,</p>
-      <p>Chrome <script>document.write(process.versions.chrome)</script>,</p>
-      <p>and Electron <script>document.write(process.versions.electron)</script>.</p>
-    </div>
 
     <!-- ES6 HTTP/2 style import -->
     <script type="text/javascript">
