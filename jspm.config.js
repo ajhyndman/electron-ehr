@@ -38,6 +38,7 @@ SystemJS.config({
     "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
     "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
     "domain": "github:jspm/nodelibs-domain@0.2.0-alpha",
+    "draft-js": "npm:draft-js@0.7.0",
     "events": "github:jspm/nodelibs-events@0.2.0-alpha",
     "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
     "http": "github:jspm/nodelibs-http@0.2.0-alpha",
@@ -287,6 +288,12 @@ SystemJS.config({
         "bn.js": "npm:bn.js@4.11.3",
         "miller-rabin": "npm:miller-rabin@4.0.0",
         "randombytes": "npm:randombytes@2.0.3"
+      }
+    },
+    "npm:draft-js@0.7.0": {
+      "map": {
+        "fbjs": "npm:fbjs@0.8.3",
+        "immutable": "npm:immutable@3.8.1"
       }
     },
     "npm:elliptic@6.2.7": {

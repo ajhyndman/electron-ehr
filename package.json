@@ -37,6 +37,7 @@
       "lib": "src"
     },
     "dependencies": {
+      "draft-js": "npm:draft-js@^0.7.0",
       "react": "npm:react@^15.1.0",
       "react-dom": "npm:react-dom@^15.1.0"
     },
@@ -84,4 +85,3 @@
     }
   }
 }
-
