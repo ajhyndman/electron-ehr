@@ -4,8 +4,9 @@
   "description": "EHR charting tool built on Electron",
   "main": "main.js",
   "scripts": {
+    "bundle": "jspm bundle src/app.jsx --skip-source-maps --watch",
     "package": "electron-packager . electron-ehr --platform=win32 --arch=x64",
-    "start": "electron .",
+    "start": "start electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
