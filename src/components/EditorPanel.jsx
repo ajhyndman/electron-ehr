@@ -1,24 +1,22 @@
 import React from 'react';
-import { Editor, EditorState } from 'draft-js';
+import { Editor } from 'draft-js';
+import { connect } from 'react-redux';
 
 
-class EditorPanel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { editorState: EditorState.createEmpty() };
-    this.onChange = (editorState) => this.setState({ editorState });
-  }
+const EditorPanel = (props) => (
+  <Editor
+    editorState={props.editorState}
+    onChange={props.onChange}
+  />
+);
 
-  render() {
-    return (
-      <Editor
-        editorState={this.state.editorState}
-        onChange={this.onChange}
-        style={{ minHeight: 200 }}
-      />
-    );
-  }
-}
+EditorPanel.propTypes = {
+  editorState: React.PropTypes.object.isRequired,
+  onChange: React.PropTypes.func.isRequired,
+};
 
 
-export default EditorPanel;
+export default connect(
+  (state) => ({ editorState: state.get('editor') }),
+  (dispatch) => ({ onChange: (next) => (dispatch({ type: 'EDIT', next })) })
+)(EditorPanel);

@@ -1,4 +1,5 @@
 SystemJS.config({
+  sourceMaps: true,
   transpiler: "plugin-babel",
   packages: {
     "electron-ehr": {
