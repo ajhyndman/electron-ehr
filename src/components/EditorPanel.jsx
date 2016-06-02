@@ -1,6 +1,8 @@
 import React from 'react';
+import ReactRedux from 'react-redux';
 import { Editor } from 'draft-js';
-import { connect } from 'react-redux';
+
+import { edit } from './actions';
 
 
 const EditorPanel = (props) => (
@@ -16,7 +18,7 @@ EditorPanel.propTypes = {
 };
 
 
-export default connect(
+export default ReactRedux.connect(
   (state) => ({ editorState: state.get('editor') }),
-  (dispatch) => ({ onChange: (next) => (dispatch({ type: 'EDIT', next })) })
+  (dispatch) => ({ onChange: (next) => dispatch(edit(next)) })
 )(EditorPanel);
