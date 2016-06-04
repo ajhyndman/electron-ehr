@@ -43,6 +43,7 @@
     "dependencies": {
       "draft-js": "npm:draft-js@^0.7.0",
       "immutable": "npm:immutable@^3.8.1",
+      "material-ui": "npm:material-ui@^0.15.0",
       "react": "npm:react@^15.1.0",
       "react-dom": "npm:react-dom@^15.1.0",
       "react-redux": "npm:react-redux@^4.4.5",
@@ -67,6 +68,7 @@
       "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
       "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
       "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "react-tap-event-plugin": "npm:react-tap-event-plugin@^1.0.0",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
       "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
       "url": "github:jspm/nodelibs-url@^0.2.0-alpha",

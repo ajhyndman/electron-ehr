@@ -45,6 +45,7 @@ SystemJS.config({
     "http": "github:jspm/nodelibs-http@0.2.0-alpha",
     "https": "github:jspm/nodelibs-https@0.2.0-alpha",
     "immutable": "npm:immutable@3.8.1",
+    "material-ui": "npm:material-ui@0.15.0",
     "net": "github:jspm/nodelibs-net@0.2.0-alpha",
     "path": "github:jspm/nodelibs-path@0.2.0-alpha",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.11",
@@ -52,6 +53,7 @@ SystemJS.config({
     "react": "npm:react@15.1.0",
     "react-dom": "npm:react-dom@15.1.0",
     "react-redux": "npm:react-redux@4.4.5",
+    "react-tap-event-plugin": "npm:react-tap-event-plugin@1.0.0",
     "redux": "npm:redux@3.5.2",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
@@ -318,6 +320,13 @@ SystemJS.config({
         "create-hash": "npm:create-hash@1.1.2"
       }
     },
+    "npm:fbjs@0.2.1": {
+      "map": {
+        "core-js": "npm:core-js@1.2.6",
+        "promise": "npm:promise@7.1.1",
+        "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
+      }
+    },
     "npm:fbjs@0.8.3": {
       "map": {
         "core-js": "npm:core-js@1.2.6",
@@ -339,6 +348,12 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.1"
       }
     },
+    "npm:inline-style-prefixer@1.0.4": {
+      "map": {
+        "bowser": "npm:bowser@1.3.0",
+        "inline-style-prefix-all": "npm:inline-style-prefix-all@2.0.2"
+      }
+    },
     "npm:invariant@2.2.1": {
       "map": {
         "loose-envify": "npm:loose-envify@1.2.0"
@@ -347,12 +362,41 @@ SystemJS.config({
     "npm:isomorphic-fetch@2.2.1": {
       "map": {
         "node-fetch": "npm:node-fetch@1.5.3",
-        "whatwg-fetch": "npm:whatwg-fetch@1.0.0"
+        "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
+      }
+    },
+    "npm:lodash.merge@4.4.0": {
+      "map": {
+        "lodash._baseclone": "npm:lodash._baseclone@4.5.7",
+        "lodash._root": "npm:lodash._root@3.0.1",
+        "lodash.isplainobject": "npm:lodash.isplainobject@4.0.4",
+        "lodash.keysin": "npm:lodash.keysin@4.1.4",
+        "lodash.rest": "npm:lodash.rest@4.0.3"
+      }
+    },
+    "npm:lodash.throttle@4.0.1": {
+      "map": {
+        "lodash.debounce": "npm:lodash.debounce@4.0.6"
       }
     },
     "npm:loose-envify@1.2.0": {
       "map": {
         "js-tokens": "npm:js-tokens@1.0.3"
+      }
+    },
+    "npm:material-ui@0.15.0": {
+      "map": {
+        "inline-style-prefixer": "npm:inline-style-prefixer@1.0.4",
+        "keycode": "npm:keycode@2.1.2",
+        "lodash.merge": "npm:lodash.merge@4.4.0",
+        "lodash.throttle": "npm:lodash.throttle@4.0.1",
+        "react-addons-create-fragment": "npm:react-addons-create-fragment@15.1.0",
+        "react-addons-transition-group": "npm:react-addons-transition-group@15.1.0",
+        "react-addons-update": "npm:react-addons-update@15.1.0",
+        "react-event-listener": "npm:react-event-listener@0.1.2",
+        "recompose": "npm:recompose@0.17.0",
+        "simple-assign": "npm:simple-assign@0.1.0",
+        "warning": "npm:warning@2.1.0"
       }
     },
     "npm:miller-rabin@4.0.0": {
@@ -403,6 +447,11 @@ SystemJS.config({
         "loose-envify": "npm:loose-envify@1.2.0"
       }
     },
+    "npm:react-tap-event-plugin@1.0.0": {
+      "map": {
+        "fbjs": "npm:fbjs@0.2.1"
+      }
+    },
     "npm:react@15.1.0": {
       "map": {
         "fbjs": "npm:fbjs@0.8.3",
@@ -419,6 +468,12 @@ SystemJS.config({
         "process-nextick-args": "npm:process-nextick-args@1.0.7",
         "string_decoder": "npm:string_decoder@0.10.31",
         "util-deprecate": "npm:util-deprecate@1.0.2"
+      }
+    },
+    "npm:recompose@0.17.0": {
+      "map": {
+        "hoist-non-react-statics": "npm:hoist-non-react-statics@1.0.6",
+        "lodash": "npm:lodash@4.13.1"
       }
     },
     "npm:redux@3.5.2": {
@@ -458,6 +513,11 @@ SystemJS.config({
       "map": {
         "punycode": "npm:punycode@1.3.2",
         "querystring": "npm:querystring@0.2.0"
+      }
+    },
+    "npm:warning@2.1.0": {
+      "map": {
+        "loose-envify": "npm:loose-envify@1.2.0"
       }
     }
   }
