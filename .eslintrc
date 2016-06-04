@@ -6,6 +6,7 @@
     "extends": "airbnb",
     "rules": {
         "import/no-unresolved": 0,
-        "indent": [1, 2]
+        "indent": [1, 2],
+        "new-cap": ["error", { "capIsNewExceptions": ["EDIT", "MACRO"] }]
     }
 }
