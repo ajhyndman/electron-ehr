@@ -5,10 +5,10 @@ import macros from 'macros.js';
 
 const reducer = function reducer(state, action) {
   switch (action.type) {
-  case 'edit': {
+  case 'EDIT': {
     return state.set('editor', action.next);
   }
-  case 'macro': {
+  case 'MACRO': {
     const editorState = state.get('editor');
 
     // Don't trigger macros if more than one character is selected.
