@@ -2,17 +2,20 @@ import React from 'react';
 import { Editor } from 'draft-js';
 import { connect } from 'react-redux';
 
+import 'fonts/proxima-nova.css';
 import actions from '../actions';
 // import keybindings from '../keybindings';
 
 
 const EditorPanel = (props) => (
-  <Editor
-    editorState={props.editorState}
-    // keyBindingFn={keybindings}
-    onChange={props.onChange}
-    onTab={props.onTab}
-  />
+  <div style={{ fontFamily: 'Proxima Nova', lineHeight: '1.33em' }}>
+    <Editor
+      editorState={props.editorState}
+      // keyBindingFn={keybindings}
+      onChange={props.onChange}
+      onTab={props.onTab}
+    />
+  </div>
 );
 
 EditorPanel.propTypes = {
