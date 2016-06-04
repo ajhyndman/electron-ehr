@@ -1,0 +1,11 @@
+ {
+     "env": {
+         "browser": true,
+         "node": true
+     },
+     "extends": "airbnb",
+     "rules": {
+         "import/no-unresolved": 0,
+         "indent": [1, 2]
+     }
+ }
