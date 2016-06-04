@@ -1,8 +1,8 @@
 
 
 const actions = {
-  edit: (next) => ({ type: 'edit', next }),
-  macro: () => ({ type: 'macro' }),
+  EDIT: (next) => ({ type: 'EDIT', next }),
+  MACRO: () => ({ type: 'MACRO' }),
 };
 
 

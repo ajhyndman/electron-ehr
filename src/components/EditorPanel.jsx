@@ -25,10 +25,10 @@ EditorPanel.propTypes = {
 export default connect(
   (state) => ({ editorState: state.get('editor') }),
   (dispatch) => ({
-    onChange: (next) => dispatch(actions.edit(next)),
+    onChange: (next) => dispatch(actions.EDIT(next)),
     onTab: function onTab(event) {
       event.preventDefault();
-      dispatch(actions.macro());
+      dispatch(actions.MACRO());
     },
   })
 )(EditorPanel);
