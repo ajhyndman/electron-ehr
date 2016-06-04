@@ -1,5 +1,3 @@
-/*jslint es6: true, node: true */
-
 
 const electron = require('electron');
 // Module to control application life.
@@ -13,20 +11,19 @@ const { BrowserWindow } = electron;
 let win;
 
 function createWindow() {
-    'use strict';
-    // Create the browser window.
-    win = new BrowserWindow({width: 800, height: 600});
+  // Create the browser window.
+  win = new BrowserWindow({ width: 800, height: 600 });
 
-    // and load the index.html of the app.
-    win.loadURL(`file://${__dirname}/index.html`);
+  // and load the index.html of the app.
+  win.loadURL(`file://${__dirname}/index.html`);
 
-    // Emitted when the window is closed.
-    win.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        win = null;
-    });
+  // Emitted when the window is closed.
+  win.on('closed', function closed() {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    win = null;
+  });
 }
 
 // This method will be called when Electron has finished
@@ -35,22 +32,20 @@ function createWindow() {
 app.on('ready', createWindow);
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
-    'use strict';
-    // On OS X it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
+app.on('window-all-closed', function allClosed() {
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
 
-app.on('activate', function () {
-    'use strict';
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-        createWindow();
-    }
+app.on('activate', function activate() {
+  // On OS X it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (win === null) {
+    createWindow();
+  }
 });
 
 // In this file you can include the rest of your app's specific main process
