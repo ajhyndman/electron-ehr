@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ajhyndman/electron-ehr#readme",
   "devDependencies": {
+    "@kadira/storybook": "^1.28.1",
     "electron-packager": "^7.0.2",
     "electron-prebuilt": "^1.2.0",
     "eslint": "^2.10.0",
@@ -29,7 +30,9 @@
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-no-class": "^0.1.0",
     "eslint-plugin-react": "^5.1.1",
-    "jspm": "git+ssh://git@github.com/jspm/jspm-cli.git#0.17.0-beta.14"
+    "jspm": "git+ssh://git@github.com/jspm/jspm-cli.git#0.17.0-beta.14",
+    "react": "file:jspm_packages\\npm\\react@15.1.0",
+    "react-dom": "file:jspm_packages\\npm\\react-dom@15.1.0"
   },
   "dependencies": {
     "reset-css": "^2.0.2011012603"
