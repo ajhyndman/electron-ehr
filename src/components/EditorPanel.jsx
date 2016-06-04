@@ -3,13 +3,13 @@ import { Editor } from 'draft-js';
 import { connect } from 'react-redux';
 
 import actions from '../actions';
-import keybindings from '../keybindings';
+// import keybindings from '../keybindings';
 
 
 const EditorPanel = (props) => (
   <Editor
     editorState={props.editorState}
-    keyBindingFn={keybindings}
+    // keyBindingFn={keybindings}
     onChange={props.onChange}
     onTab={props.onTab}
   />
