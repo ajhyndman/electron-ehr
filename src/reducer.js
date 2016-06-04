@@ -1,6 +1,6 @@
 import { EditorState, Modifier } from 'draft-js';
 
-import macros from 'macros.js';
+import macros from '../macros';
 
 
 const reducer = function reducer(state, action) {

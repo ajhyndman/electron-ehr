@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import EditorPanel from './components/EditorPanel.jsx';
-import store from './store';
+import EditorPanel from 'components/EditorPanel';
+import store from 'store';
 
 
 ReactDOM.render(
