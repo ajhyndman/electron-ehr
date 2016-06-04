@@ -3,7 +3,6 @@
   <head>
     <!-- This title will display at the top of your app window -->
     <title>Electron EHR</title>
-    <!-- Here is where we insert the compiled elm -->
     <link rel="stylesheet" href="node_modules/reset-css/reset.css" />
     <link href="fonts/proxima-nova.css" rel="stylesheet" type="text/css">
     <style>
@@ -36,6 +35,6 @@
     </div>
   </body>
 
-  <!-- finally we run ports.js to start the elm app -->
-  <script type="text/javascript" src="app.js"></script>
+  <!-- finally we load our bundle to start the app -->
+  <script type="text/javascript" src="build/app.js"></script>
 </html>
