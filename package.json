@@ -4,6 +4,7 @@
   "description": "EHR charting tool built on Electron",
   "main": "main.js",
   "scripts": {
+    "build": "webpack --watch",
     "package": "electron-packager . electron-ehr --platform=win32 --arch=x64",
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
