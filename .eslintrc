@@ -8,6 +8,6 @@
     "rules": {
         "import/no-unresolved": 0,
         "indent": [1, 2],
-        "new-cap": ["error", { "capIsNewExceptions": ["EDIT", "MACRO"] }]
+        "new-cap": ["error", { "capIsNewExceptions": ["EDIT", "MACRO", "Map"] }]
     }
 }
