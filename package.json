@@ -20,7 +20,8 @@
   "homepage": "https://github.com/ajhyndman/electron-ehr#readme",
   "devDependencies": {
     "electron-packager": "^7.0.2",
-    "electron-prebuilt": "^1.2.0"
+    "electron-prebuilt": "^1.2.0",
+    "webpack": "^1.13.1"
   },
   "dependencies": {
     "reset-css": "^2.0.2011012603"
