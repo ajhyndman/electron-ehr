@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Editor } from 'draft-js';
+import { connect } from 'react-redux';
 
 import actions from '../actions';
 import keybindings from '../keybindings';
