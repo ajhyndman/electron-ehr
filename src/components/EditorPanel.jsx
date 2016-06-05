@@ -1,9 +1,7 @@
 import React from 'react';
 import { Editor } from 'draft-js';
-import { connect } from 'react-redux';
 
 import 'fonts/proxima-nova.css';
-import actions from '../actions';
 // import keybindings from '../keybindings';
 
 
@@ -25,13 +23,4 @@ EditorPanel.propTypes = {
 };
 
 
-export default connect(
-  (state) => ({ editorState: state.get('editor') }),
-  (dispatch) => ({
-    onChange: (next) => dispatch(actions.EDIT(next)),
-    onTab: function onTab(event) {
-      event.preventDefault();
-      dispatch(actions.MACRO());
-    },
-  })
-)(EditorPanel);
+export default EditorPanel;
