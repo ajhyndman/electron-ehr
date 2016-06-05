@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { storiesOf } from '@kadira/storybook';
 
-import { EditorPanel } from 'components/redux-connections';
 import reducer from 'reducer';
+import { EditorPanel } from 'components/redux-connections';
 
 
 const initialState = Immutable.Map({
