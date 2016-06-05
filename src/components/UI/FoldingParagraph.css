@@ -1,0 +1,11 @@
+.folding-paragraph__toggle {
+  display: none !important;
+}
+
+.folding-paragraph__toggle.collapsed {
+  display: inline-block !important;
+}
+
+.folding-paragraph__margin:hover .folding-paragraph__toggle {
+  display: inline-block !important;
+}
