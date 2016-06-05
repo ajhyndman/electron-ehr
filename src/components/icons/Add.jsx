@@ -6,7 +6,6 @@ const Plus = (props) => (
     fill="#000000"
     style={{
       display: 'block',
-      lineHeight: '1em',
     }}
     viewBox="0 0 24 24"
     width="24"
