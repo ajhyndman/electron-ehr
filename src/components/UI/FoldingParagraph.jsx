@@ -26,37 +26,35 @@ class FoldingParagraph extends React.Component {
   render() {
     return (
       <section
-        className=""
         style={{
-          display: 'flex',
-          flexDirection: 'row',
+          position: 'relative',
         }}
       >
-        <div className="folding-paragraph__margin" style={{ flex: '0 0 15px' }}>
-          <ButtonUnstyled
-            className={`folding-paragraph__toggle ${this.state.expanded ? '' : 'collapsed'}`}
-            onClick={this.onToggle}
-          >
-            {this.state.expanded
-              ? <Remove
-                fill="#777"
-                style={{ border: '1px solid #CCC' }}
-                width="9"
-              />
-              : <Add
-                fill="#777"
-                style={{ border: '1px solid #CCC' }}
-                width="9"
-              />
-            }
-          </ButtonUnstyled>
-        </div>
+        <ButtonUnstyled
+          className={`folding-paragraph__toggle ${this.state.expanded ? '' : 'collapsed'}`}
+          onClick={this.onToggle}
+          style={{ cursor: 'pointer', left: '-15px', marginTop: '0.25em', position: 'absolute', top: 0 }}
+        >
+          {this.state.expanded
+            ? <Remove
+              fill="#777"
+              style={{ border: '1px solid #CCC', display: 'block' }}
+              width="9"
+            />
+            : <Add
+              fill="#777"
+              style={{ border: '1px solid #CCC', display: 'block' }}
+              width="9"
+            />
+          }
+        </ButtonUnstyled>
         <div
           style={{
-            height: (this.state.expanded ? 'auto' : '1em'),
+            height: (this.state.expanded ? 'auto' : '1.33em'),
             overflow: 'hidden',
             textOverflow: 'ellipsis',
-            whiteSpace: (this.state.expanded ? 'normal' : 'nowrap'),
+            whiteSpace: (this.state.expanded ? 'inherit' : 'pre'),
+            width: (this.state.expanded ? 'auto' : '66%'),
           }}
         >
           {this.props.children}
@@ -64,7 +62,7 @@ class FoldingParagraph extends React.Component {
       </section>
     );
   }
-};
+}
 
 FoldingParagraph.propTypes = {
   children: React.PropTypes.oneOfType([

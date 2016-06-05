@@ -6,6 +6,7 @@
   display: inline-block !important;
 }
 
-.folding-paragraph__margin:hover .folding-paragraph__toggle {
+.margin:hover + div .folding-paragraph__toggle,
+.folding-paragraph__toggle:hover {
   display: inline-block !important;
 }

@@ -35,7 +35,7 @@ storiesOf('Editor Panel', module)
         {`.public-DraftEditor-content {
           box-sizing: border-box;
           height: 200px;
-          padding: 0.5em;
+          padding: 0.5em 0.5em 0.5em 0;
         }`}
       </style>
       <Provider store={emptyStore}>
@@ -49,7 +49,7 @@ storiesOf('Editor Panel', module)
         {`.public-DraftEditor-content {
           box-sizing: border-box;
           height: 200px;
-          padding: 0.5em;
+          padding: 0.5em 0.5em 0.5em 0;
         }`}
       </style>
       <Provider store={otherStore}>
