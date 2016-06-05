@@ -8,7 +8,7 @@ const buildDir = path.join(__dirname, 'build');
 
 const config = {
   devtool: 'eval',
-  entry: path.join(sourceDir, 'app'),
+  entry: path.join(sourceDir, 'App'),
   module: {
     loaders: [
       {
