@@ -7,6 +7,13 @@ import 'fonts/proxima-nova.css';
 
 const EditorPanel = (props) => (
   <div style={{ width: '100%' }}>
+    <style>
+      {`.public-DraftEditor-content {
+        box-sizing: border-box;
+        height: 100vh;
+        padding: 0.5em 0.5em 0.5em 0.125em;
+      }`}
+    </style>
     <div
       style={{
         // alignItems: 'stretch',
@@ -33,7 +40,6 @@ const EditorPanel = (props) => (
           // flex: '1 1',
           float: 'left',
           marginLeft: 'calc(15px + 0.5em)',
-          padding: '0.5em 0.5em 0.5em 0.125em',
           width: 'calc(100% - 15px - 0.5em)',
         }}
       >

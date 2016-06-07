@@ -33,7 +33,7 @@ class FoldingParagraph extends React.Component {
         <ButtonUnstyled
           className={`folding-paragraph__toggle ${this.state.expanded ? '' : 'collapsed'}`}
           onClick={this.onToggle}
-          style={{ cursor: 'pointer', left: '-15px', marginTop: '0.25em', position: 'absolute', top: 0 }}
+          style={{ cursor: 'pointer', left: '-18px', marginTop: '0.25em', position: 'absolute', top: 0 }}
         >
           {this.state.expanded
             ? <Remove
