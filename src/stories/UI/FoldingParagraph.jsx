@@ -14,7 +14,7 @@ storiesOf('Folding Paragraph', module)
         lineHeight: '1.33em',
         boxSizing: 'border-box',
         height: '200px',
-        padding: '0.5em',
+        padding: '0.5em 0.5em 0.5em 2em',
       }}
     >
       <FoldingParagraph onToggle={action('Toggle Paragraph')}>
