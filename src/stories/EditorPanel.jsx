@@ -6,6 +6,7 @@ import { createStore } from 'redux';
 import { storiesOf } from '@kadira/storybook';
 
 import reducer from 'reducer';
+import store from 'store';
 import { EditorPanel } from 'components/redux-connections';
 
 
@@ -53,6 +54,20 @@ storiesOf('Editor Panel', module)
         }`}
       </style>
       <Provider store={otherStore}>
+        <EditorPanel />
+      </Provider>
+    </div>
+  ))
+  .add('with folding paragraphs', () => (
+    <div style={{ border: 'solid 1px #AAA' }}>
+      <style>
+        {`.public-DraftEditor-content {
+          box-sizing: border-box;
+          height: 200px;
+          padding: 0.5em 0.5em 0.5em 0;
+        }`}
+      </style>
+      <Provider store={store}>
         <EditorPanel />
       </Provider>
     </div>
