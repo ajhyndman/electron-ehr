@@ -8,8 +8,8 @@ import disconnectedToggleField from 'components/UI/ToggleField';
 export const EditorPanel = connect(
   (state) => ({ editorState: state.get('editor') }),
   (dispatch) => ({
-    onChange: (next) => dispatch(actions.EDIT(next)),
-    onTab: function onTab(event) {
+    onChange(next) { dispatch(actions.EDIT(next)); },
+    onTab(event) {
       event.preventDefault();
       dispatch(actions.MACRO());
     },
@@ -18,6 +18,6 @@ export const EditorPanel = connect(
 
 export const ToggleField = connect(
   (dispatch) => ({
-    onClick: (key) => dispatch(actions.TOGGLE(key))
+    onClick(key) { dispatch(actions.TOGGLE(key)); },
   })
 )(disconnectedToggleField);
