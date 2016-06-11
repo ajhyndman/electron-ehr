@@ -6,8 +6,9 @@
     },
     "extends": "airbnb",
     "rules": {
-        "import/no-unresolved": 0,
-        "indent": [1, 2],
-        "new-cap": ["error", { "capIsNewExceptions": ["EDIT", "MACRO", "Map"] }]
+        "import/no-unresolved": ["off"],
+        "indent": ["warn", 2],
+        "new-cap": ["error", { "capIsNewExceptions": ["EDIT", "MACRO", "Map"] }],
+        "prefer-arrow-callback": ["off"]
     }
 }
