@@ -1,56 +1,119 @@
-/*jslint es6: true, node: true */
-
-
 const electron = require('electron');
-// Module to control application life.
-const { app } = electron;
-// Module to create native browser window.
-const { BrowserWindow } = electron;
+const { BrowserWindow, Menu, app } = electron;
 
+
+function createMenus() {
+  const template = [
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Open Template',
+          accelerator: 'CmdOrCtrl+O',
+          role: 'open',
+        },
+        {
+          label: 'Save',
+          accelerator: 'CmdOrCtrl+S',
+          role: 'save',
+        },
+        {
+          label: 'Quit',
+          accelerator: 'Command+Q',
+          click() { app.quit(); },
+        },
+      ],
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        {
+          label: 'Commit',
+          accelerator: 'CmdOrCtrl+P',
+        },
+        {
+          label: 'Macros',
+          accelerator: 'M',
+        },
+      ],
+    },
+    {
+      label: 'View',
+      submenu: [
+        {
+          label: 'Reload',
+          accelerator: 'CmdOrCtrl+R',
+          click(item, focusedWindow) {
+            if (focusedWindow) focusedWindow.reload();
+          },
+        },
+        {
+          label: 'Toggle Full Screen',
+          accelerator: process.platform === 'darwin' ? 'Ctrl+Command+F' : 'F11',
+          click(item, focusedWindow) {
+            if (focusedWindow) {
+              focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+            }
+          },
+        },
+        {
+          label: 'Toggle Developer Tools',
+          accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+          click(item, focusedWindow) {
+            if (focusedWindow) {
+              focusedWindow.webContents.toggleDevTools();
+            }
+          },
+        },
+      ],
+    },
+  ];
+
+  const mainMenu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(mainMenu);
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
 function createWindow() {
-    'use strict';
-    // Create the browser window.
-    win = new BrowserWindow({width: 800, height: 600});
+  // Create the browser window.
+  win = new BrowserWindow({ width: 800, height: 600 });
 
-    // and load the index.html of the app.
-    win.loadURL(`file://${__dirname}/index.html`);
+  // and load the index.html of the app.
+  win.loadURL(`file://${__dirname}/index.html`);
 
-    // Emitted when the window is closed.
-    win.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
-        win = null;
-    });
+  // Emitted when the window is closed.
+  win.on('closed', function onClose() {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    win = null;
+  });
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
+app.on('ready', createMenus);
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
-    'use strict';
-    // On OS X it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
+app.on('window-all-closed', function onAllClose() {
+  // On OS X it is common for applications and their menu bar
+  // to stay active until the user quits explicitly with Cmd + Q
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
 
-app.on('activate', function () {
-    'use strict';
-    // On OS X it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (win === null) {
-        createWindow();
-    }
+app.on('activate', function onActivate() {
+  // On OS X it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (win === null) {
+    createWindow();
+  }
 });
 
 // In this file you can include the rest of your app's specific main process
