@@ -1,18 +1,18 @@
 {
-  "name": "electron-ehr",
+  "name": "fantasia",
   "version": "0.1.0",
   "description": "EHR charting tool built on Electron",
   "main": "main.js",
   "scripts": {
     "build": "webpack --watch",
-    "package": "electron-packager . electron-ehr --platform=win32 --arch=x64 --overwrite",
+    "package": "electron-packager . fantasia --platform=win32 --arch=x64 --overwrite",
     "start": "electron .",
     "storybook": "start-storybook -p 9001",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ajhyndman/electron-ehr.git"
+    "url": "git+https://github.com/ajhyndman/fantasia.git"
   },
   "author": "Andrew Hyndman <ajhyndman@hotmail.com> (https://github.com/ajhyndman)",
   "license": "MIT",
