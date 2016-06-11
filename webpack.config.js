@@ -20,6 +20,7 @@ const config = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
+          plugins: ['transform-object-rest-spread'],
           presets: [
             'es2015',
           ],
@@ -36,6 +37,7 @@ const config = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
+          plugins: ['transform-object-rest-spread'],
           presets: [
             'es2015', 'react',
           ],
