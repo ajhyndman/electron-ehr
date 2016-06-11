@@ -17,7 +17,8 @@ export const EditorPanel = connect(
 )(disconnectedEditorPanel);
 
 export const ToggleField = connect(
+  null,
   (dispatch) => ({
-    onClick(key) { dispatch(actions.TOGGLE(key)); },
+    onClick(entityKey) { dispatch(actions.TOGGLE(entityKey)); },
   })
 )(disconnectedToggleField);

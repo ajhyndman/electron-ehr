@@ -1,15 +1,17 @@
 import Immutable from 'immutable';
 import React from 'react';
-import { ContentState, EditorState } from 'draft-js';
+import { ContentState, EditorState, convertFromRaw } from 'draft-js';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { storiesOf } from '@kadira/storybook';
 
+import compositeDecorator from 'decorators/all';
 import reducer from 'reducer';
 import store from 'store';
-import { EditorPanel } from 'components/redux-connections';
+import { EditorPanel } from 'components/Connectors';
 
 
+// EMPTY STATE
 const initialState = Immutable.Map({
   editor: EditorState.createEmpty(),
 });
@@ -18,6 +20,8 @@ const emptyStore = createStore(
   initialState
 );
 
+
+// STATE WITH PLAIN TEXT
 const sampleState = Immutable.Map({
   editor: EditorState.createWithContent(
     ContentState.createFromText('Hello, Violet!')
@@ -26,6 +30,35 @@ const sampleState = Immutable.Map({
 const otherStore = createStore(
   reducer,
   sampleState
+);
+
+
+// STATE WITH OPTION FIELD
+const optionState = Immutable.Map({
+  editor: EditorState.createWithContent(
+    convertFromRaw({
+      blocks: [
+        {
+          text: (
+            'This is a "toggle field" entity: Superman.  Click it to convert to plain text.'
+          ),
+          type: 'unstyled',
+          entityRanges: [{ offset: 33, length: 8, key: 'toggle-one' }],
+        },
+      ],
+      entityMap: {
+        'toggle-one': {
+          type: 'TOGGLE',
+          mutability: 'IMMUTABLE',
+        },
+      },
+    }),
+    compositeDecorator
+  ),
+});
+const optionStore = createStore(
+  reducer,
+  optionState
 );
 
 
@@ -68,6 +101,20 @@ storiesOf('Editor Panel', module)
         }`}
       </style>
       <Provider store={store}>
+        <EditorPanel />
+      </Provider>
+    </div>
+  ))
+  .add('with option fields', () => (
+    <div style={{ border: 'solid 1px #AAA' }}>
+      <style>
+        {`.public-DraftEditor-content {
+          box-sizing: border-box;
+          height: 200px;
+          padding: 0.5em 0.5em 0.5em 0;
+        }`}
+      </style>
+      <Provider store={optionStore}>
         <EditorPanel />
       </Provider>
     </div>

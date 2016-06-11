@@ -6,11 +6,11 @@ import ToggleField from 'components/UI/ToggleField';
 
 
 storiesOf('Toggle Field', module)
-  .add('unselected', () => (
+  .add('alone', () => (
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       <ToggleField
         onClick={action('Toggle Clicked')}
-        text="Option Text"
+        decoratedText="Option Text"
       />
     </div>
   ))
@@ -19,7 +19,11 @@ storiesOf('Toggle Field', module)
       This is a bunch of regular text with some
       <ToggleField
         onClick={action('Toggle Clicked')}
-        text="Optional Text"
+        decoratedText="Option"
+      />
+      <ToggleField
+        onClick={action('Toggle Clicked')}
+        decoratedText="Fields"
       />
       inside.
     </div>
