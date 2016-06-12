@@ -5,24 +5,18 @@ class Hoverable extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      hot: false,
-    };
+    this.state = { hot: false };
 
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
   }
 
   onMouseOut() {
-    this.setState({
-      hot: false,
-    });
+    this.setState({ hot: false });
   }
 
   onMouseOver() {
-    this.setState({
-      hot: true,
-    });
+    this.setState({ hot: true });
   }
 
   render() {
