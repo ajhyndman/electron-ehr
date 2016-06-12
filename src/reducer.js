@@ -1,3 +1,6 @@
+import Immutable from 'immutable';
+
+import createFromTemplate from 'draftUtils/createFromTemplate';
 import expandMacro from 'draftUtils/expandMacro';
 import removeEntity from 'draftUtils/removeEntity';
 
@@ -17,6 +20,15 @@ const reducer = function reducer(state, action) {
     return state.setIn(
       ['editors', state.get('activeTab'), 'state'],
       expandMacro(state.getIn(['editors', state.get('activeTab'), 'state']))
+    );
+  }
+  case 'NEWTAB': {
+    return state.set(
+      'editors',
+      state.get('editors').push(Immutable.Map({
+        name: 'NEW CHART',
+        state: createFromTemplate(action.template),
+      }))
     );
   }
   case 'TOGGLE': {
