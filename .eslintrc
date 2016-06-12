@@ -9,7 +9,10 @@
         "arrow-body-style": ["error", "never"],
         "import/no-unresolved": ["off"],
         "indent": ["warn", 2],
-        "new-cap": ["error", { "capIsNewExceptions": ["EDIT", "MACRO", "TOGGLE", "Map"] }],
+        "new-cap": [
+            "error",
+            { "capIsNewExceptions": ["EDIT", "MACRO", "TOGGLE", "List", "Map"] }
+        ],
         "prefer-arrow-callback": ["off"]
     }
 }
