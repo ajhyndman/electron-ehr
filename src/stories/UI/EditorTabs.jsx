@@ -1,24 +1,33 @@
 import 'reset-css/reset.css';
 import Immutable from 'immutable';
 import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import { storiesOf } from '@kadira/storybook';
 
 import 'fonts/proxima-nova.css';
-import EditorTabs from 'components/UI/EditorTabs';
+import reducer from 'reducer';
+import { EditorTabs } from 'components/Connectors';
 
+const mockState = Immutable.fromJS({
+  activeTab: 1,
+  editors: [
+    { name: 'Tab One' },
+    { name: 'Tab Two' },
+    { name: 'Tab Three' },
+  ],
+});
+
+const mockStore = createStore(
+  reducer,
+  mockState
+);
 
 storiesOf('Editor Tabs', module)
-  .add('inert', () => (
+  .add('connected', () => (
     <div style={{ fontFamily: 'Proxima Nova' }}>
-      <EditorTabs
-        activeTab={1}
-        tabList={Immutable.List([
-          { name: 'Tab Zero' },
-          { name: 'Tab One' },
-          { name: 'Tab Two' },
-          { name: 'Tab Three' },
-          { name: 'Tab Four' },
-        ])}
-      />
+      <Provider store={mockStore}>
+        <EditorTabs />
+      </Provider>
     </div>
   ));

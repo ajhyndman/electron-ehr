@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 
 import actions from '../actions';
 import disconnectedEditorPanel from 'components/EditorPanel';
+import disconnectedEditorTabs from 'components/UI/EditorTabs';
+import disconnectedTab from 'components/UI/Tab';
 import disconnectedToggleField from 'components/UI/ToggleField';
 
 
@@ -20,6 +22,20 @@ export const EditorPanel = connect(
     },
   })
 )(disconnectedEditorPanel);
+
+export const EditorTabs = connect(
+  (state) => ({
+    activeTab: state.get('activeTab'),
+    tabList: state.get('editors').map((editor) => editor.get('name')),
+  })
+)(disconnectedEditorTabs);
+
+export const Tab = connect(
+  null,
+  (dispatch) => ({
+    onClick(tabKey) { dispatch(actions.ACTIVATETAB(tabKey)); },
+  })
+)(disconnectedTab);
 
 export const ToggleField = connect(
   null,

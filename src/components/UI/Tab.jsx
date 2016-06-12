@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Tab.css';
+
 
 class Tab extends React.Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class Tab extends React.Component {
     return (
       <div
         className="no-select"
-        onClick={this.props.onClick.bind(null, this.props.key)}
+        onClick={this.props.onClick.bind(null, this.props.id)}
         onMouseOut={this.onMouseOut}
         onMouseOver={this.onMouseOver}
         style={{
@@ -48,6 +50,7 @@ class Tab extends React.Component {
 }
 
 Tab.propTypes = {
+  id: React.PropTypes.number.isRequired,
   isActive: React.PropTypes.bool.isRequired,
   key: React.PropTypes.number.isRequired,
   name: React.PropTypes.string.isRequired,
