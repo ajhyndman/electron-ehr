@@ -19,8 +19,9 @@ const ButtonUnstyled = (props) => (
 
 ButtonUnstyled.propTypes = {
   children: React.PropTypes.oneOfType([
-    React.PropTypes.object,
     React.PropTypes.array,
+    React.PropTypes.object,
+    React.PropTypes.string,
   ]),
 };
 
