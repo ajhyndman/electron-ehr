@@ -40,14 +40,21 @@ const optionState = Immutable.Map({
       blocks: [
         {
           text: (
-            'This is a "toggle field" entity: Superman.  Click it to convert to plain text.'
+            'These are "toggle field" entities: One Two.  Click them to convert to plain text.'
           ),
           type: 'unstyled',
-          entityRanges: [{ offset: 33, length: 8, key: 'toggle-one' }],
+          entityRanges: [
+            { offset: 35, length: 3, key: 'toggle-one' },
+            { offset: 39, length: 3, key: 'toggle-two' },
+          ],
         },
       ],
       entityMap: {
         'toggle-one': {
+          type: 'TOGGLE',
+          mutability: 'IMMUTABLE',
+        },
+        'toggle-two': {
           type: 'TOGGLE',
           mutability: 'IMMUTABLE',
         },

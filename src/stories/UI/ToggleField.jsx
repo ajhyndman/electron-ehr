@@ -10,8 +10,9 @@ storiesOf('Toggle Field', module)
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       <ToggleField
         onClick={action('Toggle Clicked')}
-        decoratedText="Option Text"
-      />
+      >
+        Option Text
+      </ToggleField>
     </div>
   ))
   .add('with text', () => (
@@ -19,12 +20,14 @@ storiesOf('Toggle Field', module)
       This is a bunch of regular text with some
       <ToggleField
         onClick={action('Toggle Clicked')}
-        decoratedText="Option"
-      />
+      >
+        Option
+      </ToggleField>
       <ToggleField
         onClick={action('Toggle Clicked')}
-        decoratedText="Fields"
-      />
+      >
+        Fields
+      </ToggleField>
       inside.
     </div>
   ));
