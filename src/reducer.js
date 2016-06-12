@@ -1,6 +1,7 @@
 import { EditorState, Modifier } from 'draft-js';
 
 import macros from '../macros';
+import removeEntity from 'draftUtils/removeEntity';
 
 
 const reducer = function reducer(state, action) {
@@ -51,6 +52,12 @@ const reducer = function reducer(state, action) {
       }
     }
     return state;
+  }
+  case 'TOGGLE': {
+    return state.set(
+      'editor',
+      removeEntity(state.get('editor'), action.key)
+    );
   }
   default: {
     return state;
