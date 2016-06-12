@@ -6,7 +6,12 @@ import disconnectedToggleField from 'components/UI/ToggleField';
 
 
 export const EditorPanel = connect(
-  (state) => ({ editorState: state.get('editor') }),
+  (state) => ({
+    editorState: state
+      .get('editors')
+      .get(state.get('activeTab'))
+      .get('state'),
+  }),
   (dispatch) => ({
     onChange(next) { dispatch(actions.EDIT(next)); },
     onTab(event) {

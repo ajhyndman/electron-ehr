@@ -7,7 +7,13 @@ import reducer from 'reducer';
 
 
 const initialState = Immutable.Map({
-  editor: EditorState.createEmpty(compositeDecorator),
+  activeTab: 0,
+  editors: Immutable.List([
+    Immutable.Map({
+      name: 'New Chart',
+      state: EditorState.createEmpty(compositeDecorator),
+    }),
+  ]),
 });
 
 const store = createStore(
