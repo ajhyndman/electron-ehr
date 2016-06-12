@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Tab.css';
+import 'css/no-select.css';
 
 
 class Tab extends React.Component {
