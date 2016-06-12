@@ -13,7 +13,12 @@ import { EditorPanel } from 'components/Connectors';
 
 // EMPTY STATE
 const initialState = Immutable.Map({
-  editor: EditorState.createEmpty(),
+  activeTab: 0,
+  editors: Immutable.List([
+    Immutable.Map({
+      state: EditorState.createEmpty(),
+    }),
+  ]),
 });
 const emptyStore = createStore(
   reducer,
@@ -23,9 +28,15 @@ const emptyStore = createStore(
 
 // STATE WITH PLAIN TEXT
 const sampleState = Immutable.Map({
-  editor: EditorState.createWithContent(
-    ContentState.createFromText('Hello, Violet!')
-  ),
+  activeTab: 0,
+  editors: Immutable.List([
+    Immutable.Map({
+      name: 'Violet',
+      state: EditorState.createWithContent(
+        ContentState.createFromText('Hello, Violet!')
+      ),
+    }),
+  ]),
 });
 const otherStore = createStore(
   reducer,
@@ -35,33 +46,39 @@ const otherStore = createStore(
 
 // STATE WITH OPTION FIELD
 const optionState = Immutable.Map({
-  editor: EditorState.createWithContent(
-    convertFromRaw({
-      blocks: [
-        {
-          text: (
-            'These are "toggle field" entities: One Two.  Click them to convert to plain text.'
-          ),
-          type: 'unstyled',
-          entityRanges: [
-            { offset: 35, length: 3, key: 'toggle-one' },
-            { offset: 39, length: 3, key: 'toggle-two' },
+  activeTab: 0,
+  editors: Immutable.List([
+    Immutable.Map({
+      name: 'Toggle Fields',
+      state: EditorState.createWithContent(
+        convertFromRaw({
+          blocks: [
+            {
+              text: (
+                'These are "toggle field" entities: One Two.  Click them to convert to plain text.'
+              ),
+              type: 'unstyled',
+              entityRanges: [
+                { offset: 35, length: 3, key: 'toggle-one' },
+                { offset: 39, length: 3, key: 'toggle-two' },
+              ],
+            },
           ],
-        },
-      ],
-      entityMap: {
-        'toggle-one': {
-          type: 'TOGGLE',
-          mutability: 'IMMUTABLE',
-        },
-        'toggle-two': {
-          type: 'TOGGLE',
-          mutability: 'IMMUTABLE',
-        },
-      },
+          entityMap: {
+            'toggle-one': {
+              type: 'TOGGLE',
+              mutability: 'IMMUTABLE',
+            },
+            'toggle-two': {
+              type: 'TOGGLE',
+              mutability: 'IMMUTABLE',
+            },
+          },
+        }),
+        compositeDecorator
+      ),
     }),
-    compositeDecorator
-  ),
+  ]),
 });
 const optionStore = createStore(
   reducer,
