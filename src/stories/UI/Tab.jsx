@@ -9,17 +9,17 @@ import Tab from 'components/UI/Tab';
 storiesOf('Tab', module)
   .add('active', () => (
     <div style={{ fontFamily: 'Proxima Nova' }}>
-      <Tab isActive key={0} name="Active Tab" onClick={action('ACTIVATETAB')} />
+      <Tab isActive id={0} name="Active Tab" onClick={action('ACTIVATETAB')} />
     </div>
   ))
   .add('inactive', () => (
     <div style={{ fontFamily: 'Proxima Nova' }}>
-      <Tab key={0} name="Inactive Tab" onClick={action('ACTIVATETAB')} />
+      <Tab isActive={false} id={0} name="Inactive Tab" onClick={action('ACTIVATETAB')} />
     </div>
   ))
   .add('both', () => (
     <div style={{ fontFamily: 'Proxima Nova' }}>
-      <Tab isActive key={0} name="Active Tab" onClick={action('ACTIVATETAB')} />
-      <Tab key={1} name="Inactive Tab" onClick={action('ACTIVATETAB')} />
+      <Tab isActive id={0} name="Active Tab" onClick={action('ACTIVATETAB')} />
+      <Tab isActive={false} id={1} name="Inactive Tab" onClick={action('ACTIVATETAB')} />
     </div>
   ));
