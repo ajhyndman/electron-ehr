@@ -38,6 +38,7 @@ class Tab extends React.Component {
               : 'none'),
           color: (this.props.isActive ? '#FFF' : 'inherit'),
           cursor: 'pointer',
+          fontWeight: '300',
           lineHeight: '1.4em',
           padding: '0 1em',
           whiteSpace: 'nowrap',
@@ -52,7 +53,6 @@ class Tab extends React.Component {
 Tab.propTypes = {
   id: React.PropTypes.number.isRequired,
   isActive: React.PropTypes.bool.isRequired,
-  key: React.PropTypes.number.isRequired,
   name: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func.isRequired,
 };
