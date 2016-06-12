@@ -31,7 +31,6 @@ ToggleField.propTypes = {
   ]),
   entityKey: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func.isRequired,
-  decoratedText: React.PropTypes.string.isRequired,
 };
 
 

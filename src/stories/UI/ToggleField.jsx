@@ -9,7 +9,8 @@ storiesOf('Toggle Field', module)
   .add('alone', () => (
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       <ToggleField
-        onClick={action('Toggle Clicked')}
+        entityKey="1"
+        onClick={action('TOGGLE')}
       >
         Option Text
       </ToggleField>
@@ -19,12 +20,14 @@ storiesOf('Toggle Field', module)
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       This is a bunch of regular text with some
       <ToggleField
-        onClick={action('Toggle Clicked')}
+        entityKey="1"
+        onClick={action('TOGGLE')}
       >
         Option
       </ToggleField>
       <ToggleField
-        onClick={action('Toggle Clicked')}
+        entityKey="2"
+        onClick={action('TOGGLE')}
       >
         Fields
       </ToggleField>
