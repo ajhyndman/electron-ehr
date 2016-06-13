@@ -44,10 +44,10 @@
     "draft-js": "^0.7.0",
     "immutable": "^3.8.1",
     "node-waves": "^0.7.5",
+    "normalize.css": "^4.1.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
-    "reset-css": "^2.0.2011012603"
   }
 }

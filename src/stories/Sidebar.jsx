@@ -1,4 +1,4 @@
-import 'reset-css/reset.css';
+import 'normalize.css';
 import Immutable from 'immutable';
 import React from 'react';
 import { Provider } from 'react-redux';

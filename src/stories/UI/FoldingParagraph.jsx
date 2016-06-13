@@ -1,4 +1,4 @@
-import 'reset-css/reset.css';
+import 'normalize.css';
 import React from 'react';
 import { action, storiesOf } from '@kadira/storybook';
 
