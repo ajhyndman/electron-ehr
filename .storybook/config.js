@@ -5,6 +5,7 @@ function loadStories() {
   require('../src/stories/Sidebar');
   require('../src/stories/UI/EditorTabs');
   require('../src/stories/UI/ButtonUnstyled');
+  require('../src/stories/UI/Dialog');
   require('../src/stories/UI/FoldingParagraph');
   require('../src/stories/UI/Tab');
   require('../src/stories/UI/ToggleField');
