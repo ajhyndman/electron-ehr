@@ -43,6 +43,7 @@
   "dependencies": {
     "draft-js": "^0.7.0",
     "electron-json-storage": "^2.0.0",
+    "function-lift": "^1.0.5",
     "immutable": "^3.8.1",
     "node-waves": "^0.7.5",
     "normalize.css": "^4.1.1",
