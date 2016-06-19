@@ -7,6 +7,7 @@ const actions = {
   EDIT: (next) => ({ type: 'EDIT', next }),
   MACRO: () => ({ type: 'MACRO' }),
   NEWTAB: (template) => ({ type: 'NEWTAB', template }),
+  OPENPATIENTSETTINGS: () => ({ type: 'OPENPATIENTSETTINGS' }),
   TOGGLE: (key) => ({ type: 'TOGGLE', key }),
   UPDATEPATIENT: (patient) => ({ type: 'UPDATEPATIENT', patient }),
 };
