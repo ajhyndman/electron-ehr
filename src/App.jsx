@@ -12,23 +12,21 @@ import { EditorPanel } from 'components/Connectors';
 const width = 180;
 
 ReactDOM.render(
-  <div>
-    <Provider store={store}>
+  <Provider store={store}>
+    <div>
       <Sidebar width={width} />
-    </Provider>
-    <div
-      style={{
-        float: 'left',
-        height: '100%',
-        overflow: 'auto',
-        width: `calc(100% - ${width}px)`,
-      }}
-    >
-      <Provider store={store}>
-        <EditorPanel onDrop={(event) => { console.log(event); return true; }} />
-      </Provider>
+      <div
+        style={{
+          float: 'left',
+          height: '100%',
+          overflow: 'auto',
+          width: `calc(100% - ${width}px)`,
+        }}
+      >
+        <EditorPanel />
+      </div>
     </div>
-  </div>,
+  </Provider>,
   document.getElementById('app')
 );
 
