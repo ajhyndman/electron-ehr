@@ -14,7 +14,7 @@ const patient = Immutable.Map({
   address: '131-145 Glebe Point Rd, NSW, 2037',
 });
 
-storiesOf('New Patient Modal', module)
+storiesOf('Patient Settings Modal', module)
   .add('open', () => (
     <PatientSettingsModal
       patient={patient}
