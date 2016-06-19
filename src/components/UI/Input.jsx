@@ -4,15 +4,10 @@ import lift from 'function-lift';
 import formControl from 'styles/form-control';
 
 
-// const lift = (unit, bind, func) => (
-//   (a) => (
-//     func(bind(unit(a)))
-//   )
-// );
-
-const getEventValue = (event) => (
-  event.target.value
-);
+// This function corresponds to 'unit' in functional-programming-speak
+function getEventValue(event) {
+  return event.target.value;
+}
 
 const Input = (props) => (
   <label>
@@ -20,7 +15,7 @@ const Input = (props) => (
     <div style={formControl}>
       <input
         onChange={lift(getEventValue, (a) => a, props.onChange)}
-        style={{ width: '100%' }}
+        style={{ boxSizing: 'border-box', width: '100%' }}
         type={props.type}
         value={props.value}
       />
