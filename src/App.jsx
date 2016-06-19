@@ -2,8 +2,10 @@ import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ipcRenderer } from 'electron';
 
 import Sidebar from 'components/Sidebar';
+import actions from 'actions';
 import store from 'store';
 import { EditorPanel, PatientSettingsModal } from 'components/Connectors';
 
@@ -29,6 +31,13 @@ ReactDOM.render(
     </div>
   </Provider>,
   document.getElementById('app')
+);
+
+ipcRenderer.on(
+  'OPENPATIENTDIALOG',
+  function dispatchMenuAction() {
+    store.dispatch(actions.OPENPATIENTSETTINGS());
+  }
 );
 
 // const holder = document.getElementsByClassName('public-DraftEditor-content')[0];
