@@ -88,7 +88,7 @@ class RadioButton extends React.Component {
 RadioButton.propTypes = {
   checked: React.PropTypes.bool,
   label: React.PropTypes.string,
-  onChange: React.PropTypes.func.isRequired,
+  onChange: React.PropTypes.func,
   value: React.PropTypes.any,
 };
 
