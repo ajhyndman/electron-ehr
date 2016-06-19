@@ -1,6 +1,44 @@
-const electron = require('electron');
-const { BrowserWindow, Menu, app } = electron;
 
+const electron = require('electron');
+const fs = require('fs');
+const { BrowserWindow, Menu, app, dialog } = electron;
+
+
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let win;
+
+function newTab() {
+}
+
+function openFile() {
+  dialog.showOpenDialog(function handleOpenFiles(fileNames) {
+    if (fileNames === undefined) return;
+    fs.readFile(fileNames[0], 'utf-8', function logFile(err, data) {
+      console.log(data);
+    });
+  });
+}
+
+function openPatientModal() {
+  win.webContents.send('OPENPATIENTDIALOG');
+}
+
+function createWindow() {
+  // Create the browser window.
+  win = new BrowserWindow({ width: 1024, height: 768 });
+
+  // and load the index.html of the app.
+  win.loadURL(`file://${__dirname}/index.html`);
+
+  // Emitted when the window is closed.
+  win.on('closed', function onClose() {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    win = null;
+  });
+}
 
 function createMenus() {
   const template = [
@@ -10,6 +48,13 @@ function createMenus() {
         {
           label: 'Open Template',
           accelerator: 'CmdOrCtrl+O',
+          click: openFile,
+          role: 'open',
+        },
+        {
+          label: 'New Tab',
+          accelerator: 'CmdOrCtrl+N',
+          click: newTab,
           role: 'open',
         },
         {
@@ -19,7 +64,7 @@ function createMenus() {
         },
         {
           label: 'Quit',
-          accelerator: 'Command+Q',
+          accelerator: 'Alt+Q',
           click() { app.quit(); },
         },
       ],
@@ -27,6 +72,11 @@ function createMenus() {
     {
       label: 'Edit',
       submenu: [
+        {
+          label: 'Update Patient',
+          accelerator: 'CmdOrCtrl+U',
+          click() { openPatientModal(); },
+        },
         {
           label: 'Commit',
           accelerator: 'CmdOrCtrl+P',
@@ -71,26 +121,6 @@ function createMenus() {
 
   const mainMenu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(mainMenu);
-}
-
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let win;
-
-function createWindow() {
-  // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600 });
-
-  // and load the index.html of the app.
-  win.loadURL(`file://${__dirname}/index.html`);
-
-  // Emitted when the window is closed.
-  win.on('closed', function onClose() {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null;
-  });
 }
 
 // This method will be called when Electron has finished
