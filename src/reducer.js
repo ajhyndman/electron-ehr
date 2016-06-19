@@ -40,6 +40,12 @@ const reducer = function reducer(state, action) {
       removeEntity(state.getIn(['editors', state.get('activeTab'), 'state']), action.key)
     );
   }
+  case 'UPDATEPATIENT': {
+    return state.setIn(
+      ['editors', state.get('activeTab'), 'patient'],
+      action.patient
+    );
+  }
   default: {
     return state;
   }
