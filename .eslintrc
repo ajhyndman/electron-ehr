@@ -16,6 +16,7 @@
             "MACRO",
             "NEWTAB",
             "TOGGLE",
+            "UPDATEPATIENT",
             "List",
             "Map"
         ] }],
