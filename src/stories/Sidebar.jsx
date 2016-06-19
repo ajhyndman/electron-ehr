@@ -13,9 +13,9 @@ import reducer from 'reducer';
 const mockState = Immutable.fromJS({
   activeTab: 1,
   editors: [
-    { name: 'Tab One' },
-    { name: 'Tab Two' },
-    { name: 'Tab Three' },
+    { patient: { firstName: 'Patient', lastName: 'One' } },
+    { patient: { firstName: 'Patient', lastName: 'Two' } },
+    { patient: { firstName: 'Patient', lastName: 'Three' } },
   ],
 });
 
