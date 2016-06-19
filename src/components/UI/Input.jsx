@@ -9,19 +9,35 @@ function getEventValue(event) {
   return event.target.value;
 }
 
-const Input = (props) => (
-  <label>
-    <div style={formControl}>{props.label}</div>
-    <div style={formControl}>
-      <input
-        onChange={lift(getEventValue, (a) => a, props.onChange)}
-        style={{ boxSizing: 'border-box', width: '100%' }}
-        type={props.type}
-        value={props.value}
-      />
-    </div>
-  </label>
-);
+class Input extends React.Component {
+  focus() {
+    setTimeout(
+      // OMG, input focus is hard to manage in React.
+      // https://github.com/facebook/react/issues/1791#issuecomment-204898317
+      function whyTheHellIsThisFunctionNecessary() {
+        this.refs.localInput.focus();
+      }.bind(this),
+      0
+    );
+  }
+
+  render() {
+    return (
+      <label>
+        <div style={formControl}>{this.props.label}</div>
+        <div style={formControl}>
+          <input
+            ref="localInput"
+            onChange={lift(getEventValue, (a) => a, this.props.onChange)}
+            style={{ boxSizing: 'border-box', width: '100%' }}
+            type={this.props.type}
+            value={this.props.value}
+          />
+        </div>
+      </label>
+    );
+  }
+}
 
 Input.propTypes = {
   disabled: React.PropTypes.bool,
