@@ -9,6 +9,7 @@ const buildDir = path.join(__dirname, 'build');
 const config = {
   devtool: 'eval',
   entry: path.join(sourceDir, 'App'),
+  target: 'electron',
   module: {
     loaders: [
       {
