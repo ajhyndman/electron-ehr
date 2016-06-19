@@ -23,6 +23,12 @@ class PatientSettingsModal extends React.Component {
     this.changeHandlerFactory = this.changeHandlerFactory.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.open && this.props.open === false) {
+      this.refs.autoFocus.focus();
+    }
+  }
+
   changeHandlerFactory(key) {
     return function changeHandler(value) {
       this.props.onChange(
@@ -46,6 +52,7 @@ class PatientSettingsModal extends React.Component {
           >
             <div style={{ width: '48%' }}>
               <Input
+                ref="autoFocus"
                 label="First Name"
                 onChange={this.changeHandlerFactory('firstName')}
                 type="text"
