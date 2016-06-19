@@ -10,6 +10,9 @@ const reducer = function reducer(state, action) {
   case 'ACTIVATETAB': {
     return state.set('activeTab', action.key);
   }
+  case 'CLOSEPATIENTSETTINGS': {
+    return state.set('patientSettingsOpen', false);
+  }
   case 'EDIT': {
     return state.setIn(
       ['editors', state.get('activeTab'), 'state'],
