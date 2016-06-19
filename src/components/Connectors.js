@@ -26,7 +26,9 @@ export const EditorPanel = connect(
 export const EditorTabs = connect(
   (state) => ({
     activeTab: state.get('activeTab'),
-    tabList: state.get('editors').map((editor) => editor.get('name')),
+    tabList: state.get('editors').map((editor) => (
+      `${editor.getIn(['patient', 'lastName'])}, ${editor.getIn(['patient', 'firstName'])}`
+    )),
   })
 )(disconnectedEditorTabs);
 
