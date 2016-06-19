@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import Sidebar from 'components/Sidebar';
 import store from 'store';
-import { EditorPanel } from 'components/Connectors';
+import { EditorPanel, PatientSettingsModal } from 'components/Connectors';
 
 
 // TODO: derive width from a setting
@@ -25,6 +25,7 @@ ReactDOM.render(
       >
         <EditorPanel />
       </div>
+      <PatientSettingsModal />
     </div>
   </Provider>,
   document.getElementById('app')
