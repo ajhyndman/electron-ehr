@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import actions from '../actions';
 import disconnectedEditorPanel from 'components/EditorPanel';
 import disconnectedEditorTabs from 'components/UI/EditorTabs';
+import disconnectedPatientSettingsModal from 'components/PatientSettingsModal';
 import disconnectedTab from 'components/UI/Tab';
 import disconnectedToggleField from 'components/UI/ToggleField';
-
 
 export const EditorPanel = connect(
   (state) => ({
@@ -31,6 +31,22 @@ export const EditorTabs = connect(
     )),
   })
 )(disconnectedEditorTabs);
+
+export const PatientSettingsModal = connect(
+  (state) => ({
+    open: state.get('patientSettingsOpen'),
+    patient: state.getIn(['editors', state.get('activeTab'), 'patient']),
+  }),
+  (dispatch) => ({
+    onSubmit(event) {
+      event.preventDefault();
+      dispatch(actions.CLOSEPATIENTSETTINGS());
+    },
+    onChange(value) {
+      dispatch(actions.UPDATEPATIENT(value));
+    },
+  })
+)(disconnectedPatientSettingsModal);
 
 export const Tab = connect(
   null,
