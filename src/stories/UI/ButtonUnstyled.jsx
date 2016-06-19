@@ -8,14 +8,14 @@ import ButtonUnstyled from 'components/UI/ButtonUnstyled';
 storiesOf('Button - Unstyled', module)
   .add('with text', () => (
     <ButtonUnstyled
-      onClick={action('Button Clicked')}
+      onClick={action('CLICK')}
     >
       Button Text
     </ButtonUnstyled>
   ))
   .add('with icon', () => (
     <ButtonUnstyled
-      onClick={action('Button Clicked')}
+      onClick={action('CLICK')}
     >
       <Add
         fill="#777"
