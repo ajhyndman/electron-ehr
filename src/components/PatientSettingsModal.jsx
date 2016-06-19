@@ -16,7 +16,7 @@ const styles = {
   },
 };
 
-class NewPatientModal extends React.Component {
+class PatientSettingsModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,9 +34,9 @@ class NewPatientModal extends React.Component {
   render() {
     return (
       <Dialog
-        open
+        open={this.props.open}
       >
-        <form>
+        <form onSubmit={this.props.onSubmit}>
           <div
             style={{
               display: 'flex',
@@ -89,11 +89,12 @@ class NewPatientModal extends React.Component {
   }
 }
 
-NewPatientModal.propTypes = {
+PatientSettingsModal.propTypes = {
   onChange: React.PropTypes.func.isRequired,
+  onSubmit: React.PropTypes.func.isRequired,
   open: React.PropTypes.bool,
   patient: React.PropTypes.object.isRequired,
 };
 
 
-export default NewPatientModal;
+export default PatientSettingsModal;
