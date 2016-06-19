@@ -34,6 +34,9 @@ const reducer = function reducer(state, action) {
       }))
     );
   }
+  case 'OPENPATIENTSETTINGS': {
+    return state.set('patientSettingsOpen', true);
+  }
   case 'TOGGLE': {
     return state.setIn(
       ['editors', state.get('activeTab'), 'state'],
