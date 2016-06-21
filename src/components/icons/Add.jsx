@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Plus = (props) => (
+const Add = (props) => (
   <svg
     fill="#000000"
     style={{
@@ -18,4 +18,4 @@ const Plus = (props) => (
 );
 
 
-export default Plus;
+export default Add;
