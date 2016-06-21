@@ -43,19 +43,21 @@ const EditorPanel = (props) => (
           width: 'calc(100% - 15px - 0.5em)',
         }}
       >
-        <Editor
-          editorState={props.editorState}
-          // keyBindingFn={keybindings}
-          onChange={props.onChange}
-          onTab={props.onTab}
-        />
+        {props.editorState
+          ? <Editor
+            editorState={props.editorState}
+            // keyBindingFn={keybindings}
+            onChange={props.onChange}
+            onTab={props.onTab}
+          />
+          : null}
       </div>
     </div>
   </div>
 );
 
 EditorPanel.propTypes = {
-  editorState: React.PropTypes.object.isRequired,
+  editorState: React.PropTypes.object,
   onChange: React.PropTypes.func.isRequired,
   onTab: React.PropTypes.func.isRequired,
 };

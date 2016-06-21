@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import { connect } from 'react-redux';
 
 import actions from '../actions';
@@ -11,7 +12,7 @@ export const EditorPanel = connect(
   (state) => ({
     editorState: state
       .get('editors')
-      .get(state.get('activeTab'))
+      .get(state.get('activeTab'), Immutable.Map({ state: undefined }))
       .get('state'),
   }),
   (dispatch) => ({
