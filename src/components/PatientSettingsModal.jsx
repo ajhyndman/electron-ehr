@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import React from 'react';
 
 import Dialog from 'components/UI/Dialog';
@@ -38,6 +39,10 @@ class PatientSettingsModal extends React.Component {
   }
 
   render() {
+    if (!this.props.patient) {
+      return null;
+    }
+
     return (
       <Dialog
         open={this.props.open}
@@ -101,6 +106,10 @@ PatientSettingsModal.propTypes = {
   onSubmit: React.PropTypes.func.isRequired,
   open: React.PropTypes.bool,
   patient: React.PropTypes.object.isRequired,
+};
+
+PatientSettingsModal.defaultProps = {
+  patient: Immutable.Map({}),
 };
 
 
