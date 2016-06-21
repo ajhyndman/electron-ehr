@@ -34,9 +34,21 @@ ReactDOM.render(
 );
 
 ipcRenderer.on(
-  'OPENPATIENTDIALOG',
-  function dispatchMenuAction() {
-    store.dispatch(actions.OPENPATIENTSETTINGS());
+  'ACTION',
+  function dispatchMenuAction(event, type) {
+    switch (type) {
+    case 'OPENPATIENTSETTINGS': {
+      store.dispatch(actions.OPENPATIENTSETTINGS());
+      break;
+    }
+    case 'NEWTAB': {
+      store.dispatch(actions.NEWTAB());
+      break;
+    }
+    default: {
+      return;
+    }
+    }
   }
 );
 

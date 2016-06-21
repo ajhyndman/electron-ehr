@@ -9,6 +9,7 @@ const { BrowserWindow, Menu, app, dialog } = electron;
 let win;
 
 function newTab() {
+  win.webContents.send('ACTION', 'NEWTAB');
 }
 
 function openFile() {
@@ -20,8 +21,8 @@ function openFile() {
   });
 }
 
-function openPatientModal() {
-  win.webContents.send('OPENPATIENTDIALOG');
+function openPatientSettings() {
+  win.webContents.send('ACTION', 'OPENPATIENTSETTINGS');
 }
 
 function createWindow() {
@@ -75,7 +76,7 @@ function createMenus() {
         {
           label: 'Update Patient',
           accelerator: 'CmdOrCtrl+U',
-          click() { openPatientModal(); },
+          click() { openPatientSettings(); },
         },
         {
           label: 'Commit',
