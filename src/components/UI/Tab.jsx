@@ -1,6 +1,8 @@
 import React from 'react';
 
 import 'css/no-select.css';
+import Clear from 'components/icons/Clear';
+import ButtonUnstyled from 'components/UI/ButtonUnstyled';
 
 
 class Tab extends React.Component {
@@ -11,8 +13,15 @@ class Tab extends React.Component {
       hot: false,
     };
 
-    this.onMouseOver = this.onMouseOver.bind(this);
+    this.onClick = this.onClick.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
+    this.onMouseOver = this.onMouseOver.bind(this);
+    this.onRemove = this.onRemove.bind(this);
+  }
+
+  onClick(event) {
+    event.stopPropagation();
+    this.props.onClick(this.props.id);
   }
 
   onMouseOut() {
@@ -23,11 +32,18 @@ class Tab extends React.Component {
     this.setState({ hot: true });
   }
 
+  onRemove(event) {
+    event.stopPropagation();
+    this.props.onRemove(this.props.id);
+  }
+
   render() {
+    const color = (this.props.isActive ? '#FFF' : 'inherit');
+
     return (
       <div
         className="no-select"
-        onClick={this.props.onClick.bind(null, this.props.id)}
+        onClick={this.onClick}
         onMouseOut={this.onMouseOut}
         onMouseOver={this.onMouseOver}
         style={{
@@ -36,14 +52,29 @@ class Tab extends React.Component {
             : this.state.hot
               ? 'rgba(0, 0, 0, 0.025)'
               : 'none'),
-          color: (this.props.isActive ? '#FFF' : 'inherit'),
+          color,
           cursor: 'pointer',
+          fontSize: '0.875em',
           fontWeight: '300',
-          lineHeight: '1.4em',
-          padding: '0 1em',
+          lineHeight: `${5 / 3}em`,
+          padding: '0 1em 0 1.5em',
+          position: 'relative',
           whiteSpace: 'nowrap',
         }}
       >
+        <ButtonUnstyled onClick={this.onRemove}>
+          <Clear
+            fill={color}
+            width="12"
+            style={{
+              display: (this.state.hot ? 'block' : 'none'),
+              left: '0.375em',
+              position: 'absolute',
+              top: '50%',
+              transform: 'translateY(-50%)',
+            }}
+          />
+        </ButtonUnstyled>
         {this.props.name}
       </div>
     );
@@ -55,9 +86,10 @@ Tab.propTypes = {
   isActive: React.PropTypes.bool.isRequired,
   name: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func.isRequired,
+  onRemove: React.PropTypes.func.isRequired,
 };
 
-// TODO: remove default onClick
+// TODO: Clear default onClick
 Tab.defaultProps = {
   onClick: () => {},
 };
