@@ -52,6 +52,7 @@ export const Tab = connect(
   null,
   (dispatch) => ({
     onClick(tabKey) { dispatch(actions.ACTIVATETAB(tabKey)); },
+    onRemove(tabKey) { dispatch(actions.REMOVETAB(tabKey)); },
   })
 )(disconnectedTab);
 
