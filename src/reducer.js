@@ -46,6 +46,9 @@ const reducer = function reducer(state, action) {
   case 'OPENPATIENTSETTINGS': {
     return state.set('patientSettingsOpen', true);
   }
+  case 'REMOVETAB': {
+    return state.set('editors', state.get('editors').delete(action.key));
+  }
   case 'TOGGLE': {
     return state.setIn(
       ['editors', state.get('activeTab'), 'state'],
