@@ -57,6 +57,7 @@ class Tab extends React.Component {
           fontSize: '0.875em',
           fontWeight: '300',
           lineHeight: `${5 / 3}em`,
+          overflow: 'hidden',
           padding: '0 1em 0 1.5em',
           position: 'relative',
           whiteSpace: 'nowrap',
