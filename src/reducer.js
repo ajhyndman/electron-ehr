@@ -26,13 +26,22 @@ const reducer = function reducer(state, action) {
     );
   }
   case 'NEWTAB': {
-    return state.set(
-      'editors',
-      state.get('editors').push(Immutable.Map({
-        name: 'NEW CHART',
-        state: createFromTemplate(action.template),
-      }))
-    );
+    return state
+      .set(
+        'editors',
+        state.get('editors').push(Immutable.Map({
+          patient: Immutable.Map({
+            firstName: '',
+            lastName: '',
+            dob: '',
+            gender: '',
+            address: '',
+          }),
+          state: createFromTemplate(action.template),
+        }))
+      )
+      .set('activeTab', state.get('editors').size)
+      .set('patientSettingsOpen', true);
   }
   case 'OPENPATIENTSETTINGS': {
     return state.set('patientSettingsOpen', true);
