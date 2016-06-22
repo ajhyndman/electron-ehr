@@ -6,7 +6,7 @@ import 'fonts/proxima-nova.css';
 
 
 const EditorPanel = (props) => (
-  <div style={{ width: '100%' }}>
+  <div style={{ background: '#FFF', overflow: 'auto', width: '100%' }}>
     <style>
       {`.public-DraftEditor-content {
         box-sizing: border-box;
