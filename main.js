@@ -17,7 +17,7 @@ function openFile() {
   dialog.showOpenDialog(function handleOpenFiles(fileNames) {
     if (fileNames === undefined) return;
     fs.readFile(fileNames[0], 'utf-8', function logFile(err, data) {
-      console.log(data);
+      win.webContents.send('ACTION', 'NEWTAB', data);
     });
   });
 }

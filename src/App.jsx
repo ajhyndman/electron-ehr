@@ -35,14 +35,14 @@ ReactDOM.render(
 
 ipcRenderer.on(
   'ACTION',
-  function dispatchMenuAction(event, type) {
+  function dispatchMenuAction(event, type, data) {
     switch (type) {
     case 'OPENPATIENTSETTINGS': {
       store.dispatch(actions.OPENPATIENTSETTINGS());
       break;
     }
     case 'NEWTAB': {
-      store.dispatch(actions.NEWTAB());
+      store.dispatch(actions.NEWTAB(data));
       break;
     }
     default: {
