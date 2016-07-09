@@ -1,6 +1,6 @@
 import { EditorState, Modifier } from 'draft-js';
 
-import settings from '../../settings.json';
+import macros from '../../macros.json';
 
 
 function expandMacro(editorState) {
@@ -20,13 +20,13 @@ function expandMacro(editorState) {
     .slice(0, focusOffset);
 
 
-  for (const key of Object.keys(settings.macros)) {
+  for (const key of Object.keys(macros)) {
     const macroRegex = new RegExp(`${key}$`);
 
     if (macroRegex.test(candidateText)) {
       const expandedText = candidateText.replace(
         macroRegex,
-        settings.macros[key]
+        macros[key]
       );
 
       const nextContentState = Modifier.replaceText(
