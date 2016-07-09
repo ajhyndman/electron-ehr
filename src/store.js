@@ -48,8 +48,8 @@ const initialState = Immutable.Map({
 });
 
 const store = createStore(
-    reducer,
-    initialState
+  reducer,
+  initialState
 );
 
 
