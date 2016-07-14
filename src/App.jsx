@@ -51,13 +51,3 @@ ipcRenderer.on(
     }
   }
 );
-
-// const holder = document.getElementsByClassName('public-DraftEditor-content')[0];
-
-// holder.ondrop = function ondrop(e) {
-//   e.preventDefault();
-//   e.stopPropagation();
-//   const file = e.dataTransfer.files[0];
-//   console.log('File you dragged here is', file.path);
-//   return false;
-// };
