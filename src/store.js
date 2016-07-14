@@ -1,7 +1,8 @@
 import Immutable from 'immutable';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 
 import reducer from 'reducer';
+import sagas from 'sagas';
 
 
 /**
@@ -41,6 +42,9 @@ import reducer from 'reducer';
 //   patientSettingsOpen: false,
 // });
 
+// // create saga middleware
+// const sagaMiddleware = createSagaMiddleware();
+
 const initialState = Immutable.Map({
   activeTab: 0,
   editors: Immutable.List([]),
@@ -51,6 +55,9 @@ const store = createStore(
   reducer,
   initialState
 );
+
+// // then run the saga
+// sagaMiddleware.run(mySaga);
 
 
 export default store;
