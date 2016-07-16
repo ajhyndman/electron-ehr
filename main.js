@@ -10,20 +10,20 @@ const { BrowserWindow, Menu, app, dialog } = electron;
 let win;
 
 function newTab() {
-  win.webContents.send('ACTION', 'NEWTAB');
+  win.webContents.send('ACTION', 'NEW_TAB');
 }
 
 function openFile() {
   dialog.showOpenDialog(function handleOpenFiles(fileNames) {
     if (fileNames === undefined) return;
     fs.readFile(fileNames[0], 'utf-8', function logFile(err, data) {
-      win.webContents.send('ACTION', 'NEWTAB', data);
+      win.webContents.send('ACTION', 'NEW_TAB', data);
     });
   });
 }
 
 function openPatientSettings() {
-  win.webContents.send('ACTION', 'OPENPATIENTSETTINGS');
+  win.webContents.send('ACTION', 'OPEN_PATIENT_SETTINGS');
 }
 
 function createWindow() {

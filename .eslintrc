@@ -13,20 +13,7 @@
         "arrow-body-style": ["error", "never"],
         "import/no-unresolved": ["off"],
         "indent": ["warn", 2],
-        "new-cap": ["error", { "capIsNewExceptions": [
-            "ACTIVATETAB",
-            "CLOSEPATIENTSETTINGS",
-            "CLOSETAB",
-            "EDIT",
-            "MACRO",
-            "NEWTAB",
-            "OPENPATIENTSETTINGS",
-            "REMOVETAB",
-            "TOGGLE",
-            "UPDATEPATIENT",
-            "List",
-            "Map"
-        ] }],
+        "new-cap": ["off"],
         "prefer-arrow-callback": ["off"],
         "flowtype/require-parameter-type": 1,
         "flowtype/require-return-type": [

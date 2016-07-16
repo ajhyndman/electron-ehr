@@ -8,10 +8,10 @@ import removeEntity from 'draftUtils/removeEntity';
 
 const reducer = function reducer(state, action) {
   switch (action.type) {
-  case 'ACTIVATETAB': {
+  case 'ACTIVATE_TAB': {
     return state.set('activeTab', action.key);
   }
-  case 'CLOSEPATIENTSETTINGS': {
+  case 'CLOSE_PATIENT_SETTINGS': {
     return state.set('patientSettingsOpen', false);
   }
   case 'EDIT': {
@@ -26,7 +26,7 @@ const reducer = function reducer(state, action) {
       expandMacro(state.getIn(['editors', state.get('activeTab'), 'state']))
     );
   }
-  case 'NEWLINE': {
+  case 'NEW_LINE': {
     return state.setIn(
       ['editors', state.get('activeTab'), 'state'],
       RichUtils.insertSoftNewline(
@@ -34,7 +34,7 @@ const reducer = function reducer(state, action) {
       )
     );
   }
-  case 'NEWTAB': {
+  case 'NEW_TAB': {
     return state
       .set(
         'editors',
@@ -52,10 +52,10 @@ const reducer = function reducer(state, action) {
       .set('activeTab', state.get('editors').size)
       .set('patientSettingsOpen', true);
   }
-  case 'OPENPATIENTSETTINGS': {
+  case 'OPEN_PATIENT_SETTINGS': {
     return state.set('patientSettingsOpen', true);
   }
-  case 'REMOVETAB': {
+  case 'REMOVE_TAB': {
     return state.set('editors', state.get('editors').delete(action.key));
   }
   case 'TOGGLE': {
@@ -64,7 +64,7 @@ const reducer = function reducer(state, action) {
       removeEntity(state.getIn(['editors', state.get('activeTab'), 'state']), action.key)
     );
   }
-  case 'UPDATEPATIENT': {
+  case 'UPDATE_PATIENT': {
     return state.setIn(
       ['editors', state.get('activeTab'), 'patient'],
       action.patient

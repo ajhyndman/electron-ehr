@@ -37,12 +37,12 @@ ipcRenderer.on(
   'ACTION',
   function dispatchMenuAction(event, type, data) {
     switch (type) {
-    case 'OPENPATIENTSETTINGS': {
-      store.dispatch(actions.OPENPATIENTSETTINGS());
+    case 'OPEN_PATIENT_SETTINGS': {
+      store.dispatch(actions.OPEN_PATIENT_SETTINGS());
       break;
     }
-    case 'NEWTAB': {
-      store.dispatch(actions.NEWTAB(data));
+    case 'NEW_TAB': {
+      store.dispatch(actions.NEW_TAB(data));
       break;
     }
     default: {

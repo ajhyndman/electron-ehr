@@ -22,7 +22,7 @@ export const EditorPanel = connect(
       dispatch(actions.MACRO());
     },
     onReturn() {
-      dispatch(actions.NEWLINE());
+      dispatch(actions.NEW_LINE());
       return true;
     },
   })
@@ -45,10 +45,10 @@ export const PatientSettingsModal = connect(
   (dispatch) => ({
     onSubmit(event) {
       event.preventDefault();
-      dispatch(actions.CLOSEPATIENTSETTINGS());
+      dispatch(actions.CLOSE_PATIENT_SETTINGS());
     },
     onChange(value) {
-      dispatch(actions.UPDATEPATIENT(value));
+      dispatch(actions.UPDATE_PATIENT(value));
     },
   })
 )(disconnectedPatientSettingsModal);
@@ -56,8 +56,8 @@ export const PatientSettingsModal = connect(
 export const Tab = connect(
   null,
   (dispatch) => ({
-    onClick(tabKey) { dispatch(actions.ACTIVATETAB(tabKey)); },
-    onRemove(tabKey) { dispatch(actions.REMOVETAB(tabKey)); },
+    onClick(tabKey) { dispatch(actions.ACTIVATE_TAB(tabKey)); },
+    onRemove(tabKey) { dispatch(actions.REMOVE_TAB(tabKey)); },
   })
 )(disconnectedTab);
 
