@@ -20,6 +20,23 @@ const reducer = function reducer(state, action) {
       action.next
     );
   }
+  case 'INIT_TAB': {
+    return state
+      .set(
+        'editors',
+        state.get('editors').push(Immutable.Map({
+          patient: Immutable.Map({
+            firstName: '',
+            lastName: '',
+            dob: '',
+            gender: '',
+            address: '',
+          }),
+          state: null,
+        }))
+      )
+      .set('activeTab', state.get('editors').size);
+  }
   case 'MACRO': {
     return state.setIn(
       ['editors', state.get('activeTab'), 'state'],
@@ -34,23 +51,11 @@ const reducer = function reducer(state, action) {
       )
     );
   }
-  case 'NEW_TAB': {
-    return state
-      .set(
-        'editors',
-        state.get('editors').push(Immutable.Map({
-          patient: Immutable.Map({
-            firstName: '',
-            lastName: '',
-            dob: '',
-            gender: '',
-            address: '',
-          }),
-          state: createFromTemplate(action.template),
-        }))
-      )
-      .set('activeTab', state.get('editors').size)
-      .set('patientSettingsOpen', true);
+  case 'FINALIZE_TEMPLATE': {
+    return state.setIn(
+      ['editors', state.get('activeTab'), 'state'],
+      createFromTemplate(action.template)
+    );
   }
   case 'OPEN_PATIENT_SETTINGS': {
     return state.set('patientSettingsOpen', true);

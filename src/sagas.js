@@ -1,28 +1,27 @@
 import 'babel-polyfill';
+import { takeLatest } from 'redux-saga';
+import { put, take } from 'redux-saga/effects';
+
 import actions from 'actions';
-import store from 'store';
-// import { ipcRenderer } from 'electron';
-// import { takeEvery, takeLatest } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
 
 
-// // worker Saga: will be fired on `OPEN_TEMPLATE` actions
-// function* promptForPatientInfo(action) {
-//   try {
-//     const user = yield call(Api.fetchUser, action.payload.userId);
-//     yield put({ type: 'USER_FETCH_SUCCEEDED', user });
-//   } catch (e) {
-//     yield put({ type: 'USER_FETCH_FAILED', message: e.message });
-//   }
-// }
+// worker Saga: will be fired on `NEW_TAB` actions
+function* promptForPatientInfo(action) {
+  // Create the new editor tab without any data.
+  yield put(actions.INIT_TAB());
 
-/*
-  Starts promptForPatientInfo on each dispatched `OPEN_TEMPLATE` action.
-  Dous not allow concurrent fetches of user.
-*/
-export function* mySaga() {
-  console.log('Hello, World!');
-  // yield* takeLatest("USER_FETCH_REQUESTED", fetchUser);
+  // Open the patient settings dialog, and wait for the author to fill it out.
+  yield put(actions.OPEN_PATIENT_SETTINGS());
+  yield take('CLOSE_PATIENT_SETTINGS');
+
+  // Build the initial state from the template, using the patient settings we just fetched.
+  yield put(actions.FINALIZE_TEMPLATE(action.template));
 }
 
-
+/**
+ * Starts promptForPatientInfo on each dispatched `OPEN_TEMPLATE` action.
+ * Does not allow concurrent fetches of user.
+ */
+export default function* rootSaga() {
+  yield* takeLatest('NEW_TAB', promptForPatientInfo);
+}
