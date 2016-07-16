@@ -1,10 +1,14 @@
 
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "node": true
     },
     "extends": "airbnb",
+    "plugins": [
+        "flowtype"
+    ],
     "rules": {
         "arrow-body-style": ["error", "never"],
         "import/no-unresolved": ["off"],
@@ -23,6 +27,22 @@
             "List",
             "Map"
         ] }],
-        "prefer-arrow-callback": ["off"]
+        "prefer-arrow-callback": ["off"],
+        "flowtype/require-parameter-type": 1,
+        "flowtype/require-return-type": [
+            "warn",
+            "always",
+            {
+                "annotateUndefined": "always"
+            }
+        ],
+        "flowtype/space-after-type-colon": [
+            "warn",
+            "always"
+        ],
+        "flowtype/space-before-type-colon": [
+            "warn",
+            "never"
+        ]
     }
 }

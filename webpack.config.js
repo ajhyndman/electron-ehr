@@ -22,6 +22,7 @@ const config = {
         loader: 'babel',
         query: {
           plugins: [
+            'transform-flow-strip-types',
             'transform-object-rest-spread',
           ],
           presets: [

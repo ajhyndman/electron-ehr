@@ -1,16 +1,17 @@
+// @flow
 
 
 const actions = {
-  ACTIVATETAB: (key) => ({ type: 'ACTIVATETAB', key }),
-  CLOSETAB: (key) => ({ type: 'CLOSETAB', key }),
-  CLOSEPATIENTSETTINGS: () => ({ type: 'CLOSEPATIENTSETTINGS' }),
-  EDIT: (next) => ({ type: 'EDIT', next }),
-  MACRO: () => ({ type: 'MACRO' }),
-  NEWTAB: (template) => ({ type: 'NEWTAB', template }),
-  OPENPATIENTSETTINGS: () => ({ type: 'OPENPATIENTSETTINGS' }),
-  REMOVETAB: (key) => ({ type: 'REMOVETAB', key }),
-  TOGGLE: (key) => ({ type: 'TOGGLE', key }),
-  UPDATEPATIENT: (patient) => ({ type: 'UPDATEPATIENT', patient }),
+  ACTIVATETAB: (key: number): Object => ({ type: 'ACTIVATETAB', key }),
+  CLOSETAB: (key: number): Object => ({ type: 'CLOSETAB', key }),
+  CLOSEPATIENTSETTINGS: (): Object => ({ type: 'CLOSEPATIENTSETTINGS' }),
+  EDIT: (next: Object): Object => ({ type: 'EDIT', next }),
+  MACRO: (): Object => ({ type: 'MACRO' }),
+  NEWTAB: (template: Object): Object => ({ type: 'NEWTAB', template }),
+  OPENPATIENTSETTINGS: (): Object => ({ type: 'OPENPATIENTSETTINGS' }),
+  REMOVETAB: (key: number): Object => ({ type: 'REMOVETAB', key }),
+  TOGGLE: (key: number): Object => ({ type: 'TOGGLE', key }),
+  UPDATEPATIENT: (patient: Object): Object => ({ type: 'UPDATEPATIENT', patient }),
 };
 
 
