@@ -1,4 +1,4 @@
-const mainConfig = require('../webpack.config.js');
+const mainConfig = require('../webpack/partials/core.config.js');
 
 
 const config = mainConfig;

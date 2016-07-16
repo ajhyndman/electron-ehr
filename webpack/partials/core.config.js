@@ -2,8 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 
 
-const sourceDir = path.join(__dirname, 'src');
-const buildDir = path.join(__dirname, 'build');
+const sourceDir = path.join(__dirname, '../../src');
+const buildDir = path.join(__dirname, '../../build');
 
 
 const config = {
