@@ -18,7 +18,7 @@ function createFromTemplate(template = '') {
       const key = UUID.create();
       entityMap[key] = {
         type: 'TOGGLE',
-        mutability: 'IMMUTABLE',
+        mutability: 'MUTABLE',
       };
       entityRanges.push({
         key,
