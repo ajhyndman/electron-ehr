@@ -47,6 +47,7 @@ const EditorPanel = (props) => (
           ? <Editor
             editorState={props.editorState}
             // keyBindingFn={keybindings}
+            handleReturn={props.onReturn}
             onChange={props.onChange}
             onTab={props.onTab}
           />
@@ -59,6 +60,7 @@ const EditorPanel = (props) => (
 EditorPanel.propTypes = {
   editorState: React.PropTypes.object,
   onChange: React.PropTypes.func.isRequired,
+  onReturn: React.PropTypes.func.isRequired,
   onTab: React.PropTypes.func.isRequired,
 };
 

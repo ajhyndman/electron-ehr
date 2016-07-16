@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import { RichUtils } from 'draft-js';
 
 import createFromTemplate from 'draftUtils/createFromTemplate';
 import expandMacro from 'draftUtils/expandMacro';
@@ -23,6 +24,14 @@ const reducer = function reducer(state, action) {
     return state.setIn(
       ['editors', state.get('activeTab'), 'state'],
       expandMacro(state.getIn(['editors', state.get('activeTab'), 'state']))
+    );
+  }
+  case 'NEWLINE': {
+    return state.setIn(
+      ['editors', state.get('activeTab'), 'state'],
+      RichUtils.insertSoftNewline(
+        state.getIn(['editors', state.get('activeTab'), 'state'])
+      )
     );
   }
   case 'NEWTAB': {

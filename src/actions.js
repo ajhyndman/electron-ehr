@@ -7,6 +7,7 @@ const actions = {
   CLOSEPATIENTSETTINGS: (): Object => ({ type: 'CLOSEPATIENTSETTINGS' }),
   EDIT: (next: Object): Object => ({ type: 'EDIT', next }),
   MACRO: (): Object => ({ type: 'MACRO' }),
+  NEWLINE: (): Object => ({ type: 'NEWLINE' }),
   NEWTAB: (template: Object): Object => ({ type: 'NEWTAB', template }),
   OPENPATIENTSETTINGS: (): Object => ({ type: 'OPENPATIENTSETTINGS' }),
   REMOVETAB: (key: number): Object => ({ type: 'REMOVETAB', key }),

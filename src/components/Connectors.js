@@ -21,6 +21,10 @@ export const EditorPanel = connect(
       event.preventDefault();
       dispatch(actions.MACRO());
     },
+    onReturn() {
+      dispatch(actions.NEWLINE());
+      return true;
+    },
   })
 )(disconnectedEditorPanel);
 
