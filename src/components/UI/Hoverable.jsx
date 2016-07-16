@@ -11,6 +11,13 @@ class Hoverable extends React.Component {
     this.onMouseOut = this.onMouseOut.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      nextProps.children !== this.props.children
+      || nextState.hot !== this.state.hot
+    );
+  }
+
   onMouseOut() {
     this.setState({ hot: false });
   }
@@ -42,11 +49,7 @@ class Hoverable extends React.Component {
 }
 
 Hoverable.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.object,
-    React.PropTypes.string,
-  ]),
+  children: React.PropTypes.node,
 };
 
 
