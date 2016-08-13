@@ -1,3 +1,4 @@
+// @flow
 import { CompositeDecorator, Entity } from 'draft-js';
 
 import FoldingParagraph from 'components/UI/FoldingParagraph';
