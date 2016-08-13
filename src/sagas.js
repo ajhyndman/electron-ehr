@@ -1,12 +1,14 @@
+// @flow
 import 'babel-polyfill';
 import { takeLatest } from 'redux-saga';
 import { put, take } from 'redux-saga/effects';
 
 import actions from 'actions';
+import type { Action } from 'actions';
 
 
 // worker Saga: will be fired on `NEW_TAB` actions
-function* promptForPatientInfo(action) {
+function* promptForPatientInfo(action: Action): Generator<void, void, void> {
   // Create the new editor tab without any data.
   yield put(actions.INIT_TAB());
 
@@ -22,6 +24,6 @@ function* promptForPatientInfo(action) {
  * Starts promptForPatientInfo on each dispatched `OPEN_TEMPLATE` action.
  * Does not allow concurrent fetches of user.
  */
-export default function* rootSaga() {
+export default function* rootSaga(): Generator<void, void, void> {
   yield* takeLatest('NEW_TAB', promptForPatientInfo);
 }
