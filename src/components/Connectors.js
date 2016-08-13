@@ -1,4 +1,5 @@
-import Immutable from 'immutable';
+// @flow
+import { Map } from 'immutable';
 import { connect } from 'react-redux';
 
 import actions from '../actions';
@@ -12,7 +13,7 @@ export const EditorPanel = connect(
   (state) => ({
     editorState: state
       .get('editors')
-      .get(state.get('activeTab'), Immutable.Map({ state: undefined }))
+      .get(state.get('activeTab'), Map({ state: undefined }))
       .get('state'),
   }),
   (dispatch) => ({

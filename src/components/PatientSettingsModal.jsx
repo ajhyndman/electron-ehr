@@ -1,4 +1,5 @@
-import Immutable from 'immutable';
+// @flow
+import { Map } from 'immutable';
 import React from 'react';
 
 import Dialog from 'components/UI/Dialog';
@@ -17,21 +18,40 @@ const styles = {
   },
 };
 
+type Props = {
+  onChange: Function;
+  onSubmit: Function;
+  open?: boolean;
+  patient: Object;
+};
+
+const defaultProps = {
+  patient: Map({}),
+};
+
 class PatientSettingsModal extends React.Component {
-  constructor(props) {
+  static defaultProps: {
+    patient: Object;
+  };
+
+  constructor(props: Props) {
     super(props);
 
     this.changeHandlerFactory = this.changeHandlerFactory.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: Props) {
     if (nextProps.open && this.props.open === false) {
       this.refs.autoFocus.focus();
     }
   }
 
-  changeHandlerFactory(key) {
-    return function changeHandler(value) {
+  props: Props;
+
+  changeHandlerFactory: (key: string) => (value: string | number) => void;
+
+  changeHandlerFactory(key: string): Function {
+    return function changeHandler(value: string | number): void {
       this.props.onChange(
         this.props.patient.set(key, value)
       );
@@ -101,16 +121,7 @@ class PatientSettingsModal extends React.Component {
   }
 }
 
-PatientSettingsModal.propTypes = {
-  onChange: React.PropTypes.func.isRequired,
-  onSubmit: React.PropTypes.func.isRequired,
-  open: React.PropTypes.bool,
-  patient: React.PropTypes.object.isRequired,
-};
-
-PatientSettingsModal.defaultProps = {
-  patient: Immutable.Map({}),
-};
+PatientSettingsModal.defaultProps = defaultProps;
 
 
 export default PatientSettingsModal;

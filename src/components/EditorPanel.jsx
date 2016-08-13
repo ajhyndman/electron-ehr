@@ -1,11 +1,19 @@
+// @flow
 import React from 'react';
-import { Editor } from 'draft-js';
+import { Editor, EditorState } from 'draft-js';
 
 import 'fonts/proxima-nova.css';
 // import keybindings from '../keybindings';
 
 
-const EditorPanel = (props) => (
+type Props = {
+  editorState?: EditorState;
+  onChange: Function;
+  onReturn: Function;
+  onTab: Function;
+};
+
+const EditorPanel = (props: Props) => (
   <div style={{ background: '#FFF', overflow: 'auto', width: '100%' }}>
     <style>
       {`.public-DraftEditor-content {
@@ -56,13 +64,6 @@ const EditorPanel = (props) => (
     </div>
   </div>
 );
-
-EditorPanel.propTypes = {
-  editorState: React.PropTypes.object,
-  onChange: React.PropTypes.func.isRequired,
-  onReturn: React.PropTypes.func.isRequired,
-  onTab: React.PropTypes.func.isRequired,
-};
 
 
 export default EditorPanel;

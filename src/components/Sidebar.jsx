@@ -1,10 +1,19 @@
+// @flow
 import React from 'react';
 
 import 'css/no-select.css';
 import { EditorTabs } from 'components/Connectors';
 
 
-const Sidebar = (props) => (
+type Props = {
+  width?: number,
+};
+
+const defaultProps = {
+  width: 180,
+};
+
+const Sidebar = (props: Props) => (
   <div
     style={{
       background: '#F3F3F3',
@@ -38,13 +47,7 @@ const Sidebar = (props) => (
   </div>
 );
 
-Sidebar.propTypes = {
-  width: React.PropTypes.number,
-};
-
-Sidebar.defaultProps = {
-  width: 180,
-};
+Sidebar.defaultProps = defaultProps;
 
 
 export default Sidebar;
