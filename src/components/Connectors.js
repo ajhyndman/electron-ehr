@@ -1,4 +1,5 @@
 // @flow
+import { EditorState } from 'draft-js';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
 
@@ -8,21 +9,22 @@ import disconnectedEditorTabs from 'components/UI/EditorTabs';
 import disconnectedPatientSettingsModal from 'components/PatientSettingsModal';
 import disconnectedTab from 'components/UI/Tab';
 import disconnectedToggleField from 'components/UI/ToggleField';
+import type { Action } from '../actions';
 
 export const EditorPanel = connect(
-  (state) => ({
+  (state: Map<string, any>) => ({
     editorState: state
       .get('editors')
       .get(state.get('activeTab'), Map({ state: undefined }))
       .get('state'),
   }),
-  (dispatch) => ({
-    onChange(next) { dispatch(actions.EDIT(next)); },
-    onTab(event) {
+  (dispatch: (action: Action) => void) => ({
+    onChange(next: EditorState): void { dispatch(actions.EDIT(next)); },
+    onTab(event: Event): void {
       event.preventDefault();
       dispatch(actions.MACRO());
     },
-    onReturn() {
+    onReturn(): boolean {
       dispatch(actions.NEW_LINE());
       return true;
     },
@@ -30,7 +32,7 @@ export const EditorPanel = connect(
 )(disconnectedEditorPanel);
 
 export const EditorTabs = connect(
-  (state) => ({
+  (state: Map<string, any>) => ({
     activeTab: state.get('activeTab'),
     tabList: state.get('editors').map((editor) => (
       `${editor.getIn(['patient', 'lastName'])}, ${editor.getIn(['patient', 'firstName'])}`
@@ -39,11 +41,11 @@ export const EditorTabs = connect(
 )(disconnectedEditorTabs);
 
 export const PatientSettingsModal = connect(
-  (state) => ({
+  (state: Map<string, any>) => ({
     open: state.get('patientSettingsOpen'),
     patient: state.getIn(['editors', state.get('activeTab'), 'patient']),
   }),
-  (dispatch) => ({
+  (dispatch: (action: Action) => void) => ({
     onSubmit(event) {
       event.preventDefault();
       dispatch(actions.CLOSE_PATIENT_SETTINGS());
@@ -56,7 +58,7 @@ export const PatientSettingsModal = connect(
 
 export const Tab = connect(
   null,
-  (dispatch) => ({
+  (dispatch: (action: Action) => void) => ({
     onClick(tabKey) { dispatch(actions.ACTIVATE_TAB(tabKey)); },
     onRemove(tabKey) { dispatch(actions.REMOVE_TAB(tabKey)); },
   })
@@ -64,7 +66,7 @@ export const Tab = connect(
 
 export const ToggleField = connect(
   null,
-  (dispatch) => ({
+  (dispatch: (action: Action) => void) => ({
     onClick(entityKey) { dispatch(actions.TOGGLE(entityKey)); },
   })
 )(disconnectedToggleField);
