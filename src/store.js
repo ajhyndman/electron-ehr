@@ -1,4 +1,5 @@
-import Immutable from 'immutable';
+// @flow
+import { List, Map } from 'immutable';
 import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
@@ -16,11 +17,11 @@ import rootSaga from 'sagas';
 // import { EditorState } from 'draft-js';
 // import compositeDecorator from 'decorators/all';
 
-// const sampleStore = Immutable.Map({
+// const sampleStore = Map({
 //   activeTab: 0,
-//   editors: Immutable.List([
-//     Immutable.Map({
-//       patient: Immutable.Map({
+//   editors: List([
+//     Map({
+//       patient: Map({
 //         firstName: '하라',
 //         lastName: '주',
 //         dob: '1991-11-22',
@@ -29,8 +30,8 @@ import rootSaga from 'sagas';
 //       }),
 //       state: EditorState.createEmpty(compositeDecorator),
 //     }),
-//     Immutable.Map({
-//       patient: Immutable.Map({
+//     Map({
+//       patient: Map({
 //         firstName: 'Andrew',
 //         lastName: 'Hyndman',
 //         dob: '1988-10-06',
@@ -46,9 +47,9 @@ import rootSaga from 'sagas';
 // create saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-const initialState = Immutable.Map({
+const initialState = Map({
   activeTab: 0,
-  editors: Immutable.List([]),
+  editors: List([]),
   patientSettingsOpen: false,
 });
 

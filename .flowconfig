@@ -1,2 +1,15 @@
+[include]
+node_modules/
+src/
+
 [ignore]
-.*/node_modules/.*
+.*/node_modules/fbjs/.*
+.*/node_modules/cjson/.*
+
+[libs]
+node_modules/@flow-atom/electron/sig/v0.37.8
+
+[options]
+module.system.node.resolve_dirname=node_modules
+module.system.node.resolve_dirname=src
+module.name_mapper.extension='css' -> '<PROJECT_ROOT>/flow/CSSStub.js'

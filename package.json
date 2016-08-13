@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack/production.config.js",
     "build:watch": "webpack --config webpack/partials/core.config.js --watch",
+    "flow": "flow",
     "package": "electron-packager . fantasia --platform=win32 --arch=x64 --overwrite",
     "start": "electron .",
     "storybook": "start-storybook -p 9001",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/ajhyndman/electron-ehr#readme",
   "devDependencies": {
+    "@flow-atom/electron": "^0.37.8-rev.0",
     "@kadira/storybook": "^1.28.1",
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.1.2",
@@ -40,7 +42,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.3",
     "eslint-plugin-react": "^5.1.1",
-    "flow-bin": "^0.29.0",
+    "flow-bin": "^0.30.0",
     "json-loader": "^0.5.4",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",

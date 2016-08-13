@@ -1,12 +1,14 @@
-import Immutable from 'immutable';
+// @flow
+import { Map } from 'immutable';
 import { RichUtils } from 'draft-js';
 
 import createFromTemplate from 'draftUtils/createFromTemplate';
 import expandMacro from 'draftUtils/expandMacro';
 import removeEntity from 'draftUtils/removeEntity';
+import type { Action } from 'actions';
 
 
-const reducer = function reducer(state, action) {
+function reducer(state: Object, action: Action): Object {
   switch (action.type) {
   case 'ACTIVATE_TAB': {
     return state.set('activeTab', action.key);
@@ -24,8 +26,8 @@ const reducer = function reducer(state, action) {
     return state
       .set(
         'editors',
-        state.get('editors').push(Immutable.Map({
-          patient: Immutable.Map({
+        state.get('editors').push(Map({
+          patient: Map({
             firstName: '',
             lastName: '',
             dob: '',
