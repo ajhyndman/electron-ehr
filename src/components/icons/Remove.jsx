@@ -1,7 +1,8 @@
+// @flow
 import React from 'react';
 
 
-const Remove = (props) => (
+const Remove = (props: Object) => (
   <svg
     fill="#000000"
     style={{

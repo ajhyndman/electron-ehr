@@ -1,7 +1,8 @@
+// @flow
 import React from 'react';
 
 
-const Clear = (props) => (
+const Clear = (props: Object) => (
   <svg
     fill="#000000"
     style={{
