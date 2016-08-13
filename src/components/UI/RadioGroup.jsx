@@ -1,15 +1,26 @@
+// @flow
 import React from 'react';
 
+
+type Props = {
+  children?: React.Element<any>;
+  onChange: Function;
+  value: any;
+}
+
 class RadioGroup extends React.Component {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange: (event: Event) => void;
+  handleChange(event: Event) {
     if (this.props.onChange) { this.props.onChange(event); }
   }
+
+  props: Props;
 
   render() {
     return (
@@ -26,16 +37,6 @@ class RadioGroup extends React.Component {
     );
   }
 }
-
-RadioGroup.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.object,
-    React.PropTypes.string,
-  ]),
-  onChange: React.PropTypes.func.isRequired,
-  value: React.PropTypes.any.isRequired,
-};
 
 
 export default RadioGroup;

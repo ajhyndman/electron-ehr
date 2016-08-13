@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import lift from 'function-lift';
 
@@ -9,7 +10,23 @@ function getEventValue(event) {
   return event.target.value;
 }
 
+type Props = {
+  disabled?: boolean;
+  label?: string;
+  onChange: Function;
+  type: string;
+  value: string;
+};
+
+const defaultProps = {
+  value: '',
+};
+
 class Input extends React.Component {
+  static defaultProps: { value: string; };
+
+  props: Props;
+
   focus() {
     setTimeout(
       // OMG, input focus is hard to manage in React.
@@ -39,17 +56,7 @@ class Input extends React.Component {
   }
 }
 
-Input.propTypes = {
-  disabled: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  onChange: React.PropTypes.func.isRequired,
-  type: React.PropTypes.string.isRequired,
-  value: React.PropTypes.string.isRequired,
-};
-
-Input.defaultProps = {
-  value: '',
-};
+Input.defaultProps = defaultProps;
 
 
 export default Input;

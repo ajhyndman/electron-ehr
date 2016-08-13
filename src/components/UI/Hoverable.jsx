@@ -1,8 +1,17 @@
+// @flow
 import React from 'react';
 
 
+type Props = {
+  children?: React.Element<any>;
+};
+
+type State = {
+  hot: boolean;
+};
+
 class Hoverable extends React.Component {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = { hot: false };
@@ -11,20 +20,26 @@ class Hoverable extends React.Component {
     this.onMouseOut = this.onMouseOut.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  state: State;
+
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
     return (
       nextProps.children !== this.props.children
       || nextState.hot !== this.state.hot
     );
   }
 
+  onMouseOut: () => void;
   onMouseOut() {
     this.setState({ hot: false });
   }
 
+  onMouseOver: () => void;
   onMouseOver() {
     this.setState({ hot: true });
   }
+
+  props: Props;
 
   render() {
     return (
@@ -47,10 +62,6 @@ class Hoverable extends React.Component {
   }
 
 }
-
-Hoverable.propTypes = {
-  children: React.PropTypes.node,
-};
 
 
 export default Hoverable;

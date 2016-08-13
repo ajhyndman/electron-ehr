@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 
 import './FoldingParagraph.css';
@@ -6,8 +7,12 @@ import Add from 'components/icons/Add';
 import Remove from 'components/icons/Remove';
 
 
+type Props = {
+  children?: React.Element<any>;
+}
+
 class FoldingParagraph extends React.Component {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -17,11 +22,19 @@ class FoldingParagraph extends React.Component {
     this.onToggle = this.onToggle.bind(this);
   }
 
+  state: {
+    expanded: boolean;
+  };
+
   onToggle() {
     this.setState((state) => ({
       expanded: !state.expanded,
     }));
   }
+
+  onToggle: () => void;
+
+  props: Props;
 
   render() {
     return (
@@ -63,15 +76,6 @@ class FoldingParagraph extends React.Component {
     );
   }
 }
-
-FoldingParagraph.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.object,
-    React.PropTypes.string,
-  ]),
-  onToggle: React.PropTypes.func,
-};
 
 
 export default FoldingParagraph;

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 
 import 'css/no-select.css';
@@ -5,8 +6,29 @@ import Clear from 'components/icons/Clear';
 import ButtonUnstyled from 'components/UI/ButtonUnstyled';
 
 
+type Props = {
+  id: number;
+  isActive: boolean;
+  name: string;
+  onClick: Function;
+  onRemove: Function;
+};
+
+type State = {
+  hot: boolean;
+};
+
+// TODO: Clear default onClick
+const defaultProps = {
+  onClick: () => undefined,
+};
+
 class Tab extends React.Component {
-  constructor(props) {
+  static defaultProps: {
+    onClick: () => void;
+  };
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -19,20 +41,26 @@ class Tab extends React.Component {
     this.onRemove = this.onRemove.bind(this);
   }
 
-  onClick(event) {
+  state: State;
+
+  onClick: (event: Event) => void;
+  onClick(event: Event) {
     event.stopPropagation();
     this.props.onClick(this.props.id);
   }
 
+  onMouseOut: () => void;
   onMouseOut() {
     this.setState({ hot: false });
   }
 
+  onMouseOver: () => void;
   onMouseOver() {
     this.setState({ hot: true });
   }
 
-  onRemove(event) {
+  onRemove: (event: Event) => void;
+  onRemove(event: Event) {
     event.stopPropagation();
     this.props.onRemove(this.props.id);
   }
@@ -82,18 +110,7 @@ class Tab extends React.Component {
   }
 }
 
-Tab.propTypes = {
-  id: React.PropTypes.number.isRequired,
-  isActive: React.PropTypes.bool.isRequired,
-  name: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
-  onRemove: React.PropTypes.func.isRequired,
-};
-
-// TODO: Clear default onClick
-Tab.defaultProps = {
-  onClick: () => {},
-};
+Tab.defaultProps = defaultProps;
 
 
 export default Tab;

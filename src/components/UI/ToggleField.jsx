@@ -1,9 +1,16 @@
+// @flow
 import React from 'react';
 
 import Hoverable from 'components/UI/Hoverable';
 
 
-const ToggleField = (props) => (
+type Props = {
+  children?: React.Element<any>;
+  entityKey: string;
+  onClick: Function;
+};
+
+const ToggleField = (props: Props) => (
   <Hoverable>
     <span
       onClick={props.onClick.bind(null, props.entityKey)}
@@ -22,16 +29,6 @@ const ToggleField = (props) => (
     </span>
   </Hoverable>
 );
-
-ToggleField.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.object,
-    React.PropTypes.string,
-  ]),
-  entityKey: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
-};
 
 
 export default ToggleField;

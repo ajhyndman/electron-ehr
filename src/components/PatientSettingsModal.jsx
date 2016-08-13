@@ -49,7 +49,6 @@ class PatientSettingsModal extends React.Component {
   props: Props;
 
   changeHandlerFactory: (key: string) => (value: string | number) => void;
-
   changeHandlerFactory(key: string): Function {
     return function changeHandler(value: string | number): void {
       this.props.onChange(

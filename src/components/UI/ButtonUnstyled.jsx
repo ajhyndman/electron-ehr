@@ -1,7 +1,8 @@
+// @flow
 import React from 'react';
 
 
-const ButtonUnstyled = (props) => (
+const ButtonUnstyled = (props: Object): React.Element<any> => (
   <div
     style={{
       background: 'none',
@@ -18,11 +19,7 @@ const ButtonUnstyled = (props) => (
 );
 
 ButtonUnstyled.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.object,
-    React.PropTypes.string,
-  ]),
+  children: React.PropTypes.node,
 };
 
 

@@ -1,7 +1,13 @@
+// @flow
 import React from 'react';
 
 
-const Dialog = (props) => (
+type Props = {
+  children?: React.Element<any>;
+  open?: boolean;
+};
+
+const Dialog = (props: Props) => (
   // backdrop
   <div
     style={{
@@ -37,15 +43,6 @@ const Dialog = (props) => (
     </dialog>
   </div>
 );
-
-Dialog.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.object,
-    React.PropTypes.string,
-  ]),
-  open: React.PropTypes.bool,
-};
 
 
 export default Dialog;

@@ -1,8 +1,8 @@
+// @flow
 import React from 'react';
 import lift from 'function-lift';
 
 import formControl from 'styles/form-control';
-
 
 
 const getEventValue = (event) => event.target.value;
@@ -10,8 +10,19 @@ const getEventValue = (event) => event.target.value;
 const active = 'rgb(51, 102, 255)';
 const inactive = 'rgb(169, 169, 169)';
 
+type Props = {
+  checked?: boolean;
+  label?: string;
+  onChange?: Function;
+  value?: any;
+};
+
+type State = {
+  hot: boolean;
+};
+
 class RadioButton extends React.Component {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -22,9 +33,15 @@ class RadioButton extends React.Component {
     this.onFocus = this.onFocus.bind(this);
   }
 
+  state: State;
+
+  onBlur: () => void;
   onBlur() { this.setState({ hot: false }) }
 
+  onFocus: () => void;
   onFocus() { this.setState({ hot: true }) }
+
+  props: Props;
 
   render() {
     return (
@@ -84,13 +101,6 @@ class RadioButton extends React.Component {
     );
   }
 }
-
-RadioButton.propTypes = {
-  checked: React.PropTypes.bool,
-  label: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  value: React.PropTypes.any,
-};
 
 
 export default RadioButton;
