@@ -1,10 +1,11 @@
+// @flow
 import UUID from 'uuid-js';
 import { EditorState, convertFromRaw } from 'draft-js';
 
 import compositeDecorator from 'decorators/all';
 
 
-function createFromTemplate(template = '') {
+function createFromTemplate(template: string = ''): EditorState {
   const entityMap = {};
   const entityRanges = [];
 
