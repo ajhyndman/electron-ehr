@@ -9,6 +9,7 @@ import Sidebar from 'components/Sidebar';
 import actions from 'actions';
 import store from 'store';
 import { EditorPanel, PatientSettingsModal } from 'components/Connectors';
+import type { ActionType } from 'actions';
 
 
 // TODO: derive width from a setting
@@ -36,7 +37,7 @@ ReactDOM.render(
 
 ipcRenderer.on(
   'ACTION',
-  function dispatchMenuAction(event, type, data) {
+  function dispatchMenuAction(event: Event, type: ActionType, data: any) {
     switch (type) {
     case 'OPEN_PATIENT_SETTINGS': {
       store.dispatch(actions.OPEN_PATIENT_SETTINGS());
