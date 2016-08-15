@@ -2,8 +2,23 @@
 import { EditorState } from 'draft-js';
 
 
+export type ActionType =
+  | 'ACTIVATE_TAB'
+  | 'CLOSE_TAB'
+  | 'CLOSE_PATIENT_SETTINGS'
+  | 'EDIT'
+  | 'FINALIZE_TEMPLATE'
+  | 'INIT_TAB'
+  | 'MACRO'
+  | 'NEW_LINE'
+  | 'NEW_TAB'
+  | 'OPEN_PATIENT_SETTINGS'
+  | 'REMOVE_TAB'
+  | 'TOGGLE'
+  | 'UPDATE_PATIENT';
+
 export type Action = {
-  type: string;
+  type: ActionType;
   key?: number;
   patient?: Object;
   template?: string;
