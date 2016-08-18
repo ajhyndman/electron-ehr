@@ -1,14 +1,15 @@
 // @flow
-import { Map } from 'immutable';
 import { RichUtils } from 'draft-js';
+import type { Immutable } from 'seamless-immutable';
 
 import createFromTemplate from 'draftUtils/createFromTemplate';
 import expandMacro from 'draftUtils/expandMacro';
 import removeEntity from 'draftUtils/removeEntity';
 import type { Action } from 'actions';
+import type { AppState, TabState } from 'store';
 
 
-function reducer(state: Object, action: Action): Object {
+function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState> {
   switch (action.type) {
   case 'ACTIVATE_TAB': {
     return state.set('activeTab', action.key);
@@ -18,7 +19,7 @@ function reducer(state: Object, action: Action): Object {
   }
   case 'EDIT': {
     return state.setIn(
-      ['editors', state.get('activeTab'), 'state'],
+      ['editors', state.activeTab, 'state'],
       action.next
     );
   }
@@ -26,36 +27,36 @@ function reducer(state: Object, action: Action): Object {
     return state
       .set(
         'editors',
-        state.get('editors').push(Map({
-          patient: Map({
+        state.editors.concat({
+          patient: {
             firstName: '',
             lastName: '',
             dob: '',
             gender: '',
             address: '',
-          }),
+          },
           state: null,
-        }))
+        })
       )
-      .set('activeTab', state.get('editors').size);
+      .set('activeTab', state.editors.length);
   }
   case 'MACRO': {
     return state.setIn(
-      ['editors', state.get('activeTab'), 'state'],
-      expandMacro(state.getIn(['editors', state.get('activeTab'), 'state']))
+      ['editors', state.activeTab, 'state'],
+      expandMacro(state.editors[state.activeTab].state)
     );
   }
   case 'NEW_LINE': {
     return state.setIn(
-      ['editors', state.get('activeTab'), 'state'],
+      ['editors', state.activeTab, 'state'],
       RichUtils.insertSoftNewline(
-        state.getIn(['editors', state.get('activeTab'), 'state'])
+        state.editors[state.activeTab].state
       )
     );
   }
   case 'FINALIZE_TEMPLATE': {
     return state.setIn(
-      ['editors', state.get('activeTab'), 'state'],
+      ['editors', state.activeTab, 'state'],
       createFromTemplate(action.template)
     );
   }
@@ -63,17 +64,22 @@ function reducer(state: Object, action: Action): Object {
     return state.set('patientSettingsOpen', true);
   }
   case 'REMOVE_TAB': {
-    return state.set('editors', state.get('editors').delete(action.key));
+    return state.set(
+      'editors',
+      state.editors.filter(
+        (value: Immutable<Array<TabState>>, i: number): bool => (i !== action.key)
+      )
+    );
   }
   case 'TOGGLE': {
     return state.setIn(
-      ['editors', state.get('activeTab'), 'state'],
-      removeEntity(state.getIn(['editors', state.get('activeTab'), 'state']), action.key)
+      ['editors', state.activeTab, 'state'],
+      removeEntity(state.editors[state.activeTab].state, action.key)
     );
   }
   case 'UPDATE_PATIENT': {
     return state.setIn(
-      ['editors', state.get('activeTab'), 'patient'],
+      ['editors', state.activeTab, 'patient'],
       action.patient
     );
   }
@@ -81,7 +87,7 @@ function reducer(state: Object, action: Action): Object {
     return state;
   }
   }
-};
+}
 
 
 export default reducer;

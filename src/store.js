@@ -1,7 +1,9 @@
 // @flow
-import { List, Map } from 'immutable';
-import { applyMiddleware, createStore } from 'redux';
+import I from 'seamless-immutable';
 import createSagaMiddleware from 'redux-saga';
+import { EditorState } from 'draft-js';
+import { applyMiddleware, createStore } from 'redux';
+import type { Immutable } from 'seamless-immutable'; // eslint-disable-line no-duplicate-imports
 
 import reducer from 'reducer';
 import rootSaga from 'sagas';
@@ -44,12 +46,31 @@ import rootSaga from 'sagas';
 //   patientSettingsOpen: false,
 // });
 
+export type Patient = {
+  address?: string;
+  dob?: string;
+  firstName?: string;
+  gender?: string;
+  lastName?: string;
+};
+
+export type TabState = {
+  patient?: Patient;
+  state?: EditorState;
+};
+
+export type AppState = {
+  activeTab: number;
+  editors: Array<TabState>; // Typescript grammar fix </TabState>;
+  patientSettingsOpen: boolean;
+};
+
 // create saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-const initialState = Map({
+const initialState: Immutable<AppState> = I.from({
   activeTab: 0,
-  editors: List([]),
+  editors: [],
   patientSettingsOpen: false,
 });
 
@@ -61,6 +82,5 @@ const store = createStore(
 
 // then run the saga
 sagaMiddleware.run(rootSaga);
-
 
 export default store;
