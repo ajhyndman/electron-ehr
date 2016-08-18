@@ -1,7 +1,7 @@
 // @flow
 import { EditorState } from 'draft-js';
-import { Map } from 'immutable';
 import { connect } from 'react-redux';
+import type { Immutable } from 'seamless-immutable'; // eslint-disable-line no-duplicate-imports
 
 import actions from '../actions';
 import disconnectedEditorPanel from 'components/EditorPanel';
@@ -9,16 +9,16 @@ import disconnectedEditorTabs from 'components/UI/EditorTabs';
 import disconnectedPatientSettingsModal from 'components/PatientSettingsModal';
 import disconnectedTab from 'components/UI/Tab';
 import disconnectedToggleField from 'components/UI/ToggleField';
-import type { Action } from '../actions';
+import type { Action } from '../actions'; // eslint-disable-line no-duplicate-imports
+import type { AppState, Patient, TabState } from '../store';
+
+type Dispatch = (action: Action) => void;
 
 export const EditorPanel = connect(
-  (state: Map<string, any>) => ({
-    editorState: state
-      .get('editors')
-      .get(state.get('activeTab'), Map({ state: undefined }))
-      .get('state'),
+  (state: Immutable<AppState>): Object => ({
+    editorState: (state.editors[state.activeTab] || { state: undefined }).state,
   }),
-  (dispatch: (action: Action) => void) => ({
+  (dispatch: Dispatch): Object => ({
     onChange(next: EditorState): void { dispatch(actions.EDIT(next)); },
     onTab(event: Event): void {
       event.preventDefault();
@@ -32,25 +32,25 @@ export const EditorPanel = connect(
 )(disconnectedEditorPanel);
 
 export const EditorTabs = connect(
-  (state: Map<string, any>) => ({
-    activeTab: state.get('activeTab'),
-    tabList: state.get('editors').map((editor) => (
-      `${editor.getIn(['patient', 'lastName'])}, ${editor.getIn(['patient', 'firstName'])}`
+  (state: Immutable<AppState>): Object => ({
+    activeTab: state.activeTab,
+    tabList: state.editors.map((editor: Immutable<TabState>): string => (
+      `${editor.patient.lastName}, ${editor.patient.firstName}`
     )),
   })
 )(disconnectedEditorTabs);
 
 export const PatientSettingsModal = connect(
-  (state: Map<string, any>) => ({
-    open: state.get('patientSettingsOpen'),
-    patient: state.getIn(['editors', state.get('activeTab'), 'patient']),
+  (state: Immutable<AppState>): Object => ({
+    open: state.patientSettingsOpen,
+    patient: (state.editors[state.activeTab] || { patient: undefined }).patient,
   }),
-  (dispatch: (action: Action) => void) => ({
-    onSubmit(event) {
+  (dispatch: Dispatch): Object => ({
+    onSubmit(event: Event): void {
       event.preventDefault();
       dispatch(actions.CLOSE_PATIENT_SETTINGS());
     },
-    onChange(value) {
+    onChange(value: Immutable<Patient>): void {
       dispatch(actions.UPDATE_PATIENT(value));
     },
   })
@@ -58,15 +58,15 @@ export const PatientSettingsModal = connect(
 
 export const Tab = connect(
   null,
-  (dispatch: (action: Action) => void) => ({
-    onClick(tabKey) { dispatch(actions.ACTIVATE_TAB(tabKey)); },
-    onRemove(tabKey) { dispatch(actions.REMOVE_TAB(tabKey)); },
+  (dispatch: Dispatch): Object => ({
+    onClick(tabKey: number): void { dispatch(actions.ACTIVATE_TAB(tabKey)); },
+    onRemove(tabKey: number): void { dispatch(actions.REMOVE_TAB(tabKey)); },
   })
 )(disconnectedTab);
 
 export const ToggleField = connect(
   null,
-  (dispatch: (action: Action) => void) => ({
-    onClick(entityKey) { dispatch(actions.TOGGLE(entityKey)); },
+  (dispatch: Dispatch): Object => ({
+    onClick(entityKey: number): void { dispatch(actions.TOGGLE(entityKey)); },
   })
 )(disconnectedToggleField);
