@@ -1,3 +1,4 @@
+// @flow
 import 'normalize.css';
 import I from 'seamless-immutable';
 import React from 'react';
@@ -24,7 +25,7 @@ const mockStore = createStore(
 );
 
 storiesOf('Editor Tabs', module)
-  .add('connected', () => (
+  .add('connected', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova' }}>
       <Provider store={mockStore}>
         <EditorTabs />

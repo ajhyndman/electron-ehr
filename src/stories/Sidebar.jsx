@@ -1,3 +1,4 @@
+// @flow
 import 'normalize.css';
 import I from 'seamless-immutable';
 import React from 'react';
@@ -25,7 +26,7 @@ const mockStore = createStore(
 );
 
 storiesOf('Sidebar', module)
-  .add('multi-tab', () => (
+  .add('multi-tab', (): React.Element<any> => (
     <Provider store={mockStore}>
       <div style={{ height: '200px' }}>
         <Sidebar />

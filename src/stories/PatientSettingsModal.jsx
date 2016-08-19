@@ -1,3 +1,4 @@
+// @flow
 import 'normalize.css';
 import I from 'seamless-immutable';
 import React from 'react';
@@ -34,15 +35,16 @@ const mockStore = createStore(
 );
 
 storiesOf('Patient Settings Modal', module)
-  .add('log actions', () => (
+  .add('log actions', (): React.Element<any> => (
     <DisconnectedPatientSettingsModal
       activeTab={0}
       onChange={action('UPDATE PATIENT')}
+      onSubmit={action('CLOSE_PATIENT_SETTINGS')}
       open
       patient={mockPatient}
     />
   ))
-  .add('with store', () => (
+  .add('with store', (): React.Element<any> => (
     <Provider store={mockStore}>
       <PatientSettingsModal />
     </Provider>

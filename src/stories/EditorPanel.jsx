@@ -1,3 +1,4 @@
+// @flow
 import I from 'seamless-immutable';
 import React from 'react';
 import { ContentState, EditorState, convertFromRaw } from 'draft-js';
@@ -87,7 +88,7 @@ const optionStore = createStore(
 
 
 storiesOf('Editor Panel', module)
-  .add('with no text', () => (
+  .add('with no text', (): React.Element<any> => (
     <div style={{ border: 'solid 1px #AAA' }}>
       <style>
         {`.public-DraftEditor-content {
@@ -101,7 +102,7 @@ storiesOf('Editor Panel', module)
       </Provider>
     </div>
   ))
-  .add('with text', () => (
+  .add('with text', (): React.Element<any> => (
     <div style={{ border: 'solid 1px #AAA' }}>
       <style>
         {`.public-DraftEditor-content {
@@ -115,7 +116,7 @@ storiesOf('Editor Panel', module)
       </Provider>
     </div>
   ))
-  .add('with folding paragraphs', () => (
+  .add('with folding paragraphs', (): React.Element<any> => (
     <div style={{ border: 'solid 1px #AAA' }}>
       <style>
         {`.public-DraftEditor-content {
@@ -129,7 +130,7 @@ storiesOf('Editor Panel', module)
       </Provider>
     </div>
   ))
-  .add('with option fields', () => (
+  .add('with option fields', (): React.Element<any> => (
     <div style={{ border: 'solid 1px #AAA' }}>
       <style>
         {`.public-DraftEditor-content {

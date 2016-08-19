@@ -1,3 +1,4 @@
+// @flow
 import 'normalize.css';
 import React from 'react';
 import { action, storiesOf } from '@kadira/storybook';
@@ -7,7 +8,7 @@ import demoPage from 'styles/demo-page';
 
 
 storiesOf('RadioButton', module)
-  .add('unchecked', () => (
+  .add('unchecked', (): React.Element<any> => (
     <div style={demoPage}>
       <RadioButton
         label="Sample RadioButton"
@@ -17,7 +18,7 @@ storiesOf('RadioButton', module)
       />
     </div>
   ))
-  .add('checked', () => (
+  .add('checked', (): React.Element<any> => (
     <div style={demoPage}>
       <RadioButton
         checked

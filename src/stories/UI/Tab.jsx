@@ -1,3 +1,4 @@
+// @flow
 import 'normalize.css';
 import React from 'react';
 import { action, storiesOf } from '@kadira/storybook';
@@ -7,7 +8,7 @@ import Tab from 'components/UI/Tab';
 
 
 storiesOf('Tab', module)
-  .add('active', () => (
+  .add('active', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova' }}>
       <Tab
         isActive
@@ -18,7 +19,7 @@ storiesOf('Tab', module)
       />
     </div>
   ))
-  .add('inactive', () => (
+  .add('inactive', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova' }}>
       <Tab
         isActive={false}
@@ -29,7 +30,7 @@ storiesOf('Tab', module)
       />
     </div>
   ))
-  .add('both', () => (
+  .add('both', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova' }}>
       <Tab isActive id={0} name="Active Tab" onClick={action('ACTIVATETAB')} />
       <Tab

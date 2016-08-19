@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { action, storiesOf } from '@kadira/storybook';
 
@@ -6,7 +7,7 @@ import ToggleField from 'components/UI/ToggleField';
 
 
 storiesOf('Toggle Field', module)
-  .add('alone', () => (
+  .add('alone', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       <ToggleField
         entityKey="1"
@@ -16,7 +17,7 @@ storiesOf('Toggle Field', module)
       </ToggleField>
     </div>
   ))
-  .add('with text', () => (
+  .add('with text', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       This is a bunch of regular text with some
       <ToggleField

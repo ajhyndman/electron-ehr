@@ -1,3 +1,4 @@
+// @flow
 import 'normalize.css';
 import React from 'react';
 import { action, storiesOf } from '@kadira/storybook';
@@ -7,7 +8,7 @@ import demoPage from 'styles/demo-page';
 
 
 storiesOf('Input', module)
-  .add('log actions', () => (
+  .add('log actions', (): React.Element<any> => (
     <div style={demoPage}>
       <Input
         label="Sample Input"
