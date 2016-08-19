@@ -1,5 +1,5 @@
 import 'normalize.css';
-import Immutable from 'immutable';
+import I from 'seamless-immutable';
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -9,7 +9,7 @@ import 'fonts/proxima-nova.css';
 import reducer from 'reducer';
 import { EditorTabs } from 'components/Connectors';
 
-const mockState = Immutable.fromJS({
+const mockState = I.from({
   activeTab: 1,
   editors: [
     { patient: { firstName: 'Tab', lastName: 'One' } },

@@ -1,5 +1,5 @@
 import 'normalize.css';
-import Immutable from 'immutable';
+import I from 'seamless-immutable';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -10,7 +10,7 @@ import Sidebar from 'components/Sidebar';
 import reducer from 'reducer';
 
 
-const mockState = Immutable.fromJS({
+const mockState = I.from({
   activeTab: 1,
   editors: [
     { patient: { firstName: 'Patient', lastName: 'One' } },

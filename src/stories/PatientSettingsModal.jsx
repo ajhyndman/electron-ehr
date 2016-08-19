@@ -1,5 +1,5 @@
 import 'normalize.css';
-import Immutable from 'immutable';
+import I from 'seamless-immutable';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { action, storiesOf } from '@kadira/storybook';
@@ -10,7 +10,7 @@ import reducer from 'reducer';
 import { PatientSettingsModal } from 'components/Connectors';
 
 
-const mockPatient = Immutable.Map({
+const mockPatient = I.from({
   firstName: 'Andrew',
   lastName: 'Hyndman',
   dob: '1988-10-06',
@@ -18,13 +18,13 @@ const mockPatient = Immutable.Map({
   address: '131-145 Glebe Point Rd, NSW, 2037',
 });
 
-const mockState = Immutable.Map({
+const mockState = I.from({
   activeTab: 0,
-  editors: Immutable.List([
-    Immutable.Map({
+  editors: [
+    {
       patient: mockPatient,
-    }),
-  ]),
+    },
+  ],
   patientSettingsOpen: true,
 });
 

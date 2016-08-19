@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import I from 'seamless-immutable';
 import React from 'react';
 import { ContentState, EditorState, convertFromRaw } from 'draft-js';
 import { Provider } from 'react-redux';
@@ -12,13 +12,13 @@ import { EditorPanel } from 'components/Connectors';
 
 
 // EMPTY STATE
-const initialState = Immutable.Map({
+const initialState = I.from({
   activeTab: 0,
-  editors: Immutable.List([
-    Immutable.Map({
+  editors: [
+    {
       state: EditorState.createEmpty(),
-    }),
-  ]),
+    },
+  ],
 });
 const emptyStore = createStore(
   reducer,
@@ -27,16 +27,16 @@ const emptyStore = createStore(
 
 
 // STATE WITH PLAIN TEXT
-const sampleState = Immutable.Map({
+const sampleState = I.from({
   activeTab: 0,
-  editors: Immutable.List([
-    Immutable.Map({
+  editors: [
+    {
       name: 'Violet',
       state: EditorState.createWithContent(
         ContentState.createFromText('Hello, Violet!')
       ),
-    }),
-  ]),
+    },
+  ],
 });
 const otherStore = createStore(
   reducer,
@@ -45,10 +45,10 @@ const otherStore = createStore(
 
 
 // STATE WITH OPTION FIELD
-const optionState = Immutable.Map({
+const optionState = I.from({
   activeTab: 0,
-  editors: Immutable.List([
-    Immutable.Map({
+  editors: [
+    {
       name: 'Toggle Fields',
       state: EditorState.createWithContent(
         convertFromRaw({
@@ -77,8 +77,8 @@ const optionState = Immutable.Map({
         }),
         compositeDecorator
       ),
-    }),
-  ]),
+    },
+  ],
 });
 const optionStore = createStore(
   reducer,
