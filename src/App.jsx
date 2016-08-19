@@ -9,7 +9,7 @@ import Sidebar from 'components/Sidebar';
 import actions from 'actions';
 import store from 'store';
 import { EditorPanel, PatientSettingsModal } from 'components/Connectors';
-import type { ActionType } from 'actions';
+import type { ActionType } from 'actions'; // eslint-disable-line no-duplicate-imports
 
 
 // TODO: derive width from a setting

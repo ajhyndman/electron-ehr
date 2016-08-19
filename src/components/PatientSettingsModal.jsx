@@ -1,11 +1,13 @@
 // @flow
-import { Map } from 'immutable';
+import I from 'seamless-immutable';
 import React from 'react';
+import type { Immutable } from 'seamless-immutable'; // eslint-disable-line no-duplicate-imports
 
 import Dialog from 'components/UI/Dialog';
 import Input from 'components/UI/Input';
 import RadioButton from 'components/UI/RadioButton';
 import RadioGroup from 'components/UI/RadioGroup';
+import type { Patient } from '../store';
 
 
 const styles = {
@@ -18,29 +20,31 @@ const styles = {
   },
 };
 
+type DefaultProps = {
+  patient: Immutable<Patient>;
+};
+
 type Props = {
   onChange: Function;
   onSubmit: Function;
   open?: boolean;
-  patient: Object;
+  patient: Immutable<Patient>;
 };
 
 const defaultProps = {
-  patient: Map({}),
+  patient: I.from({}),
 };
 
-class PatientSettingsModal extends React.Component {
-  static defaultProps: {
-    patient: Object;
-  };
+class PatientSettingsModal extends React.Component<DefaultProps, Props, void> {
+  static defaultProps: DefaultProps;
 
-  constructor(props: Props) {
+  constructor(props: Props): void {
     super(props);
 
     this.changeHandlerFactory = this.changeHandlerFactory.bind(this);
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  componentWillReceiveProps(nextProps: Props): void {
     if (nextProps.open && this.props.open === false) {
       this.refs.autoFocus.focus();
     }
@@ -49,7 +53,7 @@ class PatientSettingsModal extends React.Component {
   props: Props;
 
   changeHandlerFactory: (key: string) => (value: string | number) => void;
-  changeHandlerFactory(key: string): Function {
+  changeHandlerFactory(key: string): (value: string | number) => void {
     return function changeHandler(value: string | number): void {
       this.props.onChange(
         this.props.patient.set(key, value)
@@ -57,9 +61,9 @@ class PatientSettingsModal extends React.Component {
     }.bind(this);
   }
 
-  render() {
+  render(): ?React.Element<any> {
     if (!this.props.patient) {
-      return null;
+      return undefined;
     }
 
     return (
@@ -80,7 +84,7 @@ class PatientSettingsModal extends React.Component {
                 label="First Name"
                 onChange={this.changeHandlerFactory('firstName')}
                 type="text"
-                value={this.props.patient.get('firstName')}
+                value={this.props.patient.firstName}
               />
             </div>
             <div style={{ width: '48%' }}>
@@ -88,7 +92,7 @@ class PatientSettingsModal extends React.Component {
                 label="Last Name"
                 onChange={this.changeHandlerFactory('lastName')}
                 type="text"
-                value={this.props.patient.get('lastName')}
+                value={this.props.patient.lastName}
               />
             </div>
           </div>
@@ -96,11 +100,11 @@ class PatientSettingsModal extends React.Component {
             label="Date of Birth"
             onChange={this.changeHandlerFactory('dob')}
             type="date"
-            value={this.props.patient.get('dob')}
+            value={this.props.patient.dob}
           />
           <RadioGroup
             onChange={this.changeHandlerFactory('gender')}
-            value={this.props.patient.get('gender')}
+            value={this.props.patient.gender}
           >
             <RadioButton label="Male" value="m" />
             <RadioButton label="Female" value="f" />
@@ -109,7 +113,7 @@ class PatientSettingsModal extends React.Component {
             label="Address"
             onChange={this.changeHandlerFactory('address')}
             type="text"
-            value={this.props.patient.get('address')}
+            value={this.props.patient.address}
           />
           <div style={styles.formGroup}>
             <input style={styles.formInput} type="submit" value="SAVE" />

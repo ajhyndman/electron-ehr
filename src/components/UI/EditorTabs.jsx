@@ -1,13 +1,13 @@
 // @flow
 import React from 'react';
-import { List } from 'immutable';
+import type { Immutable } from 'seamless-immutable';
 
 import { Tab } from 'components/Connectors';
 
 
 type Props = {
   activeTab: number;
-  tabList: List<string>;
+  tabList: Immutable<Array<string>>;
 };
 
 const EditorTabs = (props: Props): React.Element<any> => (

@@ -1,4 +1,5 @@
 // @flow
+import I from 'seamless-immutable';
 import { EditorState } from 'draft-js';
 import { connect } from 'react-redux';
 import type { Immutable } from 'seamless-immutable'; // eslint-disable-line no-duplicate-imports
@@ -16,7 +17,7 @@ type Dispatch = (action: Action) => void;
 
 export const EditorPanel = connect(
   (state: Immutable<AppState>): Object => ({
-    editorState: (state.editors[state.activeTab] || { state: undefined }).state,
+    editorState: (state.editors[state.activeTab] || I.from({ state: undefined })).state,
   }),
   (dispatch: Dispatch): Object => ({
     onChange(next: EditorState): void { dispatch(actions.EDIT(next)); },
@@ -43,7 +44,7 @@ export const EditorTabs = connect(
 export const PatientSettingsModal = connect(
   (state: Immutable<AppState>): Object => ({
     open: state.patientSettingsOpen,
-    patient: (state.editors[state.activeTab] || { patient: undefined }).patient,
+    patient: (state.editors[state.activeTab] || I.from({ patient: undefined })).patient,
   }),
   (dispatch: Dispatch): Object => ({
     onSubmit(event: Event): void {
