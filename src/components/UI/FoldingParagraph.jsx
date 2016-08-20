@@ -11,8 +11,12 @@ type Props = {
   children?: React.Element<any>;
 }
 
+type State = {
+  expanded: boolean;
+}
+
 class FoldingParagraph extends React.Component {
-  constructor(props: Props) {
+  constructor(props: Props): void {
     super(props);
 
     this.state = {
@@ -22,21 +26,18 @@ class FoldingParagraph extends React.Component {
     this.onToggle = this.onToggle.bind(this);
   }
 
-  state: {
-    expanded: boolean;
-  };
+  state: State;
 
-  onToggle() {
-    this.setState((state) => ({
+  onToggle: () => void;
+  onToggle(): void {
+    this.setState((state: State): State => ({
       expanded: !state.expanded,
     }));
   }
 
-  onToggle: () => void;
-
   props: Props;
 
-  render() {
+  render(): React.Element<any> {
     return (
       <section
         style={{
@@ -46,7 +47,13 @@ class FoldingParagraph extends React.Component {
         <ButtonUnstyled
           className={`folding-paragraph__toggle ${this.state.expanded ? '' : 'collapsed'}`}
           onClick={this.onToggle}
-          style={{ cursor: 'pointer', left: '-18px', marginTop: '0.25em', position: 'absolute', top: 0 }}
+          style={{
+            cursor: 'pointer',
+            left: '-18px',
+            marginTop: '0.25em',
+            position: 'absolute',
+            top: 0,
+          }}
         >
           {this.state.expanded
             ? <Remove

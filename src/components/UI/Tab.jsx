@@ -20,7 +20,7 @@ type State = {
 
 // TODO: Clear default onClick
 const defaultProps = {
-  onClick: () => undefined,
+  onClick: (): void => undefined,
 };
 
 class Tab extends React.Component {
@@ -28,7 +28,7 @@ class Tab extends React.Component {
     onClick: () => void;
   };
 
-  constructor(props: Props) {
+  constructor(props: Props): void {
     super(props);
 
     this.state = {
@@ -44,28 +44,28 @@ class Tab extends React.Component {
   state: State;
 
   onClick: (event: Event) => void;
-  onClick(event: Event) {
+  onClick(event: Event): void {
     event.stopPropagation();
     this.props.onClick(this.props.id);
   }
 
   onMouseOut: () => void;
-  onMouseOut() {
+  onMouseOut(): void {
     this.setState({ hot: false });
   }
 
   onMouseOver: () => void;
-  onMouseOver() {
+  onMouseOver(): void {
     this.setState({ hot: true });
   }
 
   onRemove: (event: Event) => void;
-  onRemove(event: Event) {
+  onRemove(event: Event): void {
     event.stopPropagation();
     this.props.onRemove(this.props.id);
   }
 
-  render() {
+  render(): React.Element<any> {
     const color = (this.props.isActive ? '#FFF' : 'inherit');
 
     return (

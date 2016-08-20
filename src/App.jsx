@@ -37,7 +37,7 @@ ReactDOM.render(
 
 ipcRenderer.on(
   'ACTION',
-  function dispatchMenuAction(event: Event, type: ActionType, data: any) {
+  function dispatchMenuAction(event: Event, type: ActionType, data: any): void {
     switch (type) {
     case 'OPEN_PATIENT_SETTINGS': {
       store.dispatch(actions.OPEN_PATIENT_SETTINGS());

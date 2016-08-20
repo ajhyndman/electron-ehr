@@ -2,7 +2,7 @@
 import React from 'react';
 
 
-const Remove = (props: Object) => (
+const Remove = (props: Object): React.Element<any> => (
   <svg
     fill="#000000"
     style={{

@@ -2,7 +2,7 @@
 import React from 'react';
 
 
-const Add = (props: Object) => (
+const Add = (props: Object): React.Element<any> => (
   <svg
     fill="#000000"
     style={{

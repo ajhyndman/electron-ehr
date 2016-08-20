@@ -1,10 +1,10 @@
-import { ContentBlock, EditorState } from 'draft-js';
+import { CharacterMetaData, ContentBlock, EditorState } from 'draft-js';
 
 
 function stripEntityFromCharacters(contentBlock: ContentBlock, entityKey: string): EditorState {
   const nextCharacterList = contentBlock
     .get('characterList')
-    .map((character) => (
+    .map((character: CharacterMetaData): CharacterMetaData => (
       character.get('entity') === entityKey
         ? character.set('entity', null)
         : character
@@ -12,11 +12,11 @@ function stripEntityFromCharacters(contentBlock: ContentBlock, entityKey: string
   return contentBlock.set('characterList', nextCharacterList);
 }
 
-function removeEntity(editorState, entityKey) {
+function removeEntity(editorState: EditorState, entityKey: string): EditorState {
   const nextBlocks = editorState
     .getCurrentContent()
     .getBlockMap()
-    .map((block) => stripEntityFromCharacters(block, entityKey));
+    .map((block: ContentBlock): ContentBlock => stripEntityFromCharacters(block, entityKey));
 
   const nextContent = editorState
     .getCurrentContent()

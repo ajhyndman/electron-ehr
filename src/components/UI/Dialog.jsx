@@ -7,7 +7,7 @@ type Props = {
   open?: boolean;
 };
 
-const Dialog = (props: Props) => (
+const Dialog = (props: Props): React.Element<any> => (
   // backdrop
   <div
     style={{

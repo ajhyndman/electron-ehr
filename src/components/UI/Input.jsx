@@ -6,7 +6,7 @@ import formControl from 'styles/form-control';
 
 
 // This function corresponds to 'unit' in functional-programming-speak
-function getEventValue(event) {
+function getEventValue(event: any): string {
   return event.target.value;
 }
 
@@ -27,25 +27,29 @@ class Input extends React.Component {
 
   props: Props;
 
-  focus() {
+  focus(): void {
     setTimeout(
       // OMG, input focus is hard to manage in React.
       // https://github.com/facebook/react/issues/1791#issuecomment-204898317
-      function whyTheHellIsThisFunctionNecessary() {
+      function whyTheHellIsThisFunctionNecessary(): void {
         this.refs.localInput.focus();
       }.bind(this),
       0
     );
   }
 
-  render() {
+  render(): React.Element<any> {
     return (
       <label>
         <div style={formControl}>{this.props.label}</div>
         <div style={formControl}>
           <input
             ref="localInput"
-            onChange={lift(getEventValue, (a) => a, this.props.onChange)}
+            onChange={lift(
+              getEventValue,
+              function identity<T>(a: T): T { return a; },
+              this.props.onChange
+            )}
             style={{ boxSizing: 'border-box', width: '100%' }}
             type={this.props.type}
             value={this.props.value}

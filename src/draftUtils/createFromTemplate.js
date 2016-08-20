@@ -14,7 +14,13 @@ function createFromTemplate(template: string = ''): EditorState {
   // Parse Toggles
   const cleanedText = template.replace(
     /(\[\s*)(.*?)(\s*\])/g,
-    function buildToggle(match, p1, p2, p3, offset) {
+    function buildToggle(
+      match: string,
+      p1: string,
+      p2: string,
+      p3: string,
+      offset: number
+    ): string {
       offsetCorrection += p1.length;
       const key = UUID.create();
       entityMap[key] = {

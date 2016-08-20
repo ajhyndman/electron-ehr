@@ -12,7 +12,7 @@ type Props = {
 
 const EditorTabs = (props: Props): React.Element<any> => (
   <div>
-    {props.tabList.map((tab, i) => (
+    {props.tabList.map((tab: string, i: number): React.Element<any> => (
       <Tab id={i} isActive={i === props.activeTab} key={i} name={tab} />
     ))}
   </div>

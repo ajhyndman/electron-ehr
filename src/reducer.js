@@ -67,7 +67,7 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
     return state.set(
       'editors',
       state.editors.filter(
-        (value: Immutable<Array<TabState>>, i: number): bool => (i !== action.key)
+        (value: Immutable<TabState>, i: number): bool => (i !== action.key)
       )
     );
   }

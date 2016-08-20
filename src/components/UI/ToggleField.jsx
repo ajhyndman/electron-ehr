@@ -10,7 +10,7 @@ type Props = {
   onClick: Function;
 };
 
-const ToggleField = (props: Props) => (
+const ToggleField = (props: Props): React.Element<any> => (
   <Hoverable>
     <span
       onClick={props.onClick.bind(null, props.entityKey)}

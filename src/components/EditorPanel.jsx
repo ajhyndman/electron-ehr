@@ -13,7 +13,7 @@ type Props = {
   onTab: Function;
 };
 
-const EditorPanel = (props: Props) => (
+const EditorPanel = (props: Props): React.Element<any> => (
   <div style={{ background: '#FFF', overflow: 'auto', width: '100%' }}>
     <style>
       {`.public-DraftEditor-content {

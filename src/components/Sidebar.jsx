@@ -13,7 +13,7 @@ const defaultProps = {
   width: 180,
 };
 
-const Sidebar = (props: Props) => (
+const Sidebar = (props: Props): React.Element<any> => (
   <div
     style={{
       background: '#F3F3F3',

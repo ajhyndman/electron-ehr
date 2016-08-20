@@ -1,18 +1,18 @@
 // @flow
-import { CompositeDecorator, Entity } from 'draft-js';
+import { CompositeDecorator, ContentBlock, Entity, SelectionState } from 'draft-js';
 
-import FoldingParagraph from 'components/UI/FoldingParagraph';
+// import FoldingParagraph from 'components/UI/FoldingParagraph';
 import { ToggleField } from 'components/Connectors';
 
 
 // Strategies
-function matchAllBlocks(contentBlock, callback) {
-  const text = contentBlock.getText();
-  callback(0, text.length);
-}
+// function matchAllBlocks(contentBlock, callback) {
+//   const text = contentBlock.getText();
+//   callback(0, text.length);
+// }
 
-function matchToggleFields(contentBlock, callback) {
-  function filter(selection) {
+function matchToggleFields(contentBlock: ContentBlock, callback: Function): void {
+  function filter(selection: SelectionState): boolean {
     const entityKey = selection.getEntity();
     if (entityKey) {
       return Entity.get(entityKey).getType() === 'TOGGLE';
@@ -23,10 +23,10 @@ function matchToggleFields(contentBlock, callback) {
 }
 
 // Decorators
-const foldAllBlocks = {
-  strategy: matchAllBlocks,
-  component: FoldingParagraph,
-};
+// const foldAllBlocks = {
+//   strategy: matchAllBlocks,
+//   component: FoldingParagraph,
+// };
 
 const renderToggleFields = {
   strategy: matchToggleFields,

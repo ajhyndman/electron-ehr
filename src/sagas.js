@@ -4,11 +4,11 @@ import { takeLatest } from 'redux-saga';
 import { put, take } from 'redux-saga/effects';
 
 import actions from 'actions';
-import type { Action } from 'actions';
+import type { Action } from 'actions'; // eslint-disable-line no-duplicate-imports
 
 
 // worker Saga: will be fired on `NEW_TAB` actions
-function* promptForPatientInfo(action: Action): Generator<void, void, void> {
+function* promptForPatientInfo(action: Action): Generator<void, void, void> { // eslint-disable-line
   // Create the new editor tab without any data.
   yield put(actions.INIT_TAB());
 
@@ -24,6 +24,6 @@ function* promptForPatientInfo(action: Action): Generator<void, void, void> {
  * Starts promptForPatientInfo on each dispatched `OPEN_TEMPLATE` action.
  * Does not allow concurrent fetches of user.
  */
-export default function* rootSaga(): Generator<void, void, void> {
+export default function* rootSaga(): Generator<void, void, void> { // eslint-disable-line
   yield* takeLatest('NEW_TAB', promptForPatientInfo);
 }

@@ -5,7 +5,7 @@ import lift from 'function-lift';
 import formControl from 'styles/form-control';
 
 
-const getEventValue = (event) => event.target.value;
+const getEventValue = (event: any): ?string => event.target.value;
 
 const active = 'rgb(51, 102, 255)';
 const inactive = 'rgb(169, 169, 169)';
@@ -22,7 +22,7 @@ type State = {
 };
 
 class RadioButton extends React.Component {
-  constructor(props: Props) {
+  constructor(props: Props): void {
     super(props);
 
     this.state = {
@@ -36,27 +36,29 @@ class RadioButton extends React.Component {
   state: State;
 
   onBlur: () => void;
-  onBlur() { this.setState({ hot: false }) }
+  onBlur(): void { this.setState({ hot: false }); }
 
   onFocus: () => void;
-  onFocus() { this.setState({ hot: true }) }
+  onFocus(): void { this.setState({ hot: true }); }
 
   props: Props;
 
-  render() {
+  render(): React.Element<any> {
     return (
       <label>
-        <div style={{
-          // WebkitAppearance: 'textfield',
-          ...formControl,
-          border: `1px solid ${this.props.checked ? active : inactive}`,
-          boxSizing: 'border-box',
-          // lineHeight: 'normal',
-          outline: (this.state.hot ? '-webkit-focus-ring-color auto 5px' : null),
-          padding: '2px',
-          position: 'relative',
-          textAlign: 'center'
-        }}>
+        <div
+          style={{
+            // WebkitAppearance: 'textfield',
+            ...formControl,
+            border: `1px solid ${this.props.checked ? active : inactive}`,
+            boxSizing: 'border-box',
+            // lineHeight: 'normal',
+            outline: (this.state.hot ? '-webkit-focus-ring-color auto 5px' : null),
+            padding: '2px',
+            position: 'relative',
+            textAlign: 'center',
+          }}
+        >
           <div
             style={{
               border: `1px solid ${this.props.checked ? active : inactive}`,
@@ -86,7 +88,11 @@ class RadioButton extends React.Component {
           </div>
           <input
             checked={this.props.checked}
-            onChange={lift(getEventValue, (a) => a, this.props.onChange)}
+            onChange={lift(
+              getEventValue,
+              function identity<T>(a: T): T { return a; },
+              this.props.onChange
+            )}
             onBlur={this.onBlur}
             onFocus={this.onFocus}
             style={{
