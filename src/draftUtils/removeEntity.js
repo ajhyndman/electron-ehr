@@ -1,7 +1,7 @@
 import { CharacterMetaData, ContentBlock, EditorState } from 'draft-js';
 
 
-function stripEntityFromCharacters(contentBlock: ContentBlock, entityKey: string): EditorState {
+function stripEntityFromCharacters(contentBlock: ContentBlock, entityKey: string): ContentBlock {
   const nextCharacterList = contentBlock
     .get('characterList')
     .map((character: CharacterMetaData): CharacterMetaData => (
