@@ -23,10 +23,10 @@ const config = {
         query: {
           plugins: [
             'transform-flow-strip-types',
-            'transform-object-rest-spread',
           ],
           presets: [
             'es2015',
+            'stage-2',
           ],
         },
       },
@@ -41,13 +41,10 @@ const config = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          plugins: [
-            'transform-class-properties',
-            'transform-object-rest-spread',
-          ],
           presets: [
             'es2015',
             'react',
+            'stage-2',
           ],
         },
       },
