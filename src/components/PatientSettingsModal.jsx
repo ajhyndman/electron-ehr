@@ -33,7 +33,6 @@ type Props = {
 
 const defaultProps = {
   patient: I.from({
-    address: '',
     dob: '',
     firstName: '',
     gender: 'f',
@@ -115,12 +114,6 @@ class PatientSettingsModal extends React.Component<DefaultProps, Props, void> {
             <RadioButton label="Male" value="m" />
             <RadioButton label="Female" value="f" />
           </RadioGroup>
-          <Input
-            label="Address"
-            onChange={this.changeHandlerFactory('address')}
-            type="text"
-            value={this.props.patient.address}
-          />
           <div style={styles.formGroup}>
             <input style={styles.formInput} type="submit" value="SAVE" />
           </div>

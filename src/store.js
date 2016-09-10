@@ -17,7 +17,6 @@ import rootSaga from 'sagas';
 export type MacroList = { [key: string]: string };
 
 export type Patient = {
-  address: string;
   dob: string;
   firstName: string;
   gender: 'm' | 'f';
