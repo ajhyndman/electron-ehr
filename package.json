@@ -56,6 +56,7 @@
     "function-lift": "^1.0.5",
     "node-waves": "^0.7.5",
     "normalize.css": "^4.1.1",
+    "ramda": "^0.22.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
