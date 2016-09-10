@@ -8,7 +8,7 @@ import { ipcRenderer } from 'electron';
 import Sidebar from 'components/Sidebar';
 import actions from 'actions';
 import store from 'store';
-import { EditorPanel, PatientSettingsModal } from 'components/Connectors';
+import { EditorPanel, PatientSettingsModal, SettingsEditorPanel } from 'components/Connectors';
 import type { ActionType } from 'actions'; // eslint-disable-line no-duplicate-imports
 
 
@@ -28,6 +28,7 @@ ReactDOM.render(
         }}
       >
         <EditorPanel />
+        <SettingsEditorPanel />
       </div>
       <PatientSettingsModal />
     </div>
@@ -41,6 +42,10 @@ ipcRenderer.on(
     switch (type) {
     case 'OPEN_PATIENT_SETTINGS': {
       store.dispatch(actions.OPEN_PATIENT_SETTINGS());
+      break;
+    }
+    case 'MACROS_OPEN': {
+      store.dispatch(actions.MACROS_OPEN());
       break;
     }
     case 'NEW_TAB': {

@@ -1,5 +1,6 @@
 // @flow
-import { RichUtils } from 'draft-js';
+import jsonPretty from 'json-pretty';
+import { ContentState, EditorState, RichUtils } from 'draft-js';
 import type { Immutable } from 'seamless-immutable';
 
 import createFromTemplate from 'draftUtils/createFromTemplate';
@@ -42,8 +43,8 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
   }
   case 'MACROS_EDIT': {
     return state.set(
-      'macroSettingsOpen',
-      true
+      'macroSettingsEditorState',
+      action.next
     );
   }
   case 'MACROS_EXPAND': {
@@ -52,12 +53,34 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
       expandMacro(state.editors[state.activeTab].state, state.macros)
     );
   }
+  case 'MACROS_NEW_LINE': {
+    return state.set(
+      'macroSettingsEditorState',
+      RichUtils.insertSoftNewline(
+        state.macroSettingsEditorState
+      )
+    );
+  }
+  case 'MACROS_OPEN': {
+    return state
+      .set('macroSettingsOpen', true)
+      .set(
+        'macroSettingsEditorState',
+        EditorState.createWithContent(
+          ContentState.createFromText(jsonPretty(state.macros))
+        )
+      );
+  }
   case 'MACROS_SAVE': {
     return state
       .set('macroSettingsOpen', false)
       .set(
+        'macroSettingsEditorState',
+        EditorState.createEmpty()
+      )
+      .set(
         'macros',
-        action.macros
+        JSON.parse(state.macroSettingsEditorState.getCurrentContent().getPlainText())
       );
   }
   case 'NEW_LINE': {

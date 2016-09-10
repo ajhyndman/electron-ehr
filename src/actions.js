@@ -13,6 +13,8 @@ export type ActionType =
   | 'INIT_TAB'
   | 'MACROS_EDIT'
   | 'MACROS_EXPAND'
+  | 'MACROS_NEW_LINE'
+  | 'MACROS_OPEN'
   | 'MACROS_SAVE'
   | 'NEW_LINE'
   | 'NEW_TAB'
@@ -37,9 +39,11 @@ const actions = {
   EDIT: (next: EditorState): Action => ({ type: 'EDIT', next }),
   FINALIZE_TEMPLATE: (template: string | void): Action => ({ type: 'FINALIZE_TEMPLATE', template }),
   INIT_TAB: (): Action => ({ type: 'INIT_TAB' }),
-  MACROS_EDIT: (): Action => ({ type: 'MACROS_EDIT' }),
+  MACROS_EDIT: (next: EditorState): Action => ({ type: 'MACROS_EDIT', next }),
   MACROS_EXPAND: (): Action => ({ type: 'MACROS_EXPAND' }),
-  MACROS_SAVE: (macros: {}): Action => ({ type: 'MACROS_SAVE', macros }),
+  MACROS_NEW_LINE: (): Action => ({ type: 'MACROS_NEW_LINE' }),
+  MACROS_OPEN: (): Action => ({ type: 'MACROS_OPEN' }),
+  MACROS_SAVE: (): Action => ({ type: 'MACROS_SAVE' }),
   NEW_LINE: (): Action => ({ type: 'NEW_LINE' }),
   NEW_TAB: (template: string): Action => ({ type: 'NEW_TAB', template }),
   OPEN_PATIENT_SETTINGS: (): Action => ({ type: 'OPEN_PATIENT_SETTINGS' }),

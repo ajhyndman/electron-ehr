@@ -26,6 +26,10 @@ function openPatientSettings() {
   win.webContents.send('ACTION', 'OPEN_PATIENT_SETTINGS');
 }
 
+function openMacroSettings() {
+  win.webContents.send('ACTION', 'MACROS_OPEN');
+}
+
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({ width: 1024, height: 768, icon: path.join(__dirname, 'fantasia.ico') });
@@ -81,8 +85,9 @@ function createMenus() {
           accelerator: 'CmdOrCtrl+P',
         },
         {
-          label: 'Macros',
-          accelerator: 'M',
+          label: 'Edit Macros',
+          accelerator: 'CmdOrCtrl+M',
+          click() { openMacroSettings(); },
         },
       ],
     },

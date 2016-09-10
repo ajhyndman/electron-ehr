@@ -11,58 +11,63 @@ type Props = {
   onChange: Function;
   onReturn: Function;
   onTab: Function;
+  macroSettingsOpen: boolean;
 };
 
-const EditorPanel = (props: Props): React.Element<any> => (
-  <div style={{ background: '#FFF', overflow: 'auto', width: '100%' }}>
-    <style>
-      {`.public-DraftEditor-content {
-        box-sizing: border-box;
-        height: 100vh;
-        padding: 0.5em 0.5em 0.5em 0.125em;
-      }`}
-    </style>
-    <div
-      style={{
-        // alignItems: 'stretch',
-        // display: 'flex',
-        // flexDirection: 'row',
-        fontFamily: 'Proxima Nova',
-        lineHeight: '1.33em',
-      }}
-    >
-      <div
-        className="margin"
-        style={{
-          // flex: '0 0 15px',
-          float: 'left',
-          height: '100%',
-          paddingLeft: '0.5em',
-          position: 'fixed',
-          width: '15px',
-        }}
-      />
+const EditorPanel = (props: Props): ?React.Element<any> => (
+  props.macroSettingsOpen
+    ? null
+    : (
+    <div style={{ background: '#FFF', overflow: 'auto', width: '100%' }}>
+      <style>
+        {`.public-DraftEditor-content {
+          box-sizing: border-box;
+          height: 100vh;
+          padding: 0.5em 0.5em 0.5em 0.125em;
+        }`}
+      </style>
       <div
         style={{
-          boxSizing: 'border-box',
-          // flex: '1 1',
-          float: 'left',
-          marginLeft: 'calc(15px + 0.5em)',
-          width: 'calc(100% - 15px - 0.5em)',
+          // alignItems: 'stretch',
+          // display: 'flex',
+          // flexDirection: 'row',
+          fontFamily: 'Proxima Nova',
+          lineHeight: '1.33em',
         }}
       >
-        {props.editorState
-          ? <Editor
-            editorState={props.editorState}
-            // keyBindingFn={keybindings}
-            handleReturn={props.onReturn}
-            onChange={props.onChange}
-            onTab={props.onTab}
-          />
-          : null}
+        <div
+          className="margin"
+          style={{
+            // flex: '0 0 15px',
+            float: 'left',
+            height: '100%',
+            paddingLeft: '0.5em',
+            position: 'fixed',
+            width: '15px',
+          }}
+        />
+        <div
+          style={{
+            boxSizing: 'border-box',
+            // flex: '1 1',
+            float: 'left',
+            marginLeft: 'calc(15px + 0.5em)',
+            width: 'calc(100% - 15px - 0.5em)',
+          }}
+        >
+          {props.editorState
+            ? <Editor
+              editorState={props.editorState}
+              // keyBindingFn={keybindings}
+              handleReturn={props.onReturn}
+              onChange={props.onChange}
+              onTab={props.onTab}
+            />
+            : null}
+        </div>
       </div>
     </div>
-  </div>
+    )
 );
 
 

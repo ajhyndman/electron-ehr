@@ -32,9 +32,10 @@ export type TabState = {
 export type AppState = {
   activeTab: number;
   editors: Array<TabState>;
+  macroSettingsEditorState: EditorState;
+  macroSettingsOpen: boolean;
   macros: MacroList;
   patientSettingsOpen: boolean;
-  macroSettingsOpen: boolean;
 };
 
 // create saga middleware
@@ -43,9 +44,10 @@ const sagaMiddleware = createSagaMiddleware();
 const initialState: Immutable<AppState> = I.from({
   activeTab: 0,
   editors: [],
+  macroSettingsEditorState: EditorState.createEmpty(),
+  macroSettingsOpen: false,
   macros,
   patientSettingsOpen: false,
-  macroSettingsOpen: false,
 });
 
 const store = createStore(

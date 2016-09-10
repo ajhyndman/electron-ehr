@@ -18,7 +18,8 @@ type Dispatch = (action: Action) => void;
 
 export const EditorPanel = connect(
   (state: Immutable<AppState>): Object => ({
-    editorState: (state.editors[state.activeTab] || I.from({ state: undefined })).state,
+    editorState: (state.editors[state.activeTab] || { state: undefined }).state,
+    macroSettingsOpen: state.macroSettingsOpen,
   }),
   (dispatch: Dispatch): Object => ({
     onChange(next: EditorState): void { dispatch(actions.EDIT(next)); },
@@ -60,14 +61,16 @@ export const PatientSettingsModal = connect(
 
 export const SettingsEditorPanel = connect(
   (state: Immutable<AppState>): Object => ({
-    editorState: (state.editors[state.activeTab] || I.from({ state: undefined })).state,
+    editorState: state.macroSettingsEditorState,
+    macroSettingsOpen: state.macroSettingsOpen,
   }),
   (dispatch: Dispatch): Object => ({
-    onChange(next: EditorState): void { dispatch(actions.EDIT(next)); },
+    onChange(next: EditorState): void { dispatch(actions.MACROS_EDIT(next)); },
     onReturn(): boolean {
-      dispatch(actions.NEW_LINE());
+      dispatch(actions.MACROS_NEW_LINE());
       return true;
     },
+    onSave(): void { dispatch(actions.MACROS_SAVE()); },
   })
 )(disconnectedSettingsEditorPanel);
 
