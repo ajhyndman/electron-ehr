@@ -7,7 +7,6 @@ const common = require('./partials/core.config.js');
 const config = merge(
   common,
   {
-    devtool: null,
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
