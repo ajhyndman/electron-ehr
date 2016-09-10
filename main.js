@@ -30,6 +30,10 @@ function openMacroSettings() {
   win.webContents.send('ACTION', 'MACROS_OPEN');
 }
 
+function commitTab() {
+  win.webContents.send('ACTION', 'COMMIT_TAB');
+}
+
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({ width: 1024, height: 768, icon: path.join(__dirname, 'fantasia.ico') });
@@ -83,6 +87,7 @@ function createMenus() {
         {
           label: 'Commit',
           accelerator: 'CmdOrCtrl+P',
+          click() { commitTab(); },
         },
         {
           label: 'Edit Macros',

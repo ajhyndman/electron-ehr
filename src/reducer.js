@@ -18,6 +18,15 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
   case 'CLOSE_PATIENT_SETTINGS': {
     return state.set('patientSettingsOpen', false);
   }
+  case 'COMMIT_TAB': {
+    const currentState = state.editors[state.activeTab].state;
+    const currentText = currentState.getCurrentContent().getPlainText();
+    const nextContent = ContentState.createFromText(currentText);
+    return state.setIn(
+      ['editors', state.activeTab, 'state'],
+      EditorState.push(currentState, nextContent, 'change-block-data')
+    );
+  }
   case 'EDIT': {
     return state.setIn(
       ['editors', state.activeTab, 'state'],
