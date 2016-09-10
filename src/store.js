@@ -5,6 +5,7 @@ import { EditorState } from 'draft-js';
 import { applyMiddleware, createStore } from 'redux';
 import type { Immutable } from 'seamless-immutable'; // eslint-disable-line no-duplicate-imports
 
+import macros from '../macros.json';
 import reducer from 'reducer';
 import rootSaga from 'sagas';
 
@@ -28,7 +29,8 @@ export type TabState = {
 
 export type AppState = {
   activeTab: number;
-  editors: Array<TabState>; // Typescript grammar fix </TabState>;
+  editors: Array<TabState>;
+  macros: { [key: string]: string };
   patientSettingsOpen: boolean;
 };
 
@@ -38,7 +40,9 @@ const sagaMiddleware = createSagaMiddleware();
 const initialState: Immutable<AppState> = I.from({
   activeTab: 0,
   editors: [],
+  macros,
   patientSettingsOpen: false,
+
 });
 
 const store = createStore(

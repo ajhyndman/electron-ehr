@@ -43,7 +43,7 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
   case 'MACRO': {
     return state.setIn(
       ['editors', state.activeTab, 'state'],
-      expandMacro(state.editors[state.activeTab].state)
+      expandMacro(state.editors[state.activeTab].state, state.macros)
     );
   }
   case 'NEW_LINE': {
