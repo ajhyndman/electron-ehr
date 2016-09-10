@@ -13,7 +13,7 @@ function createFromTemplate(template: string = '', patient: Patient): EditorStat
 
   let offsetCorrection = 0;
 
-  let finalText = template;
+  let finalText = template.replace(/\r\n/g, '\n');
 
   // Parse patient-specific text
   finalText = applyPatientContext(finalText, patient);
