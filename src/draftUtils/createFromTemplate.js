@@ -2,26 +2,35 @@
 import UUID from 'uuid-js';
 import { EditorState, convertFromRaw } from 'draft-js';
 
+import applyPatientContext from 'draftUtils/applyPatientContext';
 import compositeDecorator from 'decorators/all';
+import type { Patient } from 'store';
 
 
-function createFromTemplate(template: string = ''): EditorState {
+function createFromTemplate(template: string = '', patient: Patient): EditorState {
   const entityMap = {};
   const entityRanges = [];
 
   let offsetCorrection = 0;
 
+  let finalText = template;
+
+  // Parse patient-specific text
+  finalText = applyPatientContext(finalText, patient);
+
+  // TODO: Parse Sections
+
   // Parse Toggles
-  const cleanedText = template.replace(
+  finalText = finalText.replace(
     /(\[\s*)(.*?)(\s*\])/g,
     function buildToggle(
       match: string,
-      p1: string,
-      p2: string,
-      p3: string,
+      $1: string,
+      $2: string,
+      $3: string,
       offset: number
     ): string {
-      offsetCorrection += p1.length;
+      offsetCorrection += $1.length;
       const key = UUID.create();
       entityMap[key] = {
         type: 'TOGGLE',
@@ -29,23 +38,19 @@ function createFromTemplate(template: string = ''): EditorState {
       };
       entityRanges.push({
         key,
-        length: p2.length,
-        offset: offset + p1.length - offsetCorrection,
+        length: $2.length,
+        offset: offset + $1.length - offsetCorrection,
       });
-      offsetCorrection += p3.length;
-      return p2;
+      offsetCorrection += $3.length;
+      return $2;
     }
   );
-
-  // TODO: Parse Sections
-
-  // TODO: Parse patient-specific text
 
   // Construct contentState
   const templateContent = convertFromRaw({
     blocks: [
       {
-        text: cleanedText,
+        text: finalText,
         type: 'unstyled',
         entityRanges,
       },

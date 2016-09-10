@@ -32,7 +32,13 @@ type Props = {
 };
 
 const defaultProps = {
-  patient: I.from({}),
+  patient: I.from({
+    address: '',
+    dob: '',
+    firstName: '',
+    gender: 'f',
+    lastName: '',
+  }),
 };
 
 class PatientSettingsModal extends React.Component<DefaultProps, Props, void> {

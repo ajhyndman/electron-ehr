@@ -103,7 +103,7 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
   case 'FINALIZE_TEMPLATE': {
     return state.setIn(
       ['editors', state.activeTab, 'state'],
-      createFromTemplate(action.template)
+      createFromTemplate(action.template, state.editors[state.activeTab].patient)
     );
   }
   case 'OPEN_PATIENT_SETTINGS': {
