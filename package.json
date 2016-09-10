@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "build": "webpack --config webpack/production.config.js",
-    "build:watch": "webpack --config webpack/partials/core.config.js --watch",
+    "build:development": "webpack --config webpack/partials/core.config.js --watch",
     "eslint": "eslint src/ --ext .js,.jsx",
     "flow": "flow",
     "package": "electron-packager . fantasia --platform=win32 --arch=x64 --overwrite",
