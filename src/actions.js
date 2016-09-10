@@ -1,6 +1,8 @@
 // @flow
 import { EditorState } from 'draft-js';
 
+import type { MacroList } from 'store';
+
 
 export type ActionType =
   | 'ACTIVATE_TAB'
@@ -9,7 +11,9 @@ export type ActionType =
   | 'EDIT'
   | 'FINALIZE_TEMPLATE'
   | 'INIT_TAB'
-  | 'MACRO'
+  | 'MACROS_EDIT'
+  | 'MACROS_EXPAND'
+  | 'MACROS_SAVE'
   | 'NEW_LINE'
   | 'NEW_TAB'
   | 'OPEN_PATIENT_SETTINGS'
@@ -20,6 +24,7 @@ export type ActionType =
 export type Action = {
   type: ActionType;
   key?: number;
+  macros?: MacroList;
   patient?: Object;
   template?: string;
   next?: EditorState;
@@ -32,7 +37,9 @@ const actions = {
   EDIT: (next: EditorState): Action => ({ type: 'EDIT', next }),
   FINALIZE_TEMPLATE: (template: string | void): Action => ({ type: 'FINALIZE_TEMPLATE', template }),
   INIT_TAB: (): Action => ({ type: 'INIT_TAB' }),
-  MACRO: (): Action => ({ type: 'MACRO' }),
+  MACROS_EDIT: (): Action => ({ type: 'MACROS_EDIT' }),
+  MACROS_EXPAND: (): Action => ({ type: 'MACROS_EXPAND' }),
+  MACROS_SAVE: (macros: {}): Action => ({ type: 'MACROS_SAVE', macros }),
   NEW_LINE: (): Action => ({ type: 'NEW_LINE' }),
   NEW_TAB: (template: string): Action => ({ type: 'NEW_TAB', template }),
   OPEN_PATIENT_SETTINGS: (): Action => ({ type: 'OPEN_PATIENT_SETTINGS' }),

@@ -40,11 +40,25 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
       )
       .set('activeTab', state.editors.length);
   }
-  case 'MACRO': {
+  case 'MACROS_EDIT': {
+    return state.set(
+      'macroSettingsOpen',
+      true
+    );
+  }
+  case 'MACROS_EXPAND': {
     return state.setIn(
       ['editors', state.activeTab, 'state'],
       expandMacro(state.editors[state.activeTab].state, state.macros)
     );
+  }
+  case 'MACROS_SAVE': {
+    return state
+      .set('macroSettingsOpen', false)
+      .set(
+        'macros',
+        action.macros
+      );
   }
   case 'NEW_LINE': {
     return state.setIn(

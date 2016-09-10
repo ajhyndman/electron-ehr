@@ -1,8 +1,9 @@
 // @flow
 import { EditorState, Modifier } from 'draft-js';
+import type { MacroList } from 'store';
 
 
-function expandMacro(editorState: EditorState, macros: { [key: string]: string }): EditorState {
+function expandMacro(editorState: EditorState, macros: MacroList): EditorState {
   // Don't trigger macros if more than one character is selected.
   if (!editorState.getSelection().isCollapsed()) { return editorState; }
 

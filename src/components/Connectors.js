@@ -24,7 +24,7 @@ export const EditorPanel = connect(
     onChange(next: EditorState): void { dispatch(actions.EDIT(next)); },
     onTab(event: Event): void {
       event.preventDefault();
-      dispatch(actions.MACRO());
+      dispatch(actions.MACROS_EXPAND());
     },
     onReturn(): boolean {
       dispatch(actions.NEW_LINE());

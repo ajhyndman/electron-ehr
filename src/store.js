@@ -14,6 +14,8 @@ import rootSaga from 'sagas';
  * Redux Store
  */
 
+export type MacroList = { [key: string]: string };
+
 export type Patient = {
   address?: string;
   dob?: string;
@@ -30,8 +32,9 @@ export type TabState = {
 export type AppState = {
   activeTab: number;
   editors: Array<TabState>;
-  macros: { [key: string]: string };
+  macros: MacroList;
   patientSettingsOpen: boolean;
+  macroSettingsOpen: boolean;
 };
 
 // create saga middleware
@@ -42,7 +45,7 @@ const initialState: Immutable<AppState> = I.from({
   editors: [],
   macros,
   patientSettingsOpen: false,
-
+  macroSettingsOpen: false,
 });
 
 const store = createStore(
