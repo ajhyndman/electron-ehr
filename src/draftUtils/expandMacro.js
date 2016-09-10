@@ -1,9 +1,11 @@
 // @flow
 import { EditorState, Modifier } from 'draft-js';
-import type { MacroList } from 'store';
+
+import applyPatientContext from 'draftUtils/applyPatientContext';
+import type { MacroList, Patient } from 'store';
 
 
-function expandMacro(editorState: EditorState, macros: MacroList): EditorState {
+function expandMacro(editorState: EditorState, macros: MacroList, patient: Patient): EditorState {
   // Don't trigger macros if more than one character is selected.
   if (!editorState.getSelection().isCollapsed()) { return editorState; }
 
@@ -26,7 +28,7 @@ function expandMacro(editorState: EditorState, macros: MacroList): EditorState {
     if (macroRegex.test(candidateText)) {
       const expandedText = candidateText.replace(
         macroRegex,
-        macros[key]
+        applyPatientContext(macros[key], patient)
       );
 
       const nextContentState = Modifier.replaceText(

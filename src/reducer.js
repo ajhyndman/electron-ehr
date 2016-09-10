@@ -59,7 +59,11 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
   case 'MACROS_EXPAND': {
     return state.setIn(
       ['editors', state.activeTab, 'state'],
-      expandMacro(state.editors[state.activeTab].state, state.macros)
+      expandMacro(
+        state.editors[state.activeTab].state,
+        state.macros,
+        state.editors[state.activeTab].patient
+      )
     );
   }
   case 'MACROS_NEW_LINE': {
