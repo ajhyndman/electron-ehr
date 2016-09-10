@@ -8,6 +8,7 @@ import actions from '../actions';
 import disconnectedEditorPanel from 'components/EditorPanel';
 import disconnectedEditorTabs from 'components/UI/EditorTabs';
 import disconnectedPatientSettingsModal from 'components/PatientSettingsModal';
+import disconnectedSettingsEditorPanel from 'components/SettingsEditorPanel';
 import disconnectedTab from 'components/UI/Tab';
 import disconnectedToggleField from 'components/UI/ToggleField';
 import type { Action } from '../actions'; // eslint-disable-line no-duplicate-imports
@@ -56,6 +57,19 @@ export const PatientSettingsModal = connect(
     },
   })
 )(disconnectedPatientSettingsModal);
+
+export const SettingsEditorPanel = connect(
+  (state: Immutable<AppState>): Object => ({
+    editorState: (state.editors[state.activeTab] || I.from({ state: undefined })).state,
+  }),
+  (dispatch: Dispatch): Object => ({
+    onChange(next: EditorState): void { dispatch(actions.EDIT(next)); },
+    onReturn(): boolean {
+      dispatch(actions.NEW_LINE());
+      return true;
+    },
+  })
+)(disconnectedSettingsEditorPanel);
 
 export const Tab = connect(
   null,
