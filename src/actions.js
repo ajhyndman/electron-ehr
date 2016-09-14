@@ -1,7 +1,7 @@
 // @flow
 import { EditorState } from 'draft-js';
 
-import type { MacroList } from 'store';
+import type { MacroList, Patient } from 'store';
 
 
 export type ActionType =
@@ -28,7 +28,7 @@ export type Action = {
   type: ActionType;
   key?: number;
   macros?: MacroList;
-  patient?: Object;
+  patient?: Patient;
   template?: string;
   next?: EditorState;
 }
