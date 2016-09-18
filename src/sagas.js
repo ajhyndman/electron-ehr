@@ -4,7 +4,7 @@ import { takeLatest } from 'redux-saga';
 import { put, take } from 'redux-saga/effects';
 
 import actions from 'actions';
-import type { Action } from 'actions'; // eslint-disable-line no-duplicate-imports
+import type { Action } from 'actions';
 
 
 // worker Saga: will be fired on `NEW_TAB` actions

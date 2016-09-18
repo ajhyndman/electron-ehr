@@ -11,9 +11,11 @@
     ],
     "rules": {
         "arrow-body-style": ["error", "never"],
+        "import/no-duplicates": "error",
         "import/no-unresolved": "off",
         "indent": ["warn", 2],
         "new-cap": "off",
+        "no-duplicate-imports": "off",
         "no-nested-ternary": "off",
         "prefer-arrow-callback": "off",
         "react/jsx-no-bind": "off",

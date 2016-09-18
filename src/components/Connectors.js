@@ -2,7 +2,7 @@
 import I from 'seamless-immutable';
 import { EditorState } from 'draft-js';
 import { connect } from 'react-redux';
-import type { Immutable } from 'seamless-immutable'; // eslint-disable-line no-duplicate-imports
+import type { Immutable } from 'seamless-immutable';
 
 import actions from '../actions';
 import disconnectedEditorPanel from 'components/EditorPanel';
@@ -11,7 +11,7 @@ import disconnectedPatientSettingsModal from 'components/PatientSettingsModal';
 import disconnectedSettingsEditorPanel from 'components/SettingsEditorPanel';
 import disconnectedTab from 'components/UI/Tab';
 import disconnectedToggleField from 'components/UI/ToggleField';
-import type { Action } from '../actions'; // eslint-disable-line no-duplicate-imports
+import type { Action } from '../actions';
 import type { AppState, Patient, TabState } from '../store';
 
 type Dispatch = (action: Action) => void;

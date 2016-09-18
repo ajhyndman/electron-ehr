@@ -1,7 +1,7 @@
 // @flow
 import I from 'seamless-immutable';
 import React from 'react';
-import type { Immutable } from 'seamless-immutable'; // eslint-disable-line no-duplicate-imports
+import type { Immutable } from 'seamless-immutable';
 
 import Dialog from 'components/UI/Dialog';
 import Input from 'components/UI/Input';
