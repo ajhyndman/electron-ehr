@@ -17,7 +17,7 @@ const ToggleButton = (props: Props): React.Element<any> => (
         color: '#BCB3B6',
         cursor: 'pointer',
         lineHeight: 'inherit',
-        margin: '0 0.25em',
+        margin: '0 0.125em',
         padding: '0 0.125em',
       }}
     >
