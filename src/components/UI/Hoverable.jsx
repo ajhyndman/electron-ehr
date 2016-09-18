@@ -2,8 +2,14 @@
 import React from 'react';
 
 
+export type HoverInterface = {
+  hot: boolean;
+  onMouseOut: () => void;
+  onMouseOver: () => void;
+};
+
 type Props = {
-  children?: React.Element<any>;
+  children?: React.Element<HoverInterface>;
 };
 
 type State = {
@@ -31,12 +37,12 @@ class Hoverable extends React.Component {
 
   onMouseOut: () => void;
   onMouseOut(): void {
-    this.setState({ hot: false });
+    this.setState(() => ({ hot: false }));
   }
 
   onMouseOver: () => void;
   onMouseOver(): void {
-    this.setState({ hot: true });
+    this.setState(() => ({ hot: true }));
   }
 
   props: Props;
@@ -46,15 +52,10 @@ class Hoverable extends React.Component {
       <span>
         {React.Children.map(
           this.props.children,
-          (child: React.Element<any>): React.Element<any> => (
+          (child) => (
             React.cloneElement(child, {
-              style: {
-                ...child.props.style,
-                boxShadow: (this.state.hot
-                  ? '0 2px 4px 0 rgba(0,0,0,0.18),0 2px 4px 0 rgba(0,0,0,0.15)'
-                  : ''),
-                transition: '0.3s all',
-              },
+              active: true,
+              hot: this.state.hot,
               onMouseOut: this.onMouseOut,
               onMouseOver: this.onMouseOver,
             })

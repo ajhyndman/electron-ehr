@@ -4,6 +4,8 @@ import { Editor, EditorState } from 'draft-js';
 
 import 'fonts/proxima-nova.css';
 import 'fonts/hasklig.css';
+import ButtonPrimary from 'components/UI/ButtonPrimary';
+import FloatingWrapper from 'components/UI/FloatingWrapper';
 import Hoverable from 'components/UI/Hoverable';
 // import keybindings from '../keybindings';
 
@@ -49,32 +51,20 @@ const SettingsEditorPanel = (props: Props): ?React.Element<any> => (
           }}
         />
         <Hoverable>
-          <button
-            style={{
-              background: '#2196F3',
-              border: 'none',
-              borderRadius: '2px',
-              color: '#FFF',
-              cursor: 'pointer',
-              fontFamily: [
-                '"Segoe UI"',
-                'Frutiger',
-                '"Frutiger Linotype"',
-                '"Dejavu Sans"',
-                '"Helvetica Neue"',
-                'Arial',
-                'sans-serif',
-              ].join(', '),
-              fontSize: '1.5em',
-              padding: '0.25em 0.5em 0.33em',
-              position: 'absolute',
-              top: '0.5em',
-              right: '2em',
-            }}
-            onClick={props.onSave}
-          >
-            Save
-          </button>
+          <FloatingWrapper>
+            <ButtonPrimary
+              onClick={props.onSave}
+              style={{
+                fontSize: '1.5em',
+                padding: '0.25em 0.5em 0.33em',
+                position: 'absolute',
+                top: '0.5em',
+                right: '2em',
+              }}
+            >
+              Save
+            </ButtonPrimary>
+          </FloatingWrapper>
         </Hoverable>
         <div
           style={{
