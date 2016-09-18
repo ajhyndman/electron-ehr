@@ -25,6 +25,7 @@
         "import/no-extraneous-dependencies": "off",
         "import/no-unresolved": "off",
         "indent": ["warn", 2],
+        "linebreak-style": "off",
         "new-cap": "off",
         "no-duplicate-imports": "off",
         "no-nested-ternary": "off",
