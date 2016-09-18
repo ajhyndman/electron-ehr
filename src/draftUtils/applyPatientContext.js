@@ -1,7 +1,8 @@
 // @flow
 import type { Patient } from 'store';
 
-function applyPatientContext(text: string, patient: Patient) {
+
+function applyPatientContext(text: string, patient: Patient): string {
   const matchResult = patient.dob.match(/(\d\d\d\d)\-(\d\d)\-(\d\d)/);
   const [, year, month, day] = (matchResult && matchResult.length >= 4
     ? matchResult
@@ -31,5 +32,6 @@ function applyPatientContext(text: string, patient: Patient) {
     }
   );
 }
+
 
 export default applyPatientContext;
