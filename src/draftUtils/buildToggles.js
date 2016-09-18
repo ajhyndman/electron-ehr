@@ -28,7 +28,7 @@ function buildToggles(text: string): ContentState {
       entityRanges.push({
         key,
         length: $2.length,
-        offset: offset + $1.length - offsetCorrection,
+        offset: (offset + $1.length) - offsetCorrection,
       });
       offsetCorrection += $3.length;
       return $2;

@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import UUID from 'uuid-js';
 import lift from 'function-lift';
 
 import formControl from 'styles/form-control';
@@ -25,6 +26,8 @@ class RadioButton extends React.Component {
   constructor(props: Props): void {
     super(props);
 
+    this.id = UUID.create();
+
     this.state = {
       hot: false,
     };
@@ -41,11 +44,12 @@ class RadioButton extends React.Component {
   onFocus: () => void;
   onFocus(): void { this.setState({ hot: true }); }
 
+  id: string;
   props: Props;
 
   render(): React.Element<any> {
     return (
-      <label>
+      <label htmlFor={this.id}>
         <div
           style={{
             // WebkitAppearance: 'textfield',
@@ -88,6 +92,7 @@ class RadioButton extends React.Component {
           </div>
           <input
             checked={this.props.checked}
+            id={this.id}
             onChange={lift(
               getEventValue,
               function identity<T>(a: T): T { return a; },

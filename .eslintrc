@@ -11,14 +11,7 @@
     ],
     "rules": {
         "arrow-body-style": ["error", "never"],
-        "import/no-duplicates": "error",
-        "import/no-unresolved": "off",
-        "indent": ["warn", 2],
-        "new-cap": "off",
-        "no-duplicate-imports": "off",
-        "no-nested-ternary": "off",
-        "prefer-arrow-callback": "off",
-        "react/jsx-no-bind": "off",
+        "arrow-parens": "off",
         "flowtype/space-after-type-colon": [
             "warn",
             "always"
@@ -26,6 +19,17 @@
         "flowtype/space-before-type-colon": [
             "warn",
             "never"
-        ]
+        ],
+        "import/imports-first": "off",
+        "import/no-duplicates": "error",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-unresolved": "off",
+        "indent": ["warn", 2],
+        "new-cap": "off",
+        "no-duplicate-imports": "off",
+        "no-nested-ternary": "off",
+        "prefer-arrow-callback": "off",
+        "react/jsx-no-bind": "off",
+        "react/no-string-refs": "off"
     }
 }

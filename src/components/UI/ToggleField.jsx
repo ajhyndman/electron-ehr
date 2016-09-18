@@ -6,14 +6,11 @@ import Hoverable from 'components/UI/Hoverable';
 
 type Props = {
   children?: React.Element<any>;
-  entityKey: string;
-  onClick: Function;
 };
 
 const ToggleField = (props: Props): React.Element<any> => (
   <Hoverable>
     <span
-      onClick={props.onClick.bind(null, props.entityKey)}
       style={{
         background: '#EFEFEF',
         border: '1px solid #DCDCDC',

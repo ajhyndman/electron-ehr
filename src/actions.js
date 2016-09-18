@@ -1,6 +1,5 @@
 // @flow
 import { EditorState } from 'draft-js';
-
 import type { MacroList, Patient } from 'store';
 
 

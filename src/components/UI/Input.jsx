@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import UUID from 'uuid-js';
 import lift from 'function-lift';
 
 import formControl from 'styles/form-control';
@@ -11,7 +12,6 @@ function getEventValue(event: any): string {
 }
 
 type Props = {
-  disabled?: boolean;
   label?: string;
   onChange: Function;
   type: string;
@@ -25,25 +25,33 @@ const defaultProps = {
 class Input extends React.Component {
   static defaultProps: { value: string; };
 
+  constructor(props: Props) {
+    super(props);
+
+    this.id = UUID.create();
+  }
+
+  id: string;
   props: Props;
 
-  focus(): void {
+  focus() {
     setTimeout(
       // OMG, input focus is hard to manage in React.
       // https://github.com/facebook/react/issues/1791#issuecomment-204898317
-      function whyTheHellIsThisFunctionNecessary(): void {
+      function whyTheHellIsThisFunctionNecessary() {
         this.refs.localInput.focus();
       }.bind(this),
       0
     );
   }
 
-  render(): React.Element<any> {
+  render() {
     return (
-      <label>
+      <label htmlFor={this.id}>
         <div style={formControl}>{this.props.label}</div>
         <div style={formControl}>
           <input
+            id={this.id}
             ref="localInput"
             onChange={lift(
               getEventValue,

@@ -5,9 +5,9 @@ import { EditorState } from 'draft-js';
 import { applyMiddleware, createStore } from 'redux';
 import type { Immutable } from 'seamless-immutable';
 
-import macros from '../macros.json';
 import reducer from 'reducer';
 import rootSaga from 'sagas';
+import macros from '../macros.json';
 
 
 /**

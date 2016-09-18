@@ -69,7 +69,7 @@ class Tab extends React.Component {
     const color = (this.props.isActive ? '#FFF' : 'inherit');
 
     return (
-      <div
+      <button
         className="no-select"
         onClick={this.onClick}
         onMouseOut={this.onMouseOut}
@@ -105,7 +105,7 @@ class Tab extends React.Component {
           />
         </ButtonUnstyled>
         {this.props.name}
-      </div>
+      </button>
     );
   }
 }
