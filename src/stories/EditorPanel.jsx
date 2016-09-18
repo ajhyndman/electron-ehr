@@ -13,7 +13,17 @@ import { EditorPanel } from 'components/Connectors';
 
 
 // EMPTY STATE
-const initialState = I.from({
+const state0 = I.from({
+  activeTab: null,
+  editors: [],
+});
+const emptyStore = createStore(
+  reducer,
+  state0
+);
+
+// STATE WITH NO TEXT
+const state1 = I.from({
   activeTab: 0,
   editors: [
     {
@@ -21,14 +31,14 @@ const initialState = I.from({
     },
   ],
 });
-const emptyStore = createStore(
+const blankStore = createStore(
   reducer,
-  initialState
+  state1
 );
 
 
 // STATE WITH PLAIN TEXT
-const sampleState = I.from({
+const state2 = I.from({
   activeTab: 0,
   editors: [
     {
@@ -41,7 +51,7 @@ const sampleState = I.from({
 });
 const otherStore = createStore(
   reducer,
-  sampleState
+  state2
 );
 
 
@@ -88,7 +98,7 @@ const optionStore = createStore(
 
 
 storiesOf('Editor Panel', module)
-  .add('with no text', (): React.Element<any> => (
+  .add('empty', () => (
     <div style={{ border: 'solid 1px #AAA' }}>
       <style>
         {`.public-DraftEditor-content {
@@ -98,6 +108,20 @@ storiesOf('Editor Panel', module)
         }`}
       </style>
       <Provider store={emptyStore}>
+        <EditorPanel />
+      </Provider>
+    </div>
+  ))
+  .add('with no text', (): React.Element<any> => (
+    <div style={{ border: 'solid 1px #AAA' }}>
+      <style>
+        {`.public-DraftEditor-content {
+          box-sizing: border-box;
+          height: 200px;
+          padding: 0.5em 0.5em 0.5em 0;
+        }`}
+      </style>
+      <Provider store={blankStore}>
         <EditorPanel />
       </Provider>
     </div>
