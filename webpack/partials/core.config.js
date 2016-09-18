@@ -14,7 +14,7 @@ const config = {
     loaders: [
       {
         test: /\.css$/,
-        loader: 'style!css',
+        loader: 'style!css?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
       },
       {
         test: /\.js$/,

@@ -1,0 +1,10 @@
+.base:focus {
+  outline: none;
+}
+
+.base {
+  border: 0;
+  display: block;
+  text-align: left;
+  width: 100%;
+}

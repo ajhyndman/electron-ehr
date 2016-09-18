@@ -2,6 +2,7 @@
 import React from 'react';
 
 import 'css/no-select.css';
+import styles from 'components/UI/Tab.css';
 import Clear from 'components/icons/Clear';
 import ButtonUnstyled from 'components/UI/ButtonUnstyled';
 
@@ -70,7 +71,7 @@ class Tab extends React.Component {
 
     return (
       <button
-        className="no-select"
+        className={`no-select ${styles.base}`}
         onClick={this.onClick}
         onMouseOut={this.onMouseOut}
         onMouseOver={this.onMouseOver}
