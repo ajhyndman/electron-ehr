@@ -48,6 +48,25 @@ const EditorPanel = (props: Props): ?React.Element<any> => (
         />
         <div
           style={{
+            color: '#9E9E9E',
+            float: 'left',
+            fontSize: '1.125em',
+            fontWeight: '300',
+            left: '50%',
+            position: 'absolute',
+            textAlign: 'center',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: -1,
+          }}
+        >
+          <span style={{ fontSize: '3rem' }}>O_o</span>
+          <br />
+          <br />
+          {"You don't have any charts open"}
+        </div>
+        <div
+          style={{
             boxSizing: 'border-box',
             // flex: '1 1',
             float: 'left',

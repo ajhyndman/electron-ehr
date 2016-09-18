@@ -24,6 +24,7 @@ ReactDOM.render(
           float: 'left',
           height: '100%',
           overflow: 'auto',
+          position: 'relative',
           width: `calc(100% - ${width}px)`,
         }}
       >
