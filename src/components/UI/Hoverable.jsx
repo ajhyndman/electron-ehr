@@ -51,8 +51,8 @@ class Hoverable extends React.Component {
               style: {
                 ...child.props.style,
                 boxShadow: (this.state.hot
-                  ? '0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15)'
-                  : '0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)'),
+                  ? '0 2px 4px 0 rgba(0,0,0,0.18),0 2px 4px 0 rgba(0,0,0,0.15)'
+                  : ''),
                 transition: '0.3s all',
               },
               onMouseOut: this.onMouseOut,
