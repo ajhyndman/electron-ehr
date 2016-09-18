@@ -23,7 +23,7 @@ function buildToggles(text: string): ContentState {
       const key = UUID.create();
       entityMap[key] = {
         type: 'TOGGLE',
-        mutability: 'MUTABLE',
+        mutability: 'IMMUTABLE',
       };
       entityRanges.push({
         key,
