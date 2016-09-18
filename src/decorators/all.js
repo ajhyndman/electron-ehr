@@ -2,7 +2,7 @@
 import { CompositeDecorator, ContentBlock, Entity, SelectionState } from 'draft-js';
 
 // import FoldingParagraph from 'components/UI/FoldingParagraph';
-import { ToggleField } from 'components/Connectors';
+import { ToggleButton } from 'components/Connectors';
 
 
 // Strategies
@@ -11,7 +11,7 @@ import { ToggleField } from 'components/Connectors';
 //   callback(0, text.length);
 // }
 
-function matchToggleFields(contentBlock: ContentBlock, callback: Function): void {
+function matchToggleButtons(contentBlock: ContentBlock, callback: Function): void {
   function filter(selection: SelectionState): boolean {
     const entityKey = selection.getEntity();
     if (entityKey) {
@@ -28,15 +28,15 @@ function matchToggleFields(contentBlock: ContentBlock, callback: Function): void
 //   component: FoldingParagraph,
 // };
 
-const renderToggleFields = {
-  strategy: matchToggleFields,
-  component: ToggleField,
+const renderToggleButtons = {
+  strategy: matchToggleButtons,
+  component: ToggleButton,
 };
 
 // Composite
 const compositeDecorator = new CompositeDecorator([
   // foldAllBlocks,
-  renderToggleFields,
+  renderToggleButtons,
 ]);
 
 

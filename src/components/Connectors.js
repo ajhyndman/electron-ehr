@@ -10,7 +10,7 @@ import disconnectedEditorTabs from 'components/UI/EditorTabs';
 import disconnectedPatientSettingsModal from 'components/PatientSettingsModal';
 import disconnectedSettingsEditorPanel from 'components/SettingsEditorPanel';
 import disconnectedTab from 'components/UI/Tab';
-import disconnectedToggleField from 'components/UI/ToggleField';
+import disconnectedToggleButton from 'components/UI/ToggleButton';
 import type { Action } from '../actions';
 import type { AppState, Patient, TabState } from '../store';
 
@@ -82,9 +82,9 @@ export const Tab = connect(
   })
 )(disconnectedTab);
 
-export const ToggleField = connect(
+export const ToggleButton = connect(
   null,
   (dispatch: Dispatch): Object => ({
     onClick(entityKey: number): void { dispatch(actions.TOGGLE(entityKey)); },
   })
-)(disconnectedToggleField);
+)(disconnectedToggleButton);

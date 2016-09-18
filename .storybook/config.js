@@ -11,7 +11,7 @@ function loadStories() {
   require('../src/stories/UI/Input');
   require('../src/stories/UI/RadioButton');
   require('../src/stories/UI/Tab');
-  require('../src/stories/UI/ToggleField');
+  require('../src/stories/UI/ToggleButton');
   // require as many stories as you need.
 }
 

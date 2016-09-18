@@ -3,35 +3,35 @@ import React from 'react';
 import { action, storiesOf } from '@kadira/storybook';
 
 import 'fonts/proxima-nova.css';
-import ToggleField from 'components/UI/ToggleField';
+import ToggleButton from 'components/UI/ToggleButton';
 
 
 storiesOf('Toggle Field', module)
   .add('alone', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
-      <ToggleField
+      <ToggleButton
         entityKey="1"
         onClick={action('TOGGLE')}
       >
         Option Text
-      </ToggleField>
+      </ToggleButton>
     </div>
   ))
   .add('with text', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       This is a bunch of regular text with some
-      <ToggleField
+      <ToggleButton
         entityKey="1"
         onClick={action('TOGGLE')}
       >
         Option
-      </ToggleField>
-      <ToggleField
+      </ToggleButton>
+      <ToggleButton
         entityKey="2"
         onClick={action('TOGGLE')}
       >
         Fields
-      </ToggleField>
+      </ToggleButton>
       inside.
     </div>
   ));

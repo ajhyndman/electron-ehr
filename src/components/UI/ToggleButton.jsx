@@ -8,12 +8,11 @@ type Props = {
   children?: React.Element<any>;
 };
 
-const ToggleField = (props: Props): React.Element<any> => (
+const ToggleButton = (props: Props): React.Element<any> => (
   <Hoverable>
     <span
       style={{
         background: '#EFEFEF',
-        border: '1px solid #DCDCDC',
         borderRadius: 4,
         color: '#BCB3B6',
         cursor: 'pointer',
@@ -28,4 +27,4 @@ const ToggleField = (props: Props): React.Element<any> => (
 );
 
 
-export default ToggleField;
+export default ToggleButton;
