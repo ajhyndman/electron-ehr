@@ -9,6 +9,7 @@
 	"exclude": [
 		"node_modules",
 		"bower_components",
+		"fantasia-win32-x64",
 		"jspm_packages",
 		"tmp",
 		"temp"
