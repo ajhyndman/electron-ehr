@@ -10,7 +10,7 @@ storiesOf('Toggle Field', module)
   .add('alone', (): React.Element<any> => (
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       <ToggleButton
-        entityKey="1"
+        entityKey={1}
         onClick={action('TOGGLE')}
       >
         Option Text
@@ -21,13 +21,13 @@ storiesOf('Toggle Field', module)
     <div style={{ fontFamily: 'Proxima Nova', padding: '1em' }}>
       This is a bunch of regular text with some
       <ToggleButton
-        entityKey="1"
+        entityKey={1}
         onClick={action('TOGGLE')}
       >
         Option
       </ToggleButton>
       <ToggleButton
-        entityKey="2"
+        entityKey={2}
         onClick={action('TOGGLE')}
       >
         Fields

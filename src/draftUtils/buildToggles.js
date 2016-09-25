@@ -24,6 +24,7 @@ function buildToggles(text: string): ContentState {
       entityMap[key] = {
         type: 'TOGGLE',
         mutability: 'IMMUTABLE',
+        data: { active: false },
       };
       entityRanges.push({
         key,

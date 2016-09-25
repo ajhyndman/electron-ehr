@@ -9,10 +9,11 @@ type Props = {
   active: boolean;
   children?: React.Element<any>;
   entityKey: number;
-  shadowStyles: Object;
+  shadowStyles?: Object;
   onClick: (entityKey: number) => void;
 };
 
+// $FlowIssue - Props injected from parent aren't recognized.
 const ToggleButton = (props: Props & { hot: boolean }): React.Element<any> => (
   <button
     style={{

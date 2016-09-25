@@ -5,7 +5,7 @@ import type { Immutable } from 'seamless-immutable';
 
 import createFromTemplate from 'draftUtils/createFromTemplate';
 import expandMacro from 'draftUtils/expandMacro';
-import removeEntity from 'draftUtils/removeEntity';
+// import removeEntity from 'draftUtils/removeEntity';
 import type { Action } from 'actions';
 import type { AppState, TabState } from 'store';
 
@@ -124,7 +124,7 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
   case 'TOGGLE': {
     return state.setIn(
       ['editors', state.activeTab, 'state'],
-      removeEntity(state.editors[state.activeTab].state, action.key)
+      // removeEntity(state.editors[state.activeTab].state, action.key)
     );
   }
   case 'UPDATE_PATIENT': {
