@@ -9,8 +9,10 @@ src/
 [libs]
 node_modules/@flow-atom/electron/sig/v0.37.8
 flow/libs
+flow-typed/npm
 
 [options]
 module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=src
 module.name_mapper.extension='css' -> '<PROJECT_ROOT>/flow/stubs/CSS.js'
+suppress_comment= \\(.\\|\n\\)*\\$FlowIssue
