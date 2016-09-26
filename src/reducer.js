@@ -6,6 +6,8 @@ import type { Immutable } from 'seamless-immutable';
 import createFromTemplate from 'draftUtils/createFromTemplate';
 import expandMacro from 'draftUtils/expandMacro';
 import replaceEntity from 'draftUtils/replaceEntity';
+import stripInactiveToggles from 'draftUtils/stripInactiveToggles';
+import stripToggleGroups from 'draftUtils/stripToggleGroups';
 import type { Action } from 'actions';
 import type { AppState, TabState } from 'store';
 
@@ -20,8 +22,18 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
   }
   case 'COMMIT_TAB': {
     const currentState = state.editors[state.activeTab].state;
-    const currentText = currentState.getCurrentContent().getPlainText();
+    const currentContent = currentState.getCurrentContent();
+
+    // Strip inactive toggle groups.
+    const noGroups = stripToggleGroups(currentContent);
+
+    // Strip inactive toggles.
+    const noToggles = stripInactiveToggles(noGroups);
+
+    // Strip all entity metadata.
+    const currentText = noToggles.getPlainText();
     const nextContent = ContentState.createFromText(currentText);
+
     return state.setIn(
       ['editors', state.activeTab, 'state'],
       EditorState.push(currentState, nextContent, 'change-block-data')

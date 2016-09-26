@@ -1,4 +1,4 @@
-import { CharacterMetaData, ContentBlock, EditorState } from 'draft-js';
+import type { CharacterMetaData, ContentBlock, EditorState } from 'draft-js';
 
 
 function stripEntityFromCharacters(contentBlock: ContentBlock, entityKey: string): ContentBlock {
