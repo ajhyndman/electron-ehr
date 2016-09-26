@@ -1,19 +1,20 @@
 // @flow
 import { EditorState, Modifier } from 'draft-js';
+import type { SelectionState } from 'draft-js';
 
 import applyPatientContext from 'draftUtils/applyPatientContext';
 import type { MacroList, Patient } from 'store';
 
 
 function expandMacro(editorState: EditorState, macros: MacroList, patient: Patient): EditorState {
-  // Don't trigger macros if more than one character is selected.
-  if (!editorState.getSelection().isCollapsed()) { return editorState; }
+  const currentSelection: SelectionState = editorState.getSelection();
 
-  const focusKey = editorState
-    .getSelection()
+  // Don't trigger macros if more than one character is selected.
+  if (!currentSelection.isCollapsed()) { return editorState; }
+
+  const focusKey = currentSelection
     .getFocusKey();
-  const focusOffset = editorState
-    .getSelection()
+  const focusOffset = currentSelection
     .getFocusOffset();
   const candidateText: string = editorState
     .getCurrentContent()
@@ -26,15 +27,12 @@ function expandMacro(editorState: EditorState, macros: MacroList, patient: Patie
     const macroRegex = new RegExp(`${key}$`);
 
     if (macroRegex.test(candidateText)) {
-      const expandedText = candidateText.replace(
-        macroRegex,
-        applyPatientContext(macros[key], patient)
-      );
-
       const nextContentState = Modifier.replaceText(
         editorState.getCurrentContent(),
-        editorState.getSelection().merge({ anchorOffset: 0 }),
-        expandedText
+        currentSelection.merge({
+          anchorOffset: currentSelection.getAnchorOffset() - key.length,
+        }),
+        applyPatientContext(macros[key], patient)
       );
 
       const nextState = EditorState.push(
