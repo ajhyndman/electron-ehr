@@ -18,11 +18,10 @@ const ToggleButton = (props: Props & { hot: boolean }): React.Element<any> => {
   const { data } = Entity.get(props.entityKey);
 
   return (
-    <button
+    <a
       style={{
         WebkitUserSelect: 'none',
         background: (props.hot ? '#757575' : '#EEEEEE'),
-        border: 'none',
         borderRadius: 4,
         color: (data.active
           ? (props.hot
@@ -30,8 +29,6 @@ const ToggleButton = (props: Props & { hot: boolean }): React.Element<any> => {
             : '#212121')
           : '#BDBDBD'),
         cursor: 'pointer',
-        display: 'inline',
-        lineHeight: 'inherit',
         margin: '0',
         padding: '0 0.125em',
         ...props.shadowStyles,
@@ -39,7 +36,7 @@ const ToggleButton = (props: Props & { hot: boolean }): React.Element<any> => {
       onClick={props.onClick.bind(this, props.entityKey)}
     >
       {props.children}
-    </button>
+    </a>
   );
 };
 

@@ -1,8 +1,10 @@
 // @flow
 import { CompositeDecorator, ContentBlock, Entity, SelectionState } from 'draft-js';
+import MultiDecorator from 'draft-js-multidecorators';
 
 // import FoldingParagraph from 'components/UI/FoldingParagraph';
 import { ToggleButton } from 'components/Connectors';
+import ToggleGroup from 'components/UI/ToggleGroup';
 
 
 // Strategies
@@ -22,6 +24,19 @@ function matchToggleButtons(contentBlock: ContentBlock, callback: Function): voi
   contentBlock.findEntityRanges(filter, callback);
 }
 
+function matchToggleGroups(contentBlock: ContentBlock, callback: Function): void {
+  const text = contentBlock.getText();
+  const GROUP_SELECTOR = /\{\{\{[^]*?\}\}\}/g;
+  let match;
+  while ((match = GROUP_SELECTOR.exec(text)) !== null) {
+    // Decorate the match;
+    const matchedText = match[0];
+    const start = match.index;
+    const end = start + matchedText.length;
+    callback(start, end);
+  }
+}
+
 // Decorators
 // const foldAllBlocks = {
 //   strategy: matchAllBlocks,
@@ -33,10 +48,19 @@ const renderToggleButtons = {
   component: ToggleButton,
 };
 
+const renderToggleGroups = {
+  strategy: matchToggleGroups,
+  component: ToggleGroup,
+};
+
 // Composite
-const compositeDecorator = new CompositeDecorator([
-  // foldAllBlocks,
-  renderToggleButtons,
+const compositeDecorator = new MultiDecorator([
+  new CompositeDecorator([
+    renderToggleGroups,
+  ]),
+  new CompositeDecorator([
+    renderToggleButtons,
+  ]),
 ]);
 
 

@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "draft-js": "^0.7.0",
+    "draft-js-multidecorators": "^1.0.0",
     "electron-json-storage": "^2.0.0",
     "function-lift": "^1.0.5",
     "json-pretty": "0.0.1",
