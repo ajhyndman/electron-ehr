@@ -66,7 +66,7 @@ const optionState = I.from({
           blocks: [
             {
               text: (
-                'These are "toggle field" entities: One Two.  Click them to convert to plain text.'
+                'These are "toggle field" entities: One Two.  Click them to toggle.'
               ),
               type: 'unstyled',
               entityRanges: [

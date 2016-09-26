@@ -1,11 +1,11 @@
 // @flow
 import jsonPretty from 'json-pretty';
-import { ContentState, EditorState, RichUtils } from 'draft-js';
+import { ContentState, EditorState, Entity, RichUtils } from 'draft-js';
 import type { Immutable } from 'seamless-immutable';
 
 import createFromTemplate from 'draftUtils/createFromTemplate';
 import expandMacro from 'draftUtils/expandMacro';
-// import removeEntity from 'draftUtils/removeEntity';
+import replaceEntity from 'draftUtils/replaceEntity';
 import type { Action } from 'actions';
 import type { AppState, TabState } from 'store';
 
@@ -122,9 +122,17 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
     );
   }
   case 'TOGGLE': {
+    const toggle = Entity.get(action.key);
+    const updated = Entity.replaceData(
+      action.key,
+      {
+        active: !toggle.getIn(['data']).active,
+      }
+    );
+    const newKey = Entity.add(updated);
     return state.setIn(
       ['editors', state.activeTab, 'state'],
-      // removeEntity(state.editors[state.activeTab].state, action.key)
+      replaceEntity(state.editors[state.activeTab].state, action.key, newKey)
     );
   }
   case 'UPDATE_PATIENT': {

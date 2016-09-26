@@ -8,7 +8,7 @@ function FloatingWrapper(props: HoverInterface) {
     boxShadow: (props.hot
       ? '0 2px 4px 0 rgba(0,0,0,0.18),0 2px 4px 0 rgba(0,0,0,0.15)'
       : ''),
-    transition: '0.3s all',
+    transition: '0.15s all',
   };
 
   return (
