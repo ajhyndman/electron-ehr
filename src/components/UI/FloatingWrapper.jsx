@@ -1,15 +1,20 @@
 import React from 'react';
+import { StyleSheet, css } from 'aphrodite';
 
 import type { HoverInterface } from 'components/UI/Hoverable';
 
 
 function FloatingWrapper(props: HoverInterface) {
-  const shadowStyles = {
-    boxShadow: (props.hot
-      ? '0 2px 4px 0 rgba(0,0,0,0.18),0 2px 4px 0 rgba(0,0,0,0.15)'
-      : ''),
-    transition: '0.15s all',
-  };
+  const styles = StyleSheet.create({
+    shadow: {
+      boxShadow: '',
+      transition: '0.15s all',
+
+      ':hover': {
+        boxShadow: '0 2px 4px 0 rgba(0,0,0,0.18), 0 2px 4px 0 rgba(0,0,0,0.15)',
+      },
+    },
+  });
 
   return (
     <span
@@ -20,10 +25,7 @@ function FloatingWrapper(props: HoverInterface) {
         props.children,
         (child) => React.cloneElement(
           child,
-          {
-            hot: props.hot,
-            shadowStyles,
-          }
+          { shadowStyles: css(styles.shadow) }
         )
       )}
     </span>
