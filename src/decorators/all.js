@@ -1,6 +1,7 @@
 // @flow
 import { CompositeDecorator, ContentBlock, Entity, SelectionState } from 'draft-js';
 import MultiDecorator from 'draft-js-multidecorators';
+import type { CharacterMetaData } from 'draft-js';
 
 // import FoldingParagraph from 'components/UI/FoldingParagraph';
 import { ToggleButton } from 'components/Connectors';
@@ -24,9 +25,12 @@ function matchToggleButtons(contentBlock: ContentBlock, callback: Function): voi
   contentBlock.findEntityRanges(filter, callback);
 }
 
-function matchToggleGroups(contentBlock: ContentBlock, callback: Function): void {
+function matchAllToggleGroups(contentBlock: ContentBlock, callback: Function): void {
   const text = contentBlock.getText();
   const GROUP_SELECTOR = /\{\{\{[^]*?\}\}\}/g;
+
+  // This code is hideous!
+  // (copied from https://facebook.github.io/draft-js/docs/advanced-topics-decorators.html#compositedecorator)
   let match;
   while ((match = GROUP_SELECTOR.exec(text)) !== null) {
     // Decorate the match;
@@ -34,6 +38,43 @@ function matchToggleGroups(contentBlock: ContentBlock, callback: Function): void
     const start = match.index;
     const end = start + matchedText.length;
     callback(start, end);
+  }
+}
+
+function matchInactiveToggleGroups(contentBlock: ContentBlock, callback: Function): void {
+  const text = contentBlock.getText();
+  const GROUP_SELECTOR = /\{\{\{[^]*?\}\}\}/g;
+
+  // This code is hideous!
+  // (copied from https://facebook.github.io/draft-js/docs/advanced-topics-decorators.html#compositedecorator)
+  let match;
+  while ((match = GROUP_SELECTOR.exec(text)) !== null) {
+    const matchedText = match[0];
+    const start = match.index;
+    const end = start + matchedText.length;
+
+    // Check for active, nested toggles.
+    let hasActiveToggles = false;
+    contentBlock.findEntityRanges(
+      function predicate(character: CharacterMetaData): boolean {
+        if (character.getEntity() === null) { return false; }
+        const entity = Entity.get(character.getEntity());
+        return (
+          entity.getType() === 'TOGGLE'
+          && entity.get('data').active
+        );
+      },
+      function eachRange(entityStart, entityEnd) {
+        if (entityStart >= start && entityEnd <= end) {
+          hasActiveToggles = true;
+        }
+      }
+    );
+
+    // Decorate the match;
+    if (!hasActiveToggles) {
+      callback(start, end);
+    }
   }
 }
 
@@ -49,7 +90,7 @@ const renderToggleButtons = {
 };
 
 const renderToggleGroups = {
-  strategy: matchToggleGroups,
+  strategy: matchInactiveToggleGroups,
   component: ToggleGroup,
 };
 

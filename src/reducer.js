@@ -24,14 +24,14 @@ function reducer(state: Immutable<AppState>, action: Action): Immutable<AppState
     const currentState = state.editors[state.activeTab].state;
     const currentContent = currentState.getCurrentContent();
 
-    // Strip inactive toggle groups.
-    const noGroups = stripToggleGroups(currentContent);
-
     // Strip inactive toggles.
-    const noToggles = stripInactiveToggles(noGroups);
+    const noToggles = stripInactiveToggles(currentContent);
+
+    // Strip inactive toggle groups.
+    const noGroups = stripToggleGroups(noToggles);
 
     // Strip all entity metadata.
-    const currentText = noToggles.getPlainText();
+    const currentText = noGroups.getPlainText();
     const nextContent = ContentState.createFromText(currentText);
 
     return state.setIn(
