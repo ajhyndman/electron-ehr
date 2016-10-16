@@ -4,7 +4,7 @@
   "description": "EHR charting tool built on Electron",
   "main": "main.js",
   "scripts": {
-    "main": "main.js",
+    "start": "electron main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/ajhyndman/electron-ehr#readme",
   "devDependencies": {
     "electron-prebuilt": "^1.2.0"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.7.0"
   }
 }
