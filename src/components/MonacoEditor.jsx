@@ -5,7 +5,7 @@ import { css, StyleSheet } from 'aphrodite';
 type Props = {
   value: string;
   language: string;
-  onChange: (newValue: string) => any;
+  onChange: (newValue: string) => void;
 }
 
 const styles = StyleSheet.create({
